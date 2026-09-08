@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kpham041.github.io/sitemap.xml

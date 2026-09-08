@@ -1,0 +1,888 @@
+{
+  "_readme": "Every word on the site lives in this file. Edit here, commit, push — GitHub Actions rebuilds and deploys. Empty strings and empty arrays are skipped by the build, so an unfinished section simply does not appear rather than shipping a placeholder. See CONTENT-GUIDE.md.",
+  "site": {
+    "name": "Michael Pham",
+    "nameVi": "Phạm Nguyên Khôi",
+    "url": "https://kpham041.github.io",
+    "lastUpdated": "2026-09-08"
+  },
+  "profile": {
+    "email": "khoiphamnguyen05@gmail.com",
+    "links": {
+      "scholar": {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.ca/citations?user=5y-0wbkAAAAJ&hl=en",
+        "note": {
+          "en": "Citations and full publication list",
+          "vi": "Trích dẫn và danh mục công bố"
+        }
+      },
+      "orcid": {
+        "label": "ORCID",
+        "url": "",
+        "note": {
+          "en": "Persistent researcher ID",
+          "vi": "Mã định danh nhà nghiên cứu"
+        }
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "url": "",
+        "note": {
+          "en": "Professional background",
+          "vi": "Hồ sơ nghề nghiệp"
+        }
+      },
+      "github": {
+        "label": "GitHub",
+        "url": "",
+        "note": {
+          "en": "Code and analysis pipelines",
+          "vi": "Mã nguồn và quy trình phân tích"
+        }
+      }
+    },
+    "cv": {
+      "url": "",
+      "updated": ""
+    }
+  },
+  "publications": [
+    {
+      "id": "neurotrauma-2026",
+      "title": "Prevalence and risk of anxiety and depression after concussion: a TRANSCENDENT study",
+      "authors": "van Ierssel, J. J., Kutcher, S. A., Johnston, S., **Pham, N. K.**, Lamoureux, M., Dodd, A. B., Mullan, M., Yeates, K. O., Ledoux, A.-A., Liu, B. C., Lalonde, C., Master, C. L., Howell, D. R., Chintoh, A., Mikolić, A., Beauchamp, M. H., Silverberg, N. D., & Zemek, R.",
+      "year": "2026",
+      "venue": "Journal of Neurotrauma, 43(15–16), 1259–1270",
+      "doi": "10.1177/08977151261416446"
+    },
+    {
+      "id": "ajem-2026",
+      "title": "Cephalexin use in a pediatric emergency department during the shortage of amoxicillin suspension",
+      "authors": "Alquarshi, W., O'Donnell, R., Eckbo, E., **Pham, N. K.**, Barrowman, N., Bowes, J., & Le Saux, N.",
+      "year": "2026",
+      "venue": "The American Journal of Emergency Medicine, 99, 237–240",
+      "doi": "10.1016/j.ajem.2025.10.006"
+    },
+    {
+      "id": "jpeds-2026",
+      "title": "Interventions to treat pediatric iron deficiency anemia: a systematic review and meta-analysis",
+      "authors": "Cadieux, A. H., **Pham, M. K.**, Speckert, M., Borkhoff, C. M., Parkin, P. C., & Hamid, J. S.",
+      "year": "2026",
+      "venue": "The Journal of Pediatrics, 289, 114898",
+      "doi": "10.1016/j.jpeds.2025.114898"
+    },
+    {
+      "id": "ijlh-2025",
+      "title": "Paediatric reference intervals and curves for haemoglobin estimated using direct methods: a systematic review and meta-analysis",
+      "authors": "Bijelić, V., Bijelić, M., Larock, J., **Pham, M.**, Momoli, F., Liebman, M., Potter, B. K., Parkin, P. C., & Hamid, J. S.",
+      "year": "2025",
+      "venue": "International Journal of Laboratory Hematology, 47(4), 588–599",
+      "doi": "10.1111/ijlh.14489"
+    }
+  ],
+  "projects": [
+    {
+      "id": "stewardship",
+      "en": {
+        "meta": "Reproducible reporting",
+        "title": "Antimicrobial stewardship reporting for a pediatric emergency department",
+        "body": [
+          "A pediatric emergency department's quarterly stewardship report was a slow, hand-built document — assembled by hand each cycle, formatted slightly differently each time, and impossible to reproduce exactly.",
+          "I rebuilt it as a modular R pipeline driven from a single entry-point script, with tested helper functions for data preparation, categorization, metrics, tables, and figures. The report now covers acute otitis media, Group A strep pharyngitis, and pneumonia, tracking guideline-concordant against broad-spectrum prescribing with publication-quality tables and trend figures.",
+          "The stewardship program cut excess antibiotic prescription-days by roughly 20%, and each reporting cycle now regenerates in minutes with identical formatting."
+        ],
+        "tags": [
+          "R",
+          "targets-style pipeline",
+          "gtsummary / flextable",
+          "Quarto reporting",
+          "unit-tested helpers"
+        ]
+      },
+      "vi": {
+        "meta": "Báo cáo tái lập được",
+        "title": "Báo cáo quản lý kháng sinh cho khoa cấp cứu nhi",
+        "body": [
+          "Báo cáo quản lý kháng sinh hằng quý của một khoa cấp cứu nhi vốn là một tài liệu làm thủ công: mỗi kỳ lại dựng lại bằng tay, định dạng mỗi lần một khác, và gần như không thể tái lập chính xác.",
+          "Tôi xây dựng lại quy trình bằng R theo dạng mô-đun, chạy từ một tệp khởi động duy nhất, với các hàm hỗ trợ đã được kiểm thử cho chuẩn bị dữ liệu, phân loại, chỉ số, bảng và hình. Báo cáo hiện bao phủ viêm tai giữa cấp, viêm họng do liên cầu nhóm A và viêm phổi, theo dõi kê đơn đúng hướng dẫn so với kháng sinh phổ rộng.",
+          "Chương trình đã giảm khoảng 20% số ngày kê kháng sinh không cần thiết, và mỗi kỳ báo cáo nay được tạo lại trong vài phút với định dạng giống hệt nhau."
+        ],
+        "tags": [
+          "R",
+          "Quy trình mô-đun",
+          "gtsummary / flextable",
+          "Báo cáo Quarto",
+          "Hàm có kiểm thử"
+        ]
+      }
+    },
+    {
+      "id": "amoxicillin",
+      "en": {
+        "meta": "Peer-reviewed analysis",
+        "title": "Antibiotic prescribing during a national amoxicillin shortage",
+        "body": [
+          "When a national amoxicillin shortage forced substitutions in pediatric prescribing, the clinical question was simple to ask and awkward to answer: what did prescribers actually switch to, and did the pattern hold across diagnoses?",
+          "I provided the full statistical analysis in R — cleaning and categorizing prescribing by diagnosis and antibiotic class, quantifying substitution across amoxicillin, amoxicillin-clavulanate, cefuroxime, cephalexin, and macrolides, and producing reproducible tables and figures characterizing prescribing before and during the shortage.",
+          "The analysis supported a peer-reviewed publication in *The American Journal of Emergency Medicine*."
+        ],
+        "tags": [
+          "R",
+          "Health-services analysis",
+          "Reproducible tables and figures"
+        ]
+      },
+      "vi": {
+        "meta": "Phân tích đã bình duyệt",
+        "title": "Kê đơn kháng sinh trong đợt thiếu amoxicillin toàn quốc",
+        "body": [
+          "Khi tình trạng thiếu amoxicillin trên toàn quốc buộc phải thay thế thuốc trong kê đơn nhi khoa, câu hỏi lâm sàng rất dễ đặt ra nhưng khó trả lời: bác sĩ thực sự đã chuyển sang thuốc gì, và mô hình đó có nhất quán giữa các chẩn đoán không?",
+          "Tôi thực hiện toàn bộ phân tích thống kê bằng R — làm sạch và phân loại kê đơn theo chẩn đoán và nhóm kháng sinh, định lượng mức độ thay thế giữa amoxicillin, amoxicillin-clavulanate, cefuroxime, cephalexin và macrolide, đồng thời tạo bảng và hình tái lập được cho giai đoạn trước và trong đợt thiếu thuốc.",
+          "Phân tích này là cơ sở cho một bài báo đã bình duyệt trên *The American Journal of Emergency Medicine*."
+        ],
+        "tags": [
+          "R",
+          "Phân tích dịch vụ y tế",
+          "Bảng và hình tái lập được"
+        ]
+      }
+    },
+    {
+      "id": "ppe15",
+      "en": {
+        "meta": "Vietnam · patient experience",
+        "title": "Patient experience measurement across Vietnamese public hospitals",
+        "body": [
+          "A patient-experience study across seven Vietnamese public hospitals produced exactly the kind of data that is hard to analyse well: bilingual, free-text-heavy survey responses mixing Likert scales with trust and recommendation measures.",
+          "I built the full analysis pipeline — cleaning and standardizing the survey data, constructing the PPE-15 experience score, and fitting a progression of logistic regression models linking communication and care variables to overall patient experience.",
+          "The output was redesigned as a bilingual presentation for a clinical audience, with professionally formatted demographic and model tables."
+        ],
+        "tags": [
+          "R",
+          "PPE-15",
+          "Logistic regression",
+          "Bilingual survey data"
+        ]
+      },
+      "vi": {
+        "meta": "Việt Nam · trải nghiệm người bệnh",
+        "title": "Đo lường trải nghiệm người bệnh tại các bệnh viện công Việt Nam",
+        "body": [
+          "Một nghiên cứu về trải nghiệm người bệnh tại bảy bệnh viện công ở Việt Nam tạo ra đúng loại dữ liệu khó phân tích cho tốt: khảo sát song ngữ, nhiều câu trả lời tự do, trộn thang Likert với các thước đo về niềm tin và mức độ sẵn sàng giới thiệu.",
+          "Tôi xây dựng toàn bộ quy trình phân tích — làm sạch và chuẩn hóa dữ liệu khảo sát, dựng điểm trải nghiệm PPE-15, và xây dựng lần lượt các mô hình hồi quy logistic liên kết các biến về giao tiếp và chăm sóc với trải nghiệm tổng thể của người bệnh.",
+          "Kết quả được thiết kế lại thành một bài trình bày song ngữ dành cho đối tượng lâm sàng, với bảng nhân khẩu học và bảng mô hình được định dạng chuyên nghiệp."
+        ],
+        "tags": [
+          "R",
+          "PPE-15",
+          "Hồi quy logistic",
+          "Dữ liệu khảo sát song ngữ"
+        ]
+      }
+    }
+  ],
+  "skills": {
+    "en": [
+      {
+        "k": "Study design",
+        "v": "Protocol and analysis-plan input, sample size and power, outcome and estimand definition, and the awkward conversations about what a study can and cannot answer."
+      },
+      {
+        "k": "Analysis",
+        "v": "Regression modelling, systematic review and meta-analysis, interrupted time series, survey and patient-experience measurement, and health-services analysis of administrative data."
+      },
+      {
+        "k": "Reproducibility",
+        "v": "Modular R pipelines with tested helper functions, one-command regeneration, and reporting that comes out identically formatted every cycle."
+      },
+      {
+        "k": "Tools",
+        "v": "R (tidyverse, gtsummary, flextable, ggplot2), R Markdown and Quarto, Git, SQL, REDCap."
+      },
+      {
+        "k": "Communication",
+        "v": "Translating model output into something a clinical team can act on — in writing, in tables and figures, and in the room."
+      }
+    ],
+    "vi": [
+      {
+        "k": "Thiết kế nghiên cứu",
+        "v": "Góp ý đề cương và kế hoạch phân tích, cỡ mẫu và lực thống kê, định nghĩa kết cục, và cả những cuộc trao đổi khó chịu về việc một nghiên cứu có thể và không thể trả lời điều gì."
+      },
+      {
+        "k": "Phân tích",
+        "v": "Mô hình hồi quy, tổng quan hệ thống và phân tích gộp, chuỗi thời gian gián đoạn, đo lường khảo sát và trải nghiệm người bệnh, phân tích dữ liệu hành chính trong dịch vụ y tế."
+      },
+      {
+        "k": "Tái lập được",
+        "v": "Quy trình R dạng mô-đun với các hàm đã kiểm thử, tạo lại bằng một lệnh, và báo cáo có định dạng giống hệt nhau qua từng kỳ."
+      },
+      {
+        "k": "Công cụ",
+        "v": "R (tidyverse, gtsummary, flextable, ggplot2), R Markdown và Quarto, Git, SQL, REDCap."
+      },
+      {
+        "k": "Truyền đạt",
+        "v": "Chuyển kết quả mô hình thành điều mà một nhóm lâm sàng có thể hành động — bằng văn bản, bằng bảng biểu và hình, và trực tiếp trong phòng họp."
+      }
+    ]
+  },
+  "i18n": {
+    "en": {
+      "langNames": {
+        "en": "English",
+        "vi": "Tiếng Việt"
+      },
+      "nav": {
+        "home": "Home",
+        "about": "About",
+        "work": "Work",
+        "publications": "Publications",
+        "contact": "Contact"
+      },
+      "primaryNav": "Primary",
+      "footerNav": "Footer",
+      "languageNav": "Language",
+      "skipToContent": "Skip to content",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "toggleTheme": "Switch between light and dark",
+      "jsonLdJobTitle": "Biostatistician and Data Scientist",
+      "ogImageAlt": "Michael Pham — biostatistician and data scientist, CHEO Clinical Research Unit, Ottawa",
+      "footerNote": "Based in Ottawa, Canada. Rooted in three languages: Vietnamese, English, and French.",
+      "footerColophon": "Set in Fraunces, Be Vietnam Pro and IBM Plex Mono. Built as a static site and deployed from GitHub.",
+      "home": {
+        "metaTitle": "Michael Pham — Biostatistician, CHEO Clinical Research Unit",
+        "metaDescription": "Michael Pham (Phạm Nguyên Khôi) is a biostatistician and data scientist at CHEO's Clinical Research Unit in Ottawa, working on study design, analysis, and reproducible reporting in pediatric research.",
+        "role": "Biostatistician and data scientist at CHEO's Clinical Research Unit, Ottawa.",
+        "blurb": "Most of my work comes down to one question: can we trust what a health measurement is telling us? And when we can't, what should we do about it?",
+        "ctaPrimary": "Get in touch",
+        "ctaSecondary": "Selected work",
+        "highlightsLabel": "At a glance",
+        "highlights": [
+          {
+            "k": "Now",
+            "v": "Designing and analysing clinical studies at CHEO, a pediatric academic hospital in Ottawa, Canada."
+          },
+          {
+            "k": "Focus",
+            "v": "Measuring quality and safety in hospital care — when an indicator can be trusted, and when it quietly misleads."
+          },
+          {
+            "k": "Interested in",
+            "v": "Health quality and health leadership: the gap between measuring care well and actually changing it. It is the direction I want my work to take."
+          },
+          {
+            "k": "Languages",
+            "v": "Vietnamese, English, and French."
+          }
+        ]
+      },
+      "about": {
+        "metaTitle": "About",
+        "metaDescription": "Michael Pham is a biostatistician at CHEO's Clinical Research Unit in Ottawa. He grew up in Hanoi, trained at the University of Ottawa, and works between Canadian pediatric research and healthcare quality in Vietnam.",
+        "overline": "About",
+        "title": "About",
+        "factsLabel": "Facts",
+        "facts": [
+          {
+            "k": "Role",
+            "v": "Biostatistician & Data Scientist, Clinical Research Unit, CHEO Research Institute"
+          },
+          {
+            "k": "Education",
+            "v": "MSc in Mathematics and Statistics, University of Ottawa"
+          },
+          {
+            "k": "Languages",
+            "v": "Vietnamese (native), English, French"
+          },
+          {
+            "k": "Location",
+            "v": "Ottawa, Canada"
+          }
+        ],
+        "storyLabel": "The longer version",
+        "story": [
+          "I grew up in Hanoi, in a family of physicians and academics, and moved to Canada for university. Medicine was the dinner-table subject long before it was a career question, which is probably why I ended up working on it from the numbers side rather than the bedside.",
+          "I trained in mathematics and statistics at the University of Ottawa, and joined the Clinical Research Unit at CHEO — the Children's Hospital of Eastern Ontario — as a biostatistician and data scientist. I work with clinical teams on study design, analysis, and reproducible reporting across pediatric research, from concussion to antibiotic stewardship.",
+          "The question I keep returning to is whether a hospital can trust the numbers it uses to measure the safety and quality of its own care — and what it should do when a number turns out not to be trustworthy. Measuring care well and actually improving it are two different problems, and the distance between them is what interests me most.",
+          "That interest points somewhere: health quality and health leadership, and eventually bringing that work back to Vietnamese hospitals. For now it shows up in what I read, what I volunteer for, and the workshops I help design.",
+          "I write in Vietnamese, speak French badly but improvingly, and split my attention between Ottawa and the healthcare world of Vietnam, where my family's roots in medicine run deep."
+        ],
+        "skillsLabel": "What I actually do",
+        "skillsIntro": "The short version of the work, for anyone deciding whether to send me a study."
+      },
+      "work": {
+        "metaTitle": "Work",
+        "metaDescription": "Selected statistical and data science work by Michael Pham: antimicrobial stewardship reporting, prescribing during a national drug shortage, and patient experience measurement across Vietnamese public hospitals.",
+        "overline": "Work",
+        "title": "Selected work",
+        "intro": "Three projects that between them cover most of what I do: build a pipeline that survives repetition, answer a clinical question under pressure, and make messy bilingual survey data say something honest.",
+        "speakingLabel": "Teaching and speaking",
+        "speakingIntro": "Communication is part of the work, not a side interest.",
+        "speaking": [
+          {
+            "k": "Facilitation",
+            "v": "Workshops and training sessions for clinical and leadership audiences, including hospital-leadership training on healthcare quality in Vietnam."
+          },
+          {
+            "k": "Toastmasters",
+            "v": "Regular speaking practice and mentoring."
+          },
+          {
+            "k": "Off the clock",
+            "v": "A little stand-up experience, which makes every other kind of talk easier."
+          }
+        ],
+        "closingPre": "For collaboration inquiries:",
+        "closingLink": "get in touch."
+      },
+      "publications": {
+        "metaTitle": "Publications",
+        "metaDescription": "Peer-reviewed publications co-authored by Michael Pham (Phạm Nguyên Khôi), in the Journal of Neurotrauma, The American Journal of Emergency Medicine, The Journal of Pediatrics, and the International Journal of Laboratory Hematology.",
+        "overline": "Publications",
+        "title": "Publications",
+        "intro": "Peer-reviewed work, newest first. My name appears in three forms across these papers — Pham, N. K., Pham, M. K., and Pham, M. — because journals recorded it differently; all four are me.",
+        "doiLabel": "DOI",
+        "moreLabel": "Full list and citation counts on"
+      },
+      "contact": {
+        "metaTitle": "Contact",
+        "metaDescription": "Get in touch with Michael Pham, biostatistician at CHEO's Clinical Research Unit in Ottawa. Open to research collaboration, in English, Vietnamese, or French.",
+        "overline": "Contact",
+        "title": "Get in touch",
+        "intro": "I am open to research collaboration, methodological consults, and conversations about healthcare quality work in Vietnam.",
+        "emailLabel": "Email",
+        "elsewhereLabel": "Elsewhere",
+        "muted": "Based in Ottawa, Canada. I reply in English, Vietnamese, or French — whichever you are more comfortable writing in."
+      }
+    },
+    "vi": {
+      "langNames": {
+        "en": "English",
+        "vi": "Tiếng Việt"
+      },
+      "nav": {
+        "home": "Trang chủ",
+        "about": "Giới thiệu",
+        "work": "Dự án",
+        "publications": "Công bố",
+        "contact": "Liên hệ"
+      },
+      "primaryNav": "Điều hướng chính",
+      "footerNav": "Chân trang",
+      "languageNav": "Ngôn ngữ",
+      "skipToContent": "Đến nội dung chính",
+      "openMenu": "Mở menu",
+      "closeMenu": "Đóng menu",
+      "toggleTheme": "Chuyển giữa nền sáng và nền tối",
+      "jsonLdJobTitle": "Chuyên viên Thống kê sinh học và Khoa học dữ liệu",
+      "ogImageAlt": "Michael Pham — chuyên viên thống kê sinh học, Đơn vị Nghiên cứu Lâm sàng CHEO, Ottawa",
+      "footerNote": "Sống tại Ottawa, Canada. Gắn bó với ba ngôn ngữ: tiếng Việt, tiếng Anh và tiếng Pháp.",
+      "footerColophon": "Dùng phông Fraunces, Be Vietnam Pro và IBM Plex Mono. Trang tĩnh, triển khai từ GitHub.",
+      "home": {
+        "metaTitle": "Michael Pham — Thống kê sinh học, Đơn vị Nghiên cứu Lâm sàng CHEO",
+        "metaDescription": "Phạm Nguyên Khôi (Michael Pham) là chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng của CHEO, Ottawa, làm việc về thiết kế nghiên cứu, phân tích và báo cáo tái lập được trong nghiên cứu nhi khoa.",
+        "role": "Chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng, CHEO, Ottawa.",
+        "blurb": "Phần lớn công việc của tôi xoay quanh một câu hỏi: liệu chúng ta có thể tin vào những gì một phép đo y tế đang cho biết? Và khi chưa thể tin, chúng ta nên làm gì?",
+        "ctaPrimary": "Liên hệ",
+        "ctaSecondary": "Dự án tiêu biểu",
+        "highlightsLabel": "Tóm lược",
+        "highlights": [
+          {
+            "k": "Hiện tại",
+            "v": "Thiết kế và phân tích các nghiên cứu lâm sàng tại CHEO, bệnh viện nhi khoa đại học tại Ottawa, Canada."
+          },
+          {
+            "k": "Trọng tâm",
+            "v": "Đo lường chất lượng và an toàn trong chăm sóc tại bệnh viện — khi nào một chỉ số đáng tin, và khi nào nó âm thầm gây hiểu lầm."
+          },
+          {
+            "k": "Quan tâm",
+            "v": "Chất lượng y tế và lãnh đạo y tế: khoảng cách giữa việc đo lường tốt và việc thực sự thay đổi được chăm sóc. Đây là hướng tôi muốn công việc của mình đi tới."
+          },
+          {
+            "k": "Ngôn ngữ",
+            "v": "Tiếng Việt, tiếng Anh và tiếng Pháp."
+          }
+        ]
+      },
+      "about": {
+        "metaTitle": "Giới thiệu",
+        "metaDescription": "Phạm Nguyên Khôi là chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng của CHEO, Ottawa. Anh lớn lên ở Hà Nội, học tại Đại học Ottawa, và làm việc giữa nghiên cứu nhi khoa Canada và chất lượng y tế Việt Nam.",
+        "overline": "Giới thiệu",
+        "title": "Giới thiệu",
+        "factsLabel": "Thông tin",
+        "facts": [
+          {
+            "k": "Vai trò",
+            "v": "Chuyên viên Thống kê sinh học & Khoa học dữ liệu, Đơn vị Nghiên cứu Lâm sàng, Viện Nghiên cứu CHEO"
+          },
+          {
+            "k": "Học vấn",
+            "v": "Thạc sĩ Toán học và Thống kê, Đại học Ottawa"
+          },
+          {
+            "k": "Ngôn ngữ",
+            "v": "Tiếng Việt (tiếng mẹ đẻ), tiếng Anh, tiếng Pháp"
+          },
+          {
+            "k": "Nơi ở",
+            "v": "Ottawa, Canada"
+          }
+        ],
+        "storyLabel": "Phiên bản dài hơn",
+        "story": [
+          "Tôi lớn lên ở Hà Nội, trong một gia đình có truyền thống y khoa và học thuật, rồi sang Canada học đại học. Y học là chuyện bàn ăn từ rất lâu trước khi nó trở thành một lựa chọn nghề nghiệp — có lẽ vì thế mà tôi làm việc với y tế từ phía những con số thay vì từ giường bệnh.",
+          "Tôi được đào tạo về toán học và thống kê tại Đại học Ottawa, sau đó vào làm tại Đơn vị Nghiên cứu Lâm sàng của CHEO — Bệnh viện Nhi Đông Ontario — với vai trò chuyên viên thống kê sinh học và khoa học dữ liệu. Tôi làm việc cùng các nhóm lâm sàng về thiết kế nghiên cứu, phân tích và báo cáo tái lập được, từ chấn thương sọ não nhẹ đến quản lý kháng sinh.",
+          "Câu hỏi tôi luôn quay lại là: một bệnh viện có thể tin vào những con số mà chính nó dùng để đo lường an toàn và chất lượng chăm sóc hay không — và nên làm gì khi một con số hóa ra không đáng tin. Đo lường tốt và cải thiện thật sự là hai bài toán khác nhau, và khoảng cách giữa chúng là điều tôi quan tâm nhất.",
+          "Mối quan tâm ấy có hướng đi rõ ràng: chất lượng y tế và lãnh đạo y tế, và về lâu dài là mang công việc đó trở lại các bệnh viện Việt Nam. Hiện tại, nó thể hiện qua những gì tôi đọc, những việc tôi nhận làm, và các workshop tôi tham gia thiết kế.",
+          "Tôi viết bằng tiếng Việt, nói tiếng Pháp còn kém nhưng đang khá dần lên, và dành sự quan tâm cho cả Ottawa lẫn ngành y tế Việt Nam, nơi gia đình tôi có gốc rễ sâu trong nghề y."
+        ],
+        "skillsLabel": "Công việc cụ thể",
+        "skillsIntro": "Bản tóm tắt công việc, dành cho ai đang cân nhắc gửi cho tôi một nghiên cứu."
+      },
+      "work": {
+        "metaTitle": "Dự án",
+        "metaDescription": "Một số công việc thống kê và khoa học dữ liệu tiêu biểu của Phạm Nguyên Khôi: báo cáo quản lý kháng sinh, kê đơn trong đợt thiếu thuốc toàn quốc, và đo lường trải nghiệm người bệnh tại các bệnh viện công Việt Nam.",
+        "overline": "Dự án",
+        "title": "Dự án tiêu biểu",
+        "intro": "Ba dự án gộp lại bao quát gần hết những gì tôi làm: xây một quy trình chịu được sự lặp lại, trả lời một câu hỏi lâm sàng dưới áp lực, và khiến dữ liệu khảo sát song ngữ lộn xộn nói lên điều gì đó trung thực.",
+        "speakingLabel": "Giảng dạy và diễn thuyết",
+        "speakingIntro": "Truyền đạt là một phần của công việc, không phải sở thích phụ.",
+        "speaking": [
+          {
+            "k": "Điều phối",
+            "v": "Workshop và các buổi đào tạo cho đối tượng lâm sàng và lãnh đạo, bao gồm đào tạo lãnh đạo bệnh viện về chất lượng y tế tại Việt Nam."
+          },
+          {
+            "k": "Toastmasters",
+            "v": "Luyện nói và cố vấn thường xuyên."
+          },
+          {
+            "k": "Ngoài giờ",
+            "v": "Một chút kinh nghiệm hài độc thoại, khiến mọi kiểu nói trước đám đông khác trở nên dễ hơn."
+          }
+        ],
+        "closingPre": "Để trao đổi về hợp tác nghiên cứu:",
+        "closingLink": "liên hệ với tôi."
+      },
+      "publications": {
+        "metaTitle": "Công bố",
+        "metaDescription": "Các công bố khoa học đã bình duyệt có sự tham gia của Phạm Nguyên Khôi, trên Journal of Neurotrauma, The American Journal of Emergency Medicine, The Journal of Pediatrics và International Journal of Laboratory Hematology.",
+        "overline": "Công bố",
+        "title": "Công bố khoa học",
+        "intro": "Các công trình đã bình duyệt, mới nhất trước. Tên tôi xuất hiện dưới ba dạng trong các bài này — Pham, N. K., Pham, M. K. và Pham, M. — do các tạp chí ghi khác nhau; cả bốn đều là tôi.",
+        "doiLabel": "DOI",
+        "moreLabel": "Danh mục đầy đủ và số trích dẫn trên"
+      },
+      "contact": {
+        "metaTitle": "Liên hệ",
+        "metaDescription": "Liên hệ với Phạm Nguyên Khôi, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng CHEO, Ottawa. Sẵn sàng trao đổi về hợp tác nghiên cứu bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp.",
+        "overline": "Liên hệ",
+        "title": "Liên hệ",
+        "intro": "Tôi sẵn sàng trao đổi về hợp tác nghiên cứu, tư vấn phương pháp, và những câu chuyện về công việc chất lượng y tế tại Việt Nam.",
+        "emailLabel": "Email",
+        "elsewhereLabel": "Nơi khác",
+        "muted": "Hiện sống tại Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp — tùy ngôn ngữ nào bạn thấy thoải mái hơn khi viết."
+      }
+    }
+  },
+  "desk": {
+    "order": [
+      "bio",
+      "about-work",
+      "work",
+      "languages",
+      "places",
+      "speaking",
+      "writing",
+      "currently",
+      "vietnam"
+    ],
+    "symbols": {
+      "bio": {
+        "symbol": "obj-person",
+        "viewBox": "0 0 140 150"
+      },
+      "about-work": {
+        "symbol": "obj-laptop",
+        "viewBox": "0 0 232 150"
+      },
+      "work": {
+        "symbol": "obj-cork",
+        "viewBox": "0 0 220 170"
+      },
+      "languages": {
+        "symbol": "obj-owl",
+        "viewBox": "0 0 130 150"
+      },
+      "places": {
+        "symbol": "obj-map",
+        "viewBox": "0 0 170 130"
+      },
+      "speaking": {
+        "symbol": "obj-mic",
+        "viewBox": "0 0 120 150"
+      },
+      "writing": {
+        "symbol": "obj-phin",
+        "viewBox": "0 0 140 130"
+      },
+      "currently": {
+        "symbol": "obj-books",
+        "viewBox": "0 0 160 120"
+      },
+      "vietnam": {
+        "symbol": "obj-photo",
+        "viewBox": "0 0 150 130"
+      }
+    },
+    "en": {
+      "overline": "The desk",
+      "heading": "Take the tour",
+      "subcopy": "Everything on this desk opens. Click around — or use the list underneath if you would rather just read.",
+      "sceneAlt": "An illustrated desk: a corkboard and a window on the wall, and on the desk a stack of books, an owl, a person at work, a laptop, a microphone, a framed photograph, and a Vietnamese phin coffee filter. Each object opens a panel.",
+      "annotation": "where I'm from & where I am",
+      "indexLabel": "Open a panel",
+      "dialogLabel": "Desk panel",
+      "closeLabel": "Close",
+      "openLabel": "Open: %s",
+      "panels": {
+        "bio": {
+          "kicker": "Hello",
+          "title": "About me",
+          "intro": "",
+          "items": [
+            {
+              "label": "",
+              "text": "I am a biostatistician and data scientist based in Ottawa, working at CHEO's Clinical Research Unit, with a standing interest in health quality and health leadership."
+            },
+            {
+              "label": "",
+              "text": "What I care about most is the space between measuring healthcare and actually improving it. Good numbers only matter if they change something, and that gap is where most of my work lives."
+            },
+            {
+              "label": "",
+              "text": "When I am not buried in data, you will find me at an NAC Orchestra concert, writing a stand-up set, or losing a friendly battle with French grammar. I grew up between Vietnam and Canada, and a lot of what I do comes back to connecting those two worlds."
+            }
+          ]
+        },
+        "about-work": {
+          "kicker": "Laptop",
+          "title": "What I do",
+          "intro": "The short version.",
+          "items": [
+            {
+              "label": "MSc",
+              "text": "Mathematics and Statistics, University of Ottawa."
+            },
+            {
+              "label": "CHEO CRU",
+              "text": "Biostatistician and Data Scientist, Clinical Research Unit."
+            },
+            {
+              "label": "Interests",
+              "text": "Health quality and health leadership — the direction I want the work to take, and what I read and volunteer toward."
+            }
+          ]
+        },
+        "work": {
+          "kicker": "Corkboard",
+          "title": "Selected work",
+          "intro": "A few things I have built and am building.",
+          "items": [
+            {
+              "label": "The open question",
+              "text": "Can hospitals trust the numbers they use to measure medication safety? And what should they do when a number cannot be trusted? It is the question I keep coming back to."
+            },
+            {
+              "label": "CHEO CRU",
+              "text": "Statistical design, analysis, and reproducible reporting for pediatric clinical research."
+            },
+            {
+              "label": "Workshops",
+              "text": "Helping design hospital-leadership training for healthcare quality work in Vietnam."
+            },
+            {
+              "label": "Website",
+              "text": "Building a website to connect healthcare leaders across Vietnam."
+            }
+          ]
+        },
+        "languages": {
+          "kicker": "Three tongues",
+          "title": "Languages",
+          "intro": "The three languages I live and work between.",
+          "items": [
+            {
+              "label": "Vietnamese",
+              "text": "Mother tongue. I write essays and think in it."
+            },
+            {
+              "label": "English",
+              "text": "My daily working language in Ottawa."
+            },
+            {
+              "label": "French",
+              "text": "In progress, one grammar rule at a time."
+            }
+          ]
+        },
+        "places": {
+          "kicker": "Window",
+          "title": "Places",
+          "intro": "Where I am from, where I am, and where the work is headed.",
+          "items": [
+            {
+              "label": "Hanoi",
+              "text": "Where I grew up."
+            },
+            {
+              "label": "Ottawa",
+              "text": "Where I live and work now."
+            },
+            {
+              "label": "Toward Vietnam",
+              "text": "The direction of travel: healthcare quality work, back home."
+            }
+          ]
+        },
+        "speaking": {
+          "kicker": "Microphone",
+          "title": "Speaking",
+          "intro": "Communication and teaching are part of the work.",
+          "items": [
+            {
+              "label": "Facilitation",
+              "text": "Workshops and training sessions for clinical and leadership audiences."
+            },
+            {
+              "label": "Toastmasters",
+              "text": "Regular speaking practice and mentoring."
+            },
+            {
+              "label": "Off the clock",
+              "text": "A little stand-up experience, which makes every other talk easier."
+            }
+          ]
+        },
+        "writing": {
+          "kicker": "Phin coffee",
+          "title": "Writing (tiếng Việt)",
+          "intro": "Essays in Vietnamese: one human question at a time, philosophical but plain-spoken.",
+          "items": []
+        },
+        "currently": {
+          "kicker": "Book stack",
+          "title": "Currently",
+          "intro": "A small living page.",
+          "items": [
+            {
+              "label": "Reading",
+              "text": "The Psychology of Money, by Morgan Housel"
+            },
+            {
+              "label": "Watching",
+              "text": "World Cup 2026"
+            },
+            {
+              "label": "Learning",
+              "text": "Storytelling"
+            }
+          ]
+        },
+        "vietnam": {
+          "kicker": "Framed photo",
+          "title": "Vietnam",
+          "intro": "",
+          "items": [
+            {
+              "label": "",
+              "text": "The long view: healthcare quality and leadership training in Vietnamese hospitals."
+            },
+            {
+              "label": "",
+              "text": "Bringing measurement people can trust closer to the people who use it."
+            }
+          ]
+        }
+      },
+      "sceneLabel": "The desk — nine objects, each opens a panel"
+    },
+    "vi": {
+      "overline": "Bàn làm việc",
+      "heading": "Ghé bàn làm việc",
+      "subcopy": "Mọi thứ trên bàn đều mở được. Cứ bấm thử — hoặc dùng danh sách bên dưới nếu bạn chỉ muốn đọc.",
+      "sceneAlt": "Minh họa một bàn làm việc: bảng ghim và cửa sổ trên tường; trên bàn có chồng sách, một con cú, một người đang làm việc, máy tính xách tay, micro, ảnh đóng khung và một phin cà phê. Mỗi vật đều mở ra một mục.",
+      "annotation": "nơi tôi lớn lên & nơi tôi đang sống",
+      "indexLabel": "Mở một mục",
+      "dialogLabel": "Mục trên bàn làm việc",
+      "closeLabel": "Đóng",
+      "openLabel": "Mở: %s",
+      "panels": {
+        "bio": {
+          "kicker": "Xin chào",
+          "title": "Về tôi",
+          "intro": "",
+          "items": [
+            {
+              "label": "",
+              "text": "Tôi là chuyên viên thống kê sinh học và khoa học dữ liệu, sống tại Ottawa, làm việc tại Đơn vị Nghiên cứu Lâm sàng của CHEO, và luôn quan tâm đến chất lượng y tế cùng lãnh đạo y tế."
+            },
+            {
+              "label": "",
+              "text": "Điều tôi quan tâm nhất là khoảng cách giữa việc đo lường y tế và việc thực sự cải thiện nó. Những con số tốt chỉ có ý nghĩa nếu chúng thay đổi được điều gì đó, và chính khoảng cách ấy là nơi phần lớn công việc của tôi diễn ra."
+            },
+            {
+              "label": "",
+              "text": "Khi không vùi đầu vào dữ liệu, bạn sẽ thấy tôi ở một buổi hòa nhạc của Dàn nhạc NAC, đang viết một bài hài độc thoại, hoặc đang thua một trận đấu thân thiện với ngữ pháp tiếng Pháp. Tôi lớn lên giữa Việt Nam và Canada, và nhiều điều tôi làm đều quay về việc kết nối hai thế giới ấy."
+            }
+          ]
+        },
+        "about-work": {
+          "kicker": "Máy tính",
+          "title": "Công việc",
+          "intro": "Bản tóm tắt.",
+          "items": [
+            {
+              "label": "Thạc sĩ",
+              "text": "Toán học và Thống kê, Đại học Ottawa."
+            },
+            {
+              "label": "CHEO CRU",
+              "text": "Chuyên viên Thống kê sinh học và Khoa học dữ liệu, Đơn vị Nghiên cứu Lâm sàng."
+            },
+            {
+              "label": "Quan tâm",
+              "text": "Chất lượng y tế và lãnh đạo y tế — hướng tôi muốn công việc đi tới, và cũng là điều tôi đọc và tham gia."
+            }
+          ]
+        },
+        "work": {
+          "kicker": "Bảng ghim",
+          "title": "Dự án",
+          "intro": "Một vài điều tôi đã và đang xây dựng.",
+          "items": [
+            {
+              "label": "Câu hỏi để ngỏ",
+              "text": "Bệnh viện có thể tin vào những con số dùng để đo lường an toàn thuốc không? Và nên làm gì khi một con số chưa đáng tin? Đây là câu hỏi tôi luôn quay lại."
+            },
+            {
+              "label": "Đơn vị CRU, CHEO",
+              "text": "Thiết kế thống kê, phân tích và báo cáo tái lập được cho nghiên cứu lâm sàng nhi khoa."
+            },
+            {
+              "label": "Workshop",
+              "text": "Tham gia thiết kế chương trình đào tạo lãnh đạo bệnh viện cho công việc chất lượng y tế tại Việt Nam."
+            },
+            {
+              "label": "Website",
+              "text": "Xây dựng một website kết nối các nhà lãnh đạo y tế trên khắp Việt Nam."
+            }
+          ]
+        },
+        "languages": {
+          "kicker": "Ba thứ tiếng",
+          "title": "Ngôn ngữ",
+          "intro": "Ba ngôn ngữ tôi sống và làm việc cùng.",
+          "items": [
+            {
+              "label": "Tiếng Việt",
+              "text": "Tiếng mẹ đẻ. Tôi viết và suy nghĩ bằng tiếng Việt."
+            },
+            {
+              "label": "Tiếng Anh",
+              "text": "Ngôn ngữ làm việc hằng ngày tại Ottawa."
+            },
+            {
+              "label": "Tiếng Pháp",
+              "text": "Đang học, mỗi lần một quy tắc ngữ pháp."
+            }
+          ]
+        },
+        "places": {
+          "kicker": "Cửa sổ",
+          "title": "Nơi chốn",
+          "intro": "Nơi tôi lớn lên, nơi tôi đang sống, và hướng đi phía trước.",
+          "items": [
+            {
+              "label": "Hà Nội",
+              "text": "Nơi tôi lớn lên."
+            },
+            {
+              "label": "Ottawa",
+              "text": "Nơi tôi đang sống và làm việc."
+            },
+            {
+              "label": "Hướng về Việt Nam",
+              "text": "Hướng đi: công việc chất lượng y tế, trở về quê nhà."
+            }
+          ]
+        },
+        "speaking": {
+          "kicker": "Micro",
+          "title": "Diễn thuyết",
+          "intro": "Giao tiếp và giảng dạy là một phần công việc của tôi.",
+          "items": [
+            {
+              "label": "Điều phối",
+              "text": "Workshop và các buổi đào tạo cho đối tượng lâm sàng và lãnh đạo."
+            },
+            {
+              "label": "Toastmasters",
+              "text": "Luyện nói và cố vấn thường xuyên."
+            },
+            {
+              "label": "Ngoài giờ",
+              "text": "Một chút kinh nghiệm hài độc thoại, khiến mọi buổi nói khác trở nên dễ hơn."
+            }
+          ]
+        },
+        "writing": {
+          "kicker": "Phin cà phê",
+          "title": "Viết (tiếng Việt)",
+          "intro": "Các bài viết tiếng Việt: mỗi bài một câu hỏi rất người, triết lý nhưng dễ đọc.",
+          "items": []
+        },
+        "currently": {
+          "kicker": "Chồng sách",
+          "title": "Hiện tại",
+          "intro": "Một trang nhỏ luôn được cập nhật.",
+          "items": [
+            {
+              "label": "Đang đọc",
+              "text": "The Psychology of Money, Morgan Housel"
+            },
+            {
+              "label": "Đang xem",
+              "text": "World Cup 2026"
+            },
+            {
+              "label": "Đang học",
+              "text": "Nghệ thuật kể chuyện"
+            }
+          ]
+        },
+        "vietnam": {
+          "kicker": "Ảnh đóng khung",
+          "title": "Việt Nam",
+          "intro": "",
+          "items": [
+            {
+              "label": "",
+              "text": "Tầm nhìn dài hạn: chất lượng y tế và đào tạo lãnh đạo trong các bệnh viện Việt Nam."
+            },
+            {
+              "label": "",
+              "text": "Đưa việc đo lường đáng tin đến gần hơn với những người sử dụng nó."
+            }
+          ]
+        }
+      },
+      "sceneLabel": "Bàn làm việc — chín vật, mỗi vật mở một mục"
+    }
+  }
+}

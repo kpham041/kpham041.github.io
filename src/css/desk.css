@@ -1,0 +1,361 @@
+@charset "UTF-8";
+/* ==========================================================================
+   The desk scene
+   --------------------------------------------------------------------------
+   An illustrated workspace whose objects open panels. Loaded only on the page
+   that uses it.
+
+   The illustration's colours come from the --desk-* tokens below, referenced by
+   inline style="fill:var(--desk-…)" on the shapes themselves, so the whole scene
+   follows light and dark.
+   ========================================================================== */
+
+.desk {
+  --desk-line: var(--ink);
+  --desk-fill: var(--paper-warm);
+  --desk-blue: var(--accent);
+  --desk-gold: #a97b3f;
+  --desk-red: #8a3a3a;
+  padding-block: var(--space-xl) 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .desk {
+    --desk-gold: #d6a462;
+    --desk-red: #d98d8d;
+  }
+}
+:root[data-theme='dark'] .desk {
+  --desk-gold: #d6a462;
+  --desk-red: #d98d8d;
+}
+
+.desk__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: var(--space-l);
+}
+.desk__head h2 {
+  font-size: var(--step-4);
+  max-width: 20ch;
+}
+
+/* ------------------------------------------------------------------ scene */
+
+.desk__scene {
+  position: relative;
+}
+
+.desk__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  color: var(--desk-line);
+}
+
+/* The illustration's colours are inline `style="fill:var(--desk-…)"` on the
+   shapes themselves (see src/templates/svg/). That indirection is not a
+   flourish: most objects are drawn by <use>, and selectors from this stylesheet
+   cannot reach into a <use> shadow tree — custom properties can. */
+
+/* Hotspots are real SVG links: focusable, keyboard-operable, JS-free. */
+.desk__svg .hotspot {
+  cursor: pointer;
+  color: var(--desk-line);
+  outline: none;
+  transition: color 0.3s ease;
+}
+.desk__svg .hotspot:hover,
+.desk__svg .hotspot:focus-visible {
+  color: var(--desk-gold);
+}
+.desk__svg .hs-ring {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.desk__svg .hotspot:focus-visible .hs-ring,
+.desk__svg .hotspot:hover .hs-ring {
+  opacity: 1;
+}
+.desk__svg .lift {
+  transition: transform 0.35s var(--ease);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .desk__svg .hotspot:hover .lift,
+  .desk__svg .hotspot:focus-visible .lift {
+    transform: translateY(-9px);
+  }
+  .desk__svg .cloud {
+    animation: desk-drift 46s linear infinite;
+  }
+  .desk__svg .cloud2 {
+    animation: desk-drift 62s linear infinite;
+    animation-delay: -20s;
+  }
+}
+@keyframes desk-drift {
+  from {
+    transform: translateX(-40px);
+  }
+  to {
+    transform: translateX(430px);
+  }
+}
+
+.desk__annotation {
+  position: absolute;
+  left: 50.5%;
+  top: 16%;
+  max-width: 15ch;
+  margin: 0;
+  line-height: 1.35;
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.15vw, 15px);
+  color: var(--desk-red);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------- mobile object tiles */
+
+.desk__tiles {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.desk__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.15rem 0.75rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
+}
+.desk__tile svg {
+  width: 72px;
+  height: 62px;
+  overflow: visible;
+  color: var(--ink);
+}
+.desk__tile:hover,
+.desk__tile:focus-visible {
+  border-color: var(--desk-gold);
+  color: var(--desk-gold);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .desk__scene,
+  .desk__annotation {
+    display: none;
+  }
+  .desk__tiles {
+    display: grid;
+  }
+}
+
+/* -------------------------------------------------------------- text index */
+
+.desk__index {
+  margin-top: var(--space-l);
+  padding-top: var(--space-m);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+}
+.desk__indexlabel {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.desk__indexlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+/* ----------------------------------------------------------------- panels */
+
+/* Panels live in the page as real content. With JavaScript they are lifted
+   into the dialog; with JavaScript off they simply stay visible, so nothing is
+   ever locked behind a script. :target keeps them reachable in the middle case
+   where the inline head script ran but desk.js failed to load. */
+.desk__panels {
+  margin-top: var(--space-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+.desk__panel {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-l);
+  background: var(--paper-warm);
+}
+:root:not(.no-js) .desk__panels {
+  display: none;
+}
+:root:not(.no-js) .desk__panel:target {
+  display: block;
+}
+:root:not(.no-js) .desk__panels:has(.desk__panel:target) {
+  display: block;
+}
+
+.desk__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--desk-gold);
+  margin: 0;
+}
+.desk__title {
+  font-size: var(--step-3);
+  margin: 0.5rem 0 0;
+  letter-spacing: -0.02em;
+}
+.desk__intro {
+  margin: 0.85rem 0 0;
+  color: var(--ink-2);
+  max-width: 52ch;
+  line-height: 1.65;
+}
+.desk__rows {
+  margin-top: var(--space-m);
+  display: flex;
+  flex-direction: column;
+}
+.desk__row {
+  display: grid;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr);
+  gap: 0.25rem 1.25rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.desk__row:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.desk__row:not(:has(.desk__rowkey)) {
+  grid-template-columns: 1fr;
+}
+.desk__rowkey {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 0.35em;
+}
+.desk__rowtext {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 52ch;
+}
+@media (max-width: 560px) {
+  .desk__row {
+    grid-template-columns: 1fr;
+  }
+  .desk__rowkey {
+    padding-top: 0;
+  }
+}
+
+/* ----------------------------------------------------------------- dialog */
+
+.desk__dialog {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0;
+  max-width: 680px;
+  width: calc(100% - 2 * var(--gutter));
+  max-height: 86vh;
+  box-shadow: var(--shadow-m);
+  overflow: visible;
+}
+.desk__dialog::backdrop {
+  background: rgba(12, 14, 18, 0.5);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+.desk__dialog[open] {
+  animation: desk-modal-in 0.35s var(--ease);
+}
+.desk__dialog[open]::backdrop {
+  animation: desk-fade-in 0.3s ease;
+}
+@keyframes desk-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes desk-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk__dialog[open],
+  .desk__dialog[open]::backdrop {
+    animation: none;
+  }
+}
+
+.desk__dialogbody {
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  overflow-y: auto;
+  max-height: 86vh;
+}
+.desk__dialogbody .desk__panel {
+  border: 0;
+  padding: 0;
+  background: none;
+  display: block;
+}
+
+.desk__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.desk__close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.desk__close svg {
+  width: 18px;
+  height: 18px;
+}

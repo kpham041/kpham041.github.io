@@ -1,0 +1,136 @@
+        <defs>
+          <clipPath id="winClip"><rect x="1102" y="60" width="406" height="256" rx="2"></rect></clipPath>
+
+          <symbol id="obj-books" viewBox="0 0 160 120">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="8" y="80" width="146" height="26" rx="3" style="fill:var(--desk-fill)"></rect>
+              <rect x="16" y="54" width="132" height="26" rx="3" style="fill:var(--desk-fill)"></rect>
+              <rect x="6" y="28" width="150" height="26" rx="3" style="fill:var(--desk-fill)"></rect>
+              <rect x="18" y="84" width="9" height="18" stroke="none" style="fill:var(--desk-blue)"></rect>
+              <rect x="26" y="58" width="9" height="18" stroke="none" style="fill:var(--desk-gold)"></rect>
+              <rect x="16" y="32" width="9" height="18" stroke="none" style="fill:var(--desk-red)"></rect>
+              <path d="M118 28 v22 l-7 -6 -7 6 v-22" stroke="currentColor" stroke-width="2" style="fill:var(--desk-gold)"></path>
+            </g>
+          </symbol>
+
+          <symbol id="obj-notebook" viewBox="0 0 170 120">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="20" y="22" width="100" height="80" rx="4" style="fill:var(--desk-fill)"></rect>
+              <circle cx="30" cy="22" r="3"></circle><circle cx="46" cy="22" r="3"></circle><circle cx="62" cy="22" r="3"></circle><circle cx="78" cy="22" r="3"></circle><circle cx="94" cy="22" r="3"></circle><circle cx="110" cy="22" r="3"></circle>
+              <line x1="34" y1="46" x2="106" y2="46" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="34" y1="62" x2="106" y2="62" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="34" y1="78" x2="88" y2="78" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="112" y1="104" x2="148" y2="52" stroke-width="8" stroke-linecap="round" style="stroke:var(--desk-gold)"></line>
+              <path d="M148 52 l7 -9 -1 10 z" stroke="none" style="fill:var(--desk-line)"></path>
+            </g>
+          </symbol>
+
+          <symbol id="obj-phin" viewBox="0 0 140 130">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <ellipse cx="70" cy="118" rx="42" ry="7" style="fill:var(--desk-fill)"></ellipse>
+              <path d="M40 74 L100 74 L94 112 Q70 121 46 112 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M100 82 q22 3 15 22 q-4 8 -15 6" fill="none"></path>
+              <path d="M46 82 Q70 89 94 82" stroke-width="2.2" style="stroke:var(--desk-red)"></path>
+              <ellipse cx="70" cy="74" rx="24" ry="5" style="fill:var(--desk-fill)"></ellipse>
+              <rect x="52" y="46" width="36" height="26" rx="2" style="fill:var(--desk-fill)"></rect>
+              <path d="M56 46 L84 46 L78 34 L62 34 Z" style="fill:var(--desk-fill)"></path>
+              <circle cx="70" cy="30" r="4" stroke="currentColor" stroke-width="1.5" style="fill:var(--desk-gold)"></circle>
+              <path d="M62 26 q-6 -8 0 -16" stroke-width="1.8" style="stroke:var(--desk-blue)"></path>
+              <path d="M78 26 q6 -8 0 -16" stroke-width="1.8" style="stroke:var(--desk-blue)"></path>
+            </g>
+          </symbol>
+
+          <symbol id="obj-laptop" viewBox="0 0 232 150">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M52 116 L66 30 L188 30 L204 116 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M68 106 L78 42 L176 42 L190 106 Z" fill-opacity="0.1" stroke-width="1.5" style="fill:var(--desk-blue);stroke:var(--desk-blue)"></path>
+              <line x1="86" y1="60" x2="150" y2="60" stroke-width="2" style="stroke:var(--desk-gold)"></line>
+              <line x1="86" y1="74" x2="164" y2="74" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="86" y1="88" x2="132" y2="88" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <path d="M28 116 L204 116 L226 140 L44 140 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M62 122 L198 122 L210 134 L70 134 Z" stroke-width="1.6" style="fill:var(--desk-fill)"></path>
+              <rect x="90" y="34" width="10" height="10" rx="2" stroke="none" style="fill:var(--desk-blue)"></rect>
+              <circle cx="118" cy="39" r="5" stroke="none" style="fill:var(--desk-red)"></circle>
+              <circle cx="140" cy="39" r="5" stroke="none" style="fill:var(--desk-gold)"></circle>
+              <rect x="158" y="34" width="10" height="10" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+            </g>
+          </symbol>
+
+          <symbol id="obj-mic" viewBox="0 0 120 150">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="42" y="14" width="36" height="56" rx="18" style="fill:var(--desk-fill)"></rect>
+              <line x1="48" y1="28" x2="72" y2="28" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="48" y1="38" x2="72" y2="38" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="48" y1="48" x2="72" y2="48" stroke-width="1.6" style="stroke:var(--desk-blue)"></line>
+              <line x1="60" y1="70" x2="60" y2="118"></line>
+              <circle cx="60" cy="94" r="4" stroke="currentColor" stroke-width="1.5" style="fill:var(--desk-gold)"></circle>
+              <ellipse cx="60" cy="126" rx="30" ry="8" style="fill:var(--desk-fill)"></ellipse>
+            </g>
+          </symbol>
+
+          <symbol id="obj-photo" viewBox="0 0 150 130">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="24" y="14" width="102" height="90" rx="3" style="fill:var(--desk-fill)"></rect>
+              <rect x="34" y="24" width="82" height="70" rx="2" style="fill:var(--desk-fill)"></rect>
+              <circle cx="75" cy="50" r="11" stroke="none" style="fill:var(--desk-gold)"></circle>
+              <path d="M34 90 Q56 60 78 90" fill="none" stroke-width="2.2" style="stroke:var(--desk-blue)"></path>
+              <path d="M64 90 Q86 66 116 90" fill="none" stroke-width="2.2" style="stroke:var(--desk-blue)"></path>
+              <line x1="75" y1="104" x2="60" y2="122"></line>
+              <line x1="75" y1="104" x2="90" y2="122"></line>
+            </g>
+          </symbol>
+
+          <symbol id="obj-map" viewBox="0 0 170 130">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M20 34 L64 26 L108 34 L150 26 L150 104 L108 112 L64 104 L20 112 Z" style="fill:var(--desk-fill)"></path>
+              <line x1="64" y1="26" x2="64" y2="104" stroke-width="1.6"></line>
+              <line x1="108" y1="34" x2="108" y2="112" stroke-width="1.6"></line>
+              <path d="M40 92 Q70 58 100 74 T140 52" stroke-width="2.5" stroke-dasharray="6 7" fill="none" style="stroke:var(--desk-gold)"></path>
+              <circle cx="40" cy="92" r="4" stroke="none" style="fill:var(--desk-blue)"></circle>
+              <path d="M140 44 a7 7 0 1 1 -0.1 0 M140 66 l-6 -12 h12 z" stroke="currentColor" stroke-width="1.5" style="fill:var(--desk-red)"></path>
+            </g>
+          </symbol>
+
+          <symbol id="obj-cork" viewBox="0 0 220 170">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="10" y="10" width="200" height="150" rx="6" style="fill:var(--desk-fill)"></rect>
+              <rect x="18" y="18" width="184" height="134" rx="4" stroke-width="1.4"></rect>
+              <g transform="rotate(-4 67 60)"><rect x="34" y="36" width="66" height="50" rx="2" style="fill:var(--desk-fill)"></rect><line x1="42" y1="52" x2="92" y2="52" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><line x1="42" y1="62" x2="86" y2="62" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><circle cx="67" cy="36" r="4" stroke="none" style="fill:var(--desk-red)"></circle></g>
+              <g transform="rotate(3 153 62)"><rect x="120" y="40" width="66" height="46" rx="2" style="fill:var(--desk-fill)"></rect><line x1="128" y1="56" x2="178" y2="56" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><line x1="128" y1="66" x2="170" y2="66" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><circle cx="153" cy="40" r="4" stroke="none" style="fill:var(--desk-gold)"></circle></g>
+              <g transform="rotate(2 70 120)"><rect x="40" y="98" width="60" height="46" rx="2" style="fill:var(--desk-fill)"></rect><line x1="48" y1="114" x2="92" y2="114" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><circle cx="70" cy="98" r="4" stroke="none" style="fill:var(--desk-blue)"></circle></g>
+              <g transform="rotate(-3 154 122)"><rect x="122" y="100" width="64" height="46" rx="2" style="fill:var(--desk-fill)"></rect><line x1="130" y1="116" x2="178" y2="116" stroke-width="1.4" style="stroke:var(--desk-blue)"></line><circle cx="154" cy="100" r="4" stroke="none" style="fill:var(--desk-red)"></circle></g>
+            </g>
+          </symbol>
+
+          <symbol id="obj-person" viewBox="0 0 140 150">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <circle cx="70" cy="40" r="21" style="fill:var(--desk-fill)"></circle>
+              <line x1="70" y1="61" x2="70" y2="74"></line>
+              <path d="M70 74 Q40 78 34 132 L106 132 Q100 78 70 74 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M40 94 Q28 114 44 130"></path>
+              <path d="M100 94 Q114 110 96 120"></path>
+              <rect x="72" y="110" width="22" height="16" rx="2" style="fill:var(--desk-fill)"></rect>
+              <path d="M94 113 q7 0 7 5 q0 5 -7 5"></path>
+              <path d="M78 106 q-4 -6 0 -12" stroke-width="1.6" style="stroke:var(--desk-blue)"></path>
+              <path d="M87 106 q4 -6 0 -12" stroke-width="1.6" style="stroke:var(--desk-blue)"></path>
+            </g>
+          </symbol>
+
+          <symbol id="obj-owl" viewBox="0 0 130 150">
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M40 34 L30 12 L52 26 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M90 34 L100 12 L78 26 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M65 26 C30 26 22 66 26 96 C29 124 46 140 65 140 C84 140 101 124 104 96 C108 66 100 26 65 26 Z" style="fill:var(--desk-fill)"></path>
+              <path d="M65 78 C52 78 46 96 50 112 C53 126 60 136 65 136 C70 136 77 126 80 112 C84 96 78 78 65 78 Z" fill-opacity="0.1" stroke-width="1.6" style="fill:var(--desk-blue);stroke:var(--desk-blue)"></path>
+              <circle cx="49" cy="64" r="16" style="fill:var(--desk-fill)"></circle>
+              <circle cx="81" cy="64" r="16" style="fill:var(--desk-fill)"></circle>
+              <circle cx="49" cy="64" r="6" stroke="none" style="fill:var(--desk-line)"></circle>
+              <circle cx="81" cy="64" r="6" stroke="none" style="fill:var(--desk-line)"></circle>
+              <path d="M65 74 l-7 10 h14 z" style="fill:var(--desk-gold)"></path>
+              <path d="M28 84 q-4 24 12 40" fill="none"></path>
+              <path d="M102 84 q4 24 -12 40" fill="none"></path>
+              <path d="M56 138 v6 m-5 0 h10"></path>
+              <path d="M74 138 v6 m-5 0 h10"></path>
+            </g>
+          </symbol>
+        </defs>
