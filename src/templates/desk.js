@@ -72,6 +72,11 @@ module.exports = function desk(ctx) {
         <div class="desk__rows">
 ${items}
         </div>
+        ${
+          p.updated
+            ? `<p class="desk__updated">${esc(p.updatedLabel)} ${esc(p.updated)}</p>`
+            : ''
+        }
       </article>`;
     })
     .join('\n');

@@ -359,3 +359,14 @@
   width: 18px;
   height: 18px;
 }
+
+/* A dated panel is honest about being a snapshot; an undated "Currently" that
+   has gone stale reads as an abandoned site. */
+.desk__updated {
+  margin: var(--space-m) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}

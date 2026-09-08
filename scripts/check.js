@@ -33,7 +33,25 @@ if (!fs.existsSync(OUT)) {
   process.exit(1);
 }
 
-const files = walk(OUT);
+// dist/ is swapped in wholesale by build.js, so a rebuild (the --serve watcher,
+// typically) can move the tree out from under this walk. Take the listing and
+// the reads as one attempt, and start over if the tree shifted.
+const pause = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+
+function snapshot(attempt) {
+  try {
+    const list = walk(OUT);
+    return { files: list, read: new Map(list.map((f) => [f, fs.readFileSync(f)])) };
+  } catch (err) {
+    if (err.code !== 'ENOENT' || attempt >= 10) throw err;
+    pause(50 * (attempt + 1)); // back off; retrying instantly just loses again
+    return snapshot(attempt + 1);
+  }
+}
+
+const snap = snapshot(0);
+const files = snap.files;
+const readFile = (f) => snap.read.get(f).toString('utf8');
 const htmlFiles = files.filter((f) => f.endsWith('.html'));
 const rel = (f) => path.relative(OUT, f);
 
@@ -56,11 +74,11 @@ function exists(urlPath) {
   if (!clean.startsWith('/')) return null; // relative — checked separately
   let p = path.join(OUT, clean);
   if (clean.endsWith('/')) p = path.join(p, 'index.html');
-  return fs.existsSync(p);
+  return snap.read.has(p);
 }
 
 for (const file of htmlFiles) {
-  const html = fs.readFileSync(file, 'utf8');
+  const html = readFile(file);
   const name = rel(file);
 
   // --- required metadata -------------------------------------------------
@@ -129,12 +147,13 @@ for (const file of htmlFiles) {
 }
 
 // --- site-level files -------------------------------------------------------
+const present = new Set(files.map(rel));
 for (const required of ['sitemap.xml', 'robots.txt', 'favicon.ico', 'favicon.svg', '.nojekyll']) {
-  if (!fs.existsSync(path.join(OUT, required))) errors.push(`missing ${required}`);
+  if (!present.has(required)) errors.push(`missing ${required}`);
 }
 
 // Every page in the sitemap must actually exist.
-const sitemap = fs.readFileSync(path.join(OUT, 'sitemap.xml'), 'utf8');
+const sitemap = readFile(path.join(OUT, 'sitemap.xml'));
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 for (const loc of locs) {
   const p = loc.replace(/^https?:\/\/[^/]+/, '');

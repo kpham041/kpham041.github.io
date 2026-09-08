@@ -566,7 +566,7 @@
             },
             {
               "label": "",
-              "text": "When I am not buried in data, you will find me at an NAC Orchestra concert, writing a stand-up set, or losing a friendly battle with French grammar. I grew up between Vietnam and Canada, and a lot of what I do comes back to connecting those two worlds."
+              "text": "When I am not buried in data, you will find me at an NAC Orchestra concert, writing a stand-up set, or losing a friendly battle with French grammar. I grew up in Hanoi and came to Canada for university, and a lot of what I do comes back to connecting those two worlds."
             }
           ]
         },
@@ -685,14 +685,12 @@
               "text": "The Psychology of Money, by Morgan Housel"
             },
             {
-              "label": "Watching",
-              "text": "World Cup 2026"
-            },
-            {
               "label": "Learning",
               "text": "Storytelling"
             }
-          ]
+          ],
+          "updated": "September 2026",
+          "updatedLabel": "Updated"
         },
         "vietnam": {
           "kicker": "Framed photo",
@@ -738,7 +736,7 @@
             },
             {
               "label": "",
-              "text": "Khi không vùi đầu vào dữ liệu, bạn sẽ thấy tôi ở một buổi hòa nhạc của Dàn nhạc NAC, đang viết một bài hài độc thoại, hoặc đang thua một trận đấu thân thiện với ngữ pháp tiếng Pháp. Tôi lớn lên giữa Việt Nam và Canada, và nhiều điều tôi làm đều quay về việc kết nối hai thế giới ấy."
+              "text": "Khi không vùi đầu vào dữ liệu, bạn sẽ thấy tôi ở một buổi hòa nhạc của Dàn nhạc NAC, đang viết một bài hài độc thoại, hoặc đang thua một trận đấu thân thiện với ngữ pháp tiếng Pháp. Tôi lớn lên ở Hà Nội rồi sang Canada học đại học, và nhiều điều tôi làm đều quay về việc kết nối hai thế giới ấy."
             }
           ]
         },
@@ -857,14 +855,12 @@
               "text": "The Psychology of Money, Morgan Housel"
             },
             {
-              "label": "Đang xem",
-              "text": "World Cup 2026"
-            },
-            {
               "label": "Đang học",
               "text": "Nghệ thuật kể chuyện"
             }
-          ]
+          ],
+          "updated": "Tháng 9, 2026",
+          "updatedLabel": "Cập nhật"
         },
         "vietnam": {
           "kicker": "Ảnh đóng khung",

@@ -37,7 +37,7 @@ function sectionHead(overline, title, id, lead) {
 
 function tagRow(tags) {
   if (!tags || !tags.length) return '';
-  return `<ul class="tag-row">${tags
+  return `<ul class="tag-row" role="list">${tags
     .map((t) => `<li class="tag">${esc(t)}</li>`)
     .join('')}</ul>`;
 }
@@ -158,7 +158,7 @@ ${p.body.map((para) => `              <p>${md(para)}</p>`).join('\n')}
       <section class="section" aria-labelledby="work-h">
 ${sectionHead(c.overline, c.title, 'work-h', c.intro)}
 
-        <ul class="entry-list">
+        <ul class="entry-list" role="list">
 ${entries}
         </ul>
 
@@ -200,7 +200,7 @@ function publications(ctx) {
             /<strong>/g,
             '<strong class="self">'
           )} <span>(${esc(p.year)})</span>. <span class="pub__venue">${esc(p.venue)}</span>.</p>
-          ${links.length ? `<ul class="pub__links">${links.join('')}</ul>` : ''}
+          ${links.length ? `<ul class="pub__links" role="list">${links.join('')}</ul>` : ''}
         </li>`;
     })
     .join('\n');
@@ -212,7 +212,7 @@ function publications(ctx) {
       <section class="section" aria-labelledby="pubs-h">
 ${sectionHead(c.overline, c.title, 'pubs-h', c.intro)}
 
-        <ol class="entry-list" style="counter-reset:none">
+        <ol class="entry-list" role="list">
 ${items}
         </ol>
 
@@ -273,7 +273,7 @@ ${
     ? `        <h2 class="overline" style="margin-top:var(--space-xl)" data-reveal="0">${esc(
         c.elsewhereLabel
       )}</h2>
-        <ul class="linkgrid">
+        <ul class="linkgrid" role="list">
 ${linkGrid}
         </ul>`
     : ''
