@@ -172,10 +172,20 @@ it better.
 3. **ORCID.** Free, five minutes, and it permanently disambiguates the three
    spellings of your name across the literature.
 4. **LinkedIn and GitHub URLs**, if you want them listed.
-5. **Your undergraduate degree**, if you want it on the About page. The old site
+5. **A source for the 20% figure.** The Work page says the stewardship program
+   cut excess antibiotic prescription-days by roughly 20%. It came from your own
+   previous site, so it is your claim rather than an invented one — but it is
+   the single number on the site a statistician reader will press hardest on,
+   and right now it has no period, comparator, or denominator attached. Either
+   be ready to say where it comes from, or cut the clause.
+6. **Years.** The year you joined CHEO and the year of the MSc. Without them a
+   reader cannot tell six months from six years and defaults to the shorter
+   guess — which also makes four papers in 2025–26 read as ordinary rather than
+   dense. Add them to the `facts` rows on About.
+7. **Your undergraduate degree**, if you want it on the About page. The old site
    said "biomedical science" in one place and nothing in another, so only the
    MSc — which was stated consistently — is listed now.
-6. **Essay titles and links** for the writing panel.
-7. **A workshop or talk you can name.** "Hospital-leadership training in
+8. **Essay titles and links** for the writing panel.
+9. **A workshop or talk you can name.** "Hospital-leadership training in
    Vietnam" is currently the only concrete thing in the speaking section; one
    named event would make it real.
