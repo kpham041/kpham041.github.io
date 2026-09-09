@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * og.js — renders the 1200×630 social preview cards into static/img/.
+ * og.js: renders the 1200×630 social preview cards into static/img/.
  *
  * The card is real HTML rendered in headless Chrome, so it uses the same fonts
  * and palette as the site rather than a hand-drawn approximation. Run it after
@@ -8,7 +8,7 @@
  *
  *   node scripts/og.js
  *
- * Output: static/img/og-en.png, static/img/og-vi.png (committed to the repo —
+ * Output: static/img/og-en.png, static/img/og-vi.png (committed to the repo:
  * they change rarely and the build must not depend on Chrome).
  */
 

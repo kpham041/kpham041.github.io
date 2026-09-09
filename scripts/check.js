@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * check.js — a build gate, not a linter.
+ * check.js: a build gate, not a linter.
  *
  * Runs against dist/ after a build and fails the deploy on anything that would
  * ship visibly broken: dead internal links, missing assets, unfilled
@@ -29,7 +29,7 @@ function walk(dir, out) {
 }
 
 if (!fs.existsSync(OUT)) {
-  console.error('dist/ does not exist — run `node build.js` first.');
+  console.error('dist/ does not exist. Run `node build.js` first.');
   process.exit(1);
 }
 
@@ -71,7 +71,7 @@ const FORBIDDEN = [
 
 function exists(urlPath) {
   const clean = urlPath.split('#')[0].split('?')[0];
-  if (!clean.startsWith('/')) return null; // relative — checked separately
+  if (!clean.startsWith('/')) return null; // relative, checked separately
   let p = path.join(OUT, clean);
   if (clean.endsWith('/')) p = path.join(p, 'index.html');
   return snap.read.has(p);
@@ -95,11 +95,25 @@ for (const file of htmlFiles) {
   }
 
   const h1s = (html.match(/<h1[\s>]/g) || []).length;
-  if (h1s > 1) errors.push(`${name}: ${h1s} <h1> elements — there must be exactly one`);
+  if (h1s > 1) errors.push(`${name}: ${h1s} <h1> elements, and there must be exactly one`);
 
   // --- copy that should not ship ----------------------------------------
   const ph = html.match(PLACEHOLDER);
   if (ph) errors.push(`${name}: unfinished placeholder copy near "${ph[0]}"`);
+
+  // House style: no em dashes anywhere in the copy. A colon, a comma or a full
+  // stop always does the job, and the site should read as if a person typed it.
+  // En dashes in page ranges (43(15-16)) are fine and are not matched here.
+  const emdash = html.indexOf('\u2014');
+  if (emdash !== -1) {
+    const ctx = html.slice(Math.max(0, emdash - 60), emdash + 60).replace(/\s+/g, ' ');
+    errors.push(`${name}: em dash in copy: "…${ctx}…"`);
+  }
+
+  // A :flag-xx: token that reached the output is a token the renderer never
+  // saw: the copy is in a field that escapes rather than one that formats.
+  const token = html.match(/:flag-[a-z]{2}:/);
+  if (token) errors.push(`${name}: unrendered flag token ${token[0]}`);
 
   for (const re of FORBIDDEN) {
     const m = html.match(re);
@@ -107,16 +121,16 @@ for (const file of htmlFiles) {
       // Report with a little context so a false positive is obvious.
       const at = html.indexOf(m[0]);
       const ctx = html.slice(Math.max(0, at - 60), at + 80).replace(/\s+/g, ' ');
-      errors.push(`${name}: removed claim reappeared — "${m[0]}" in "…${ctx}…"`);
+      errors.push(`${name}: removed claim reappeared, "${m[0]}" in "…${ctx}…"`);
     }
   }
 
   // --- images ------------------------------------------------------------
   const imgs = html.match(/<img\b[^>]*>/g) || [];
   for (const img of imgs) {
-    if (!/\salt="/.test(img)) errors.push(`${name}: <img> without alt — ${img.slice(0, 90)}`);
+    if (!/\salt="/.test(img)) errors.push(`${name}: <img> without alt, ${img.slice(0, 90)}`);
     if (!/\swidth="\d+"/.test(img) || !/\sheight="\d+"/.test(img)) {
-      warnings.push(`${name}: <img> without width/height (layout shift) — ${img.slice(0, 70)}`);
+      warnings.push(`${name}: <img> without width/height (layout shift), ${img.slice(0, 70)}`);
     }
   }
 
@@ -141,7 +155,7 @@ for (const file of htmlFiles) {
   const targets = html.match(/<a\b[^>]*target="_blank"[^>]*>/g) || [];
   for (const a of targets) {
     if (!/rel="[^"]*noopener/.test(a)) {
-      errors.push(`${name}: target="_blank" without rel="noopener" — ${a.slice(0, 80)}`);
+      errors.push(`${name}: target="_blank" without rel="noopener", ${a.slice(0, 80)}`);
     }
   }
 }
@@ -160,7 +174,7 @@ for (const loc of locs) {
   if (exists(p) === false) errors.push(`sitemap lists a page that was not built: ${p}`);
 }
 
-// EN and VI must stay in step — a page in one language and not the other means
+// EN and VI must stay in step: a page in one language and not the other means
 // a broken language switch.
 const enPages = htmlFiles.filter((f) => !rel(f).startsWith('vi/')).map(rel);
 const viPages = htmlFiles.filter((f) => rel(f).startsWith('vi/')).map((f) => rel(f).slice(3));
@@ -173,7 +187,7 @@ for (const w of warnings) console.warn('warn  ' + w);
 for (const e of errors) console.error('ERROR ' + e);
 
 console.log(
-  `\nchecked ${htmlFiles.length} pages, ${files.length} files — ` +
+  `\nchecked ${htmlFiles.length} pages, ${files.length} files: ` +
     `${errors.length} error(s), ${warnings.length} warning(s)`
 );
 process.exit(errors.length ? 1 : 0);

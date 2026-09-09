@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * shots.js — full-page screenshots of every page, for design review.
+ * shots.js: full-page screenshots of every page, for design review.
  *
  * Drives headless Chrome over the DevTools Protocol rather than shelling out to
  * `--screenshot`, because that flag does not emulate the viewport properly (a
  * 390px window still lays out wider) and cannot emulate prefers-color-scheme.
  * CDP gives exact device metrics, real media emulation, and true full-page
- * capture. Zero dependencies — Node 22+ has a global WebSocket.
+ * capture. Zero dependencies: Node 22+ has a global WebSocket.
  *
  *   node build.js --serve            # in one terminal
  *   node scripts/shots.js [outdir]   # in another
@@ -132,6 +132,8 @@ async function main() {
         });
         await S('Emulation.setEmulatedMedia', {
           features: [
+            // The site no longer follows the OS, so this only proves it does
+            // not: a dark shot comes from data-theme below, not from here.
             { name: 'prefers-color-scheme', value: view.scheme },
             // Reduced motion pins every [data-reveal] to its final state, so a
             // still is never captured mid-fade. The end state is identical.
@@ -142,6 +144,16 @@ async function main() {
         await S('Page.navigate', { url });
         await S('Page.loadEventFired').catch(() => {});
         await sleep(700); // fonts and images
+
+        // Dark is opt-in on the real site, so opt in the same way the toggle
+        // does. The inline head script reads this back on every later page.
+        await S('Runtime.evaluate', {
+          expression: `(() => {
+            const dark = ${view.scheme === 'dark'};
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          })()`,
+        });
 
         // Belt and braces: reduced motion should already have revealed
         // everything, but force it so a slow font swap can never leave a gap.
@@ -154,7 +166,7 @@ async function main() {
           awaitPromise: true,
         });
 
-        // Report any layout that spills outside the viewport — the thing
+        // Report any layout that spills outside the viewport, which is the thing
         // eyeballing a screenshot most often misses.
         const overflow = await S('Runtime.evaluate', {
           expression: `JSON.stringify((() => {

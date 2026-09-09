@@ -18,12 +18,6 @@
   --desk-red: #8a3a3a;
   padding-block: var(--space-xl) 0;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .desk {
-    --desk-gold: #d6a462;
-    --desk-red: #d98d8d;
-  }
-}
 :root[data-theme='dark'] .desk {
   --desk-gold: #d6a462;
   --desk-red: #d98d8d;
@@ -57,7 +51,7 @@
 /* The illustration's colours are inline `style="fill:var(--desk-…)"` on the
    shapes themselves (see src/templates/svg/). That indirection is not a
    flourish: most objects are drawn by <use>, and selectors from this stylesheet
-   cannot reach into a <use> shadow tree — custom properties can. */
+   cannot reach into a <use> shadow tree, but custom properties can. */
 
 /* Hotspots are real SVG links: focusable, keyboard-operable, JS-free. */
 .desk__svg .hotspot {

@@ -24,7 +24,7 @@ ${rows
 }
 
 function sectionHead(overline, title, id, lead) {
-  // An overline that just repeats the heading is noise — drop it.
+  // An overline that just repeats the heading is noise, so drop it.
   const kicker =
     overline && overline.toLowerCase() !== title.toLowerCase()
       ? `<p class="overline" data-reveal="0">${esc(overline)}</p>\n        `
@@ -234,7 +234,7 @@ function contact(ctx) {
   const c = t.contact;
   const profile = content.profile;
 
-  // An empty url means "not set up yet" — the entry is skipped rather than
+  // An empty url means "not set up yet", so the entry is skipped rather than
   // shipped as a dead link.
   const links = Object.values(profile.links).filter((l) => l && l.url);
   const linkGrid = links

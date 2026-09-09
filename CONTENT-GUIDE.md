@@ -1,7 +1,7 @@
 # Editing the site
 
 Every word on the site lives in **`content/site.json`**. Edit that file, commit,
-push — the site rebuilds and redeploys itself. You do not need to touch any HTML.
+push, and the site rebuilds and redeploys itself. You do not need to touch any HTML.
 
 To see a change before pushing:
 
@@ -32,7 +32,7 @@ desk           the illustrated desk scene's nine panels, per language
 ```
 
 Anything under `i18n.en` has a mirror under `i18n.vi`. **Change one, change the
-other** — the build gate fails if a page exists in one language and not the
+other.** The build gate fails if a page exists in one language and not the
 other, but it cannot tell you that a Vietnamese sentence is now out of date.
 
 ---
@@ -53,7 +53,7 @@ it appears on the Contact page:
 "orcid": { "label": "ORCID", "url": "https://orcid.org/0000-0000-0000-0000", … }
 ```
 
-**An empty `url` means the link is skipped entirely** — no dead link, no empty
+**An empty `url` means the link is skipped entirely.** No dead link, no empty
 box. That is the general rule: an unfinished thing simply does not appear.
 
 ### Add your CV
@@ -82,12 +82,12 @@ order, newest first):
 }
 ```
 
-Wrap your own name in `**double asterisks**` — that is what bolds it in the
+Wrap your own name in `**double asterisks**`, which is what bolds it in the
 author list. Use the name **as the journal printed it**; the three variants
 across your four papers are deliberate, and the page explains them.
 
 Get the exact citation from <https://api.crossref.org/works/YOUR-DOI> rather
-than from memory — that is where the current entries came from, and it caught
+than from memory. That is where the current entries came from, and it caught
 three wrong years in the previous version of this site.
 
 Leave `doi` as `""` if there is not one yet; the DOI line is then skipped.
@@ -119,7 +119,7 @@ its introduction and nothing else. When you have essay titles, add them:
 
 Do the same under `desk.vi.panels.writing.items`.
 
-### "Currently" — reading, watching, learning
+### "Currently": reading, watching, learning
 
 `desk.en.panels.currently.items` and its Vietnamese twin. This is the one part
 of the site that goes stale visibly, so either keep it current or delete the
@@ -131,27 +131,52 @@ panel from `desk.order`.
 
 Body text supports three things and nothing else:
 
-| You write                | You get             |
-| ------------------------ | ------------------- |
-| `**bold**`               | **bold**            |
-| `*italic*`               | _italic_            |
-| `[text](https://url)`    | a link              |
+| You write                | You get                    |
+| ------------------------ | -------------------------- |
+| `**bold**`               | **bold**                   |
+| `*italic*`               | _italic_                   |
+| `[text](https://url)`    | a link                     |
+| `:flag-vi:`              | a small Vietnamese flag    |
+| `:flag-en:`              | a small English flag       |
+| `:flag-fr:`              | a small French flag        |
 
 External links get `target="_blank"` and `rel="noopener"` automatically.
 Everything else is escaped, so an apostrophe or an ampersand in your copy can
 never break the page.
 
+### The three flags
+
+The flags belong to the places that list the languages you speak: the Languages
+row on the home page, the Languages fact on About, and the Languages panel on
+the desk. Always Vietnamese, then English, then French. They are drawn as SVG
+rather than emoji because Windows has no flag glyphs and would show the letters
+in a box instead.
+
+They only work in body copy and in the desk panels' key column. A flag token in
+a page title, an alt text or an aria-label would ship as the literal text
+`:flag-vi:`, so the build gate fails on any token that reaches the output.
+
+### No em dashes
+
+House rule for both languages: no `—` anywhere in the copy. A colon, a comma,
+brackets or a full stop always does the job, and the writing reads more like a
+person and less like a machine. **The build gate fails on an em dash**, so this
+one enforces itself. En dashes in number ranges, as in `43(15–16)`, are correct
+typography and are left alone.
+
 ---
 
 ## Things the build will refuse to ship
 
-The check in `scripts/check.js` fails the deploy — not just warns — on:
+The check in `scripts/check.js` fails the deploy, not just warns, on:
 
 - A **PhD, doctoral, thesis, or Queen's University claim** anywhere in the
   output, in either language. These were removed on purpose. If you ever do
   enrol, delete the matching rule from the `FORBIDDEN` list in `scripts/check.js`
   in the same commit that adds the claim, so it is a deliberate act.
 - Unfinished placeholder copy: `[TODO`, `[EDIT`, `[PLACEHOLDER`, `{{`.
+- An em dash in the copy, in either language. See the house rule above.
+- A `:flag-xx:` token that reached the page unrendered.
 - A dead internal link, or a `#anchor` with no matching element.
 - A page missing its title, description, canonical URL, or `<h1>`.
 - An image with no alt text.
@@ -174,17 +199,17 @@ it better.
 4. **LinkedIn and GitHub URLs**, if you want them listed.
 5. **A source for the 20% figure.** The Work page says the stewardship program
    cut excess antibiotic prescription-days by roughly 20%. It came from your own
-   previous site, so it is your claim rather than an invented one — but it is
+   previous site, so it is your claim rather than an invented one, but it is
    the single number on the site a statistician reader will press hardest on,
    and right now it has no period, comparator, or denominator attached. Either
    be ready to say where it comes from, or cut the clause.
 6. **Years.** The year you joined CHEO and the year of the MSc. Without them a
    reader cannot tell six months from six years and defaults to the shorter
-   guess — which also makes four papers in 2025–26 read as ordinary rather than
+   guess, which also makes four papers in 2025-26 read as ordinary rather than
    dense. Add them to the `facts` rows on About.
 7. **Your undergraduate degree**, if you want it on the About page. The old site
    said "biomedical science" in one place and nothing in another, so only the
-   MSc — which was stated consistently — is listed now.
+   MSc, which was stated consistently, is listed now.
 8. **Essay titles and links** for the writing panel.
 9. **A workshop or talk you can name.** "Hospital-leadership training in
    Vietnam" is currently the only concrete thing in the speaking section; one

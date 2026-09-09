@@ -2,13 +2,13 @@
 
 Nothing in this directory is copied into `dist/`.
 
-- **`original-canvas-export.html`** — the previous version of the site: a single
+- **`original-canvas-export.html`** is the previous version of the site: a single
   2.3 MB self-contained bundle exported from a design canvas. The whole page was
   a client-side app with no real URLs; all its copy lived inside a JavaScript
   class. It is kept for provenance. The desk-scene artwork in
   `src/templates/svg/` was extracted from it.
 
-- **`portrait-master.png`** — the 1024×1024 original of the portrait. Everything
+- **`portrait-master.png`** is the 1024×1024 original of the portrait. Everything
   in `static/img/portrait-*` is derived from it. To regenerate after replacing
   it:
 

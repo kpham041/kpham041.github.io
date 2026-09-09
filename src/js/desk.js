@@ -1,5 +1,5 @@
 /**
- * desk.js — turns the desk scene's anchors into a dialog.
+ * desk.js: turns the desk scene's anchors into a dialog.
  *
  * Without this file the scene still works: every hotspot is an <a href="#desk-…">
  * pointing at a real panel in the page, and CSS reveals the targeted one. This
@@ -9,7 +9,7 @@
  * Opening pushes a history entry so the phone back-gesture closes the panel
  * rather than leaving the page. That makes closing a two-step dance: every exit
  * funnels through the dialog's own `close` event, and focus is only restored
- * once the history traversal has finished — a same-document navigation resets
+ * once the history traversal has finished, because a same-document navigation resets
  * focus to <body>, so restoring it any earlier is silently undone.
  */
 (function () {
@@ -72,7 +72,7 @@
     if (el && el.focus) el.focus();
   }
 
-  // Every exit — close button, backdrop click, Escape — ends up here.
+  // Every exit (close button, backdrop click, Escape) ends up here.
   dialog.addEventListener('close', function () {
     body.textContent = '';
     pendingFocus = opener;
@@ -113,7 +113,7 @@
     });
   }
 
-  // Clicking the backdrop — i.e. the dialog element itself, outside its content.
+  // Clicking the backdrop, i.e. the dialog element itself, outside its content.
   dialog.addEventListener('click', function (e) {
     if (e.target === dialog) dialog.close();
   });

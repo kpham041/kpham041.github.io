@@ -2,7 +2,7 @@
 /**
  * Static site generator for michaelpham.
  *
- * Zero dependencies — plain Node, no npm install, so CI is a single `node build.js`.
+ * Zero dependencies: plain Node, no npm install, so CI is a single `node build.js`.
  * Reads all copy from content/site.json, renders one real HTML file per page per
  * language into dist/, and copies static/ over the top.
  *
@@ -81,7 +81,7 @@ function build() {
   // GitHub Pages: skip Jekyll so files beginning with _ are served as-is.
   fs.writeFileSync(path.join(STAGE, '.nojekyll'), '');
 
-  // sitemap.xml — every page, both languages.
+  // sitemap.xml: every page, both languages.
   const urls = [];
   for (const lang of LANGS) {
     for (const page of Object.keys(pages)) urls.push(content.site.url + urlFor(lang, page));
@@ -109,7 +109,7 @@ function build() {
  *
  * Two renames rather than one, because renaming onto a non-empty directory
  * fails. That leaves a sliver where dist/ does not exist, and a concurrent
- * build — the --serve watcher and a manual `node build.js`, typically — can
+ * build (the --serve watcher and a manual `node build.js`, typically) can
  * lose the race either way round. So: retry rather than crash, put the previous
  * build back if the swap fails so dist/ is never left missing, and never delete
  * the shared staging root outright, because another build is probably still
@@ -129,7 +129,7 @@ function swapIn(stage) {
       try {
         fs.rmdirSync(STAGE_ROOT); // only succeeds once no build is using it
       } catch (e) {
-        /* another build is still staging — leave it */
+        /* another build is still staging, so leave it */
       }
       return;
     } catch (err) {
@@ -188,7 +188,7 @@ function serve() {
     })
     .listen(PORT, () => console.log(`serving dist/ on http://localhost:${PORT}`));
 
-  // Rebuild whenever a source file changes. Debounced — editors fire several events per save.
+  // Rebuild whenever a source file changes. Debounced, because editors fire several events per save.
   let timer = null;
   const rebuild = () => {
     clearTimeout(timer);

@@ -1,5 +1,5 @@
 /**
- * site.js — progressive enhancement only.
+ * site.js: progressive enhancement only.
  *
  * Every page is complete, readable and navigable with this file blocked. What
  * it adds: the theme toggle, the mobile drawer (with a real focus trap), and
@@ -15,11 +15,14 @@
 
   var toggle = document.querySelector('[data-theme-toggle]');
   if (toggle) {
-    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    // Light is the default for everyone. The operating system's preference is
+    // deliberately not consulted: dark is a choice the reader makes here, and
+    // it is remembered until they change it back.
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    var PAINT = { light: '#fbfaf7', dark: '#14171d' };
 
     var effective = function () {
-      var set = root.getAttribute('data-theme');
-      return set || (mq.matches ? 'dark' : 'light');
+      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     };
 
     var syncLabel = function () {
@@ -27,6 +30,7 @@
       var next = effective() === 'dark' ? 'light' : 'dark';
       toggle.setAttribute('aria-label', toggle.dataset[next + 'Label'] || toggle.getAttribute('aria-label'));
       toggle.setAttribute('aria-pressed', effective() === 'dark' ? 'true' : 'false');
+      if (themeColor) themeColor.setAttribute('content', PAINT[effective()]);
     };
 
     toggle.addEventListener('click', function () {
@@ -38,8 +42,6 @@
       syncLabel();
     });
 
-    // Follow the OS while the user has not made an explicit choice.
-    if (mq.addEventListener) mq.addEventListener('change', syncLabel);
     syncLabel();
   }
 

@@ -1,4 +1,4 @@
-# michaelpham.dev — personal site
+# michaelpham.dev, personal site
 
 Static, bilingual (English / Vietnamese), no framework, no npm dependencies.
 Push to `main` and GitHub Actions rebuilds and deploys it.
@@ -6,7 +6,7 @@ Push to `main` and GitHub Actions rebuilds and deploys it.
 ```bash
 node build.js            # build once into dist/
 node build.js --serve    # build, serve on :4000, rebuild on every save
-node scripts/check.js    # build gate — run it before pushing
+node scripts/check.js    # build gate: run it before pushing
 ```
 
 Node 18+. There is nothing to install.
@@ -16,10 +16,12 @@ Node 18+. There is nothing to install.
 ```
 content/site.json        every word on the site, in both languages
 src/templates/           the page generators (plain JS, no template language)
-  routes.js              the URL map — the one place that decides page paths
+  routes.js              the URL map: the one place that decides page paths
   layout.js              document shell: head metadata, header, footer
   pages.js               one function per page
   desk.js                the illustrated desk scene
+  esc.js                 escaping, plus the tiny bold/italic/link/flag pass
+  flags.js               the three language flags, as inline SVG
   svg/                   the desk illustration, as SVG fragments
 src/css/                 site.css (design system) + desk.css
 src/js/                  site.js (theme, drawer, reveals) + desk.js (the scene)
@@ -28,7 +30,7 @@ scripts/check.js         the build gate
 scripts/shots.js         full-page screenshots of every page, for review
 scripts/og.js            regenerates the 1200x630 social preview cards
 assets-source/           the master portrait; not deployed
-dist/                    build output — generated, git-ignored, never edited
+dist/                    build output: generated, git-ignored, never edited
 ```
 
 ## The two rules
@@ -55,7 +57,7 @@ without alt text fails instead of going live.
   attribute, exactly one `<h1>`, and a skip link
 - No dead internal links, no anchors pointing at ids that do not exist
 - No unfinished placeholder copy (`[TODO`, `[EDIT`, `{{ …`)
-- **No PhD, doctoral, thesis, or Queen's University claims** — these were
+- **No PhD, doctoral, thesis, or Queen's University claims.** These were
   removed deliberately and the check exists so they cannot come back by accident
 - Every image has alt text and explicit dimensions
 - Every `target="_blank"` link has `rel="noopener"`
@@ -85,11 +87,14 @@ to `src/templates/pages.js`, add its nav label to both `i18n.en.nav` and
 
 All tokens are custom properties at the top of `src/css/site.css`. Change a
 colour there and it changes everywhere, in light and dark. Text colours were
-picked to meet WCAG AA on their own background — `--muted` is 5.0:1, `--accent`
-8.6:1, `--gold` 4.9:1 — so do not lighten them without re-checking.
+picked to meet WCAG AA on their own background (`--muted` is 5.0:1, `--accent`
+8.6:1, `--gold` 4.9:1), so do not lighten them without re-checking.
 
-Dark mode follows the OS by default and the header toggle overrides it,
-remembered in `localStorage`.
+The site opens light for everyone, whatever the operating system prefers. Dark
+is opt-in through the header toggle, which sets `data-theme` on `<html>` and
+remembers the choice in `localStorage`. There is deliberately no
+`prefers-color-scheme` rule in the stylesheet: adding one back would make the
+site open dark for some readers again.
 
 ## Progressive enhancement
 
@@ -106,7 +111,7 @@ Hotspots are SVG `<a href="#desk-…">` rather than `<g role="button">`, so they
 are natively focusable and work with JavaScript off. The phin-coffee object was
 defined in the original but never placed on the desk, leaving its "Writing"
 panel unreachable; it now has a spot. And every colour in the illustration is an
-inline `style="fill:var(--desk-…)"` rather than a hex literal — that is not
+inline `style="fill:var(--desk-…)"` rather than a hex literal. That is not
 decoration: most objects are drawn with `<use>`, and CSS selectors cannot reach
 into a `<use>` shadow tree, but custom properties inherit into it. It is the only
 way the artwork can follow light and dark. **If you edit the SVG, keep using the
@@ -122,9 +127,10 @@ node scripts/shots.js /tmp/site-shots
 ```
 
 Full-page captures of every page at desktop and mobile, light and dark, in both
-languages. It drives headless Chrome over the DevTools protocol, so viewport and
-`prefers-color-scheme` are really emulated, and it warns about any element that
-spills outside the viewport — the thing eyeballing a screenshot always misses.
+languages. It drives headless Chrome over the DevTools protocol, so the viewport
+is really emulated, the dark shots opt in through `data-theme` exactly as the
+toggle does, and it warns about any element that spills outside the viewport,
+which is the thing eyeballing a screenshot always misses.
 
 The social preview cards are rendered the same way but committed to the repo, so
 the build never depends on Chrome. Regenerate them after changing your name, the

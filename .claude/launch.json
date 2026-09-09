@@ -4,8 +4,12 @@
     {
       "name": "site",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["build.js", "--serve"],
-      "port": 4000
+      "runtimeArgs": [
+        "build.js",
+        "--serve"
+      ],
+      "port": 4000,
+      "autoPort": true
     }
   ]
 }

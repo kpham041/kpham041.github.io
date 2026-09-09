@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* ==========================================================================
-   michaelpham — design system
+   michaelpham design system
    --------------------------------------------------------------------------
    One palette, one type scale, one spacing rhythm. Everything below is driven
    by custom properties so a single edit here changes the whole site, in both
@@ -166,15 +166,15 @@
   --font-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --step--1: 0.9375rem;                              /* 15px  — captions, meta   */
-  --step-0: clamp(1.0625rem, 0.99rem + 0.28vw, 1.1875rem);  /* 17–19px — body    */
-  --step-1: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);    /* 19–22px — lead    */
-  --step-2: clamp(1.375rem, 1.24rem + 0.6vw, 1.625rem);     /* 22–26px — h3      */
-  --step-3: clamp(1.625rem, 1.4rem + 1.1vw, 2.125rem);      /* 26–34px — h2      */
-  --step-4: clamp(1.875rem, 1.5rem + 1.9vw, 2.75rem);       /* 30–44px — h1      */
-  --step-5: clamp(2.375rem, 1.7rem + 3.4vw, 3.875rem);      /* 38–62px — display */
+  --step--1: 0.9375rem;                              /* 15px, captions and meta */
+  --step-0: clamp(1.0625rem, 0.99rem + 0.28vw, 1.1875rem);  /* 17–19px, body    */
+  --step-1: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);    /* 19–22px, lead    */
+  --step-2: clamp(1.375rem, 1.24rem + 0.6vw, 1.625rem);     /* 22–26px, h3      */
+  --step-3: clamp(1.625rem, 1.4rem + 1.1vw, 2.125rem);      /* 26–34px, h2      */
+  --step-4: clamp(1.875rem, 1.5rem + 1.9vw, 2.75rem);       /* 30–44px, h1      */
+  --step-5: clamp(2.375rem, 1.7rem + 3.4vw, 3.875rem);      /* 38–62px, display */
 
-  /* Spacing — a 4px-rooted rhythm, fluid where it matters */
+  /* Spacing: a 4px-rooted rhythm, fluid where it matters */
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-s: 0.875rem;
@@ -193,17 +193,17 @@
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Colour — light. Every text pairing below meets WCAG AA on its background. */
+  /* Colour, light. Every text pairing below meets WCAG AA on its background. */
   --paper: #fbfaf7;         /* page                                          */
   --paper-warm: #f4f1e9;    /* recessed panels, the desk scene ground        */
   --paper-raised: #ffffff;  /* cards that should sit above the page          */
-  --ink: #171c26;           /* primary text            — 15.4:1 on --paper   */
-  --ink-2: #3b424f;         /* secondary text          —  9.3:1              */
-  --muted: #666d7a;         /* meta, captions          —  5.0:1              */
-  --accent: #2c4a73;        /* links, overlines, rules —  8.6:1              */
+  --ink: #171c26;           /* primary text, 15.4:1 on --paper               */
+  --ink-2: #3b424f;         /* secondary text, 9.3:1                         */
+  --muted: #666d7a;         /* meta and captions, 5.0:1                      */
+  --accent: #2c4a73;        /* links, overlines, rules, 8.6:1                */
   --accent-strong: #1e3555; /* link hover                                    */
   --accent-wash: #eef1f6;   /* accent-tinted fill                            */
-  --gold: #8f6129;          /* primary action          —  4.9:1              */
+  --gold: #8f6129;          /* primary action, 4.9:1                         */
   --gold-strong: #714c1f;   /* action hover                                  */
   --rule: #e4dfd5;          /* hairlines                                     */
   --rule-strong: #cdc6b8;
@@ -216,29 +216,10 @@
   color-scheme: light;
 }
 
-/* Dark. Same roles, re-pointed — nothing else in the stylesheet changes. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --paper: #14171d;
-    --paper-warm: #1b1f27;
-    --paper-raised: #1e222b;
-    --ink: #eceae5;
-    --ink-2: #c2c7d0;
-    --muted: #949aa6;
-    --accent: #9dbbe0;
-    --accent-strong: #c3d6ee;
-    --accent-wash: #1d2530;
-    --gold: #d6a462;
-    --gold-strong: #e8bd83;
-    --rule: #2b313b;
-    --rule-strong: #3d4552;
-    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-m: 0 8px 32px rgba(0, 0, 0, 0.45);
-    --selection-bg: #9dbbe0;
-    --selection-fg: #14171d;
-    color-scheme: dark;
-  }
-}
+/* Dark. Same roles, re-pointed, and nothing else in the stylesheet changes.
+   The site opens light for everyone, whatever the operating system prefers.
+   Dark is opt-in: it applies only once the toggle has set data-theme, which
+   site.js remembers in localStorage. */
 :root[data-theme='dark'] {
   --paper: #14171d;
   --paper-warm: #1b1f27;
@@ -433,7 +414,7 @@ a {
   color: var(--accent-strong);
   background-size: 100% 1px;
 }
-/* Links inside running prose stay underlined — discoverability beats subtlety. */
+/* Links inside running prose stay underlined: discoverability beats subtlety. */
 .prose a:not(.btn) {
   color: var(--accent);
   text-decoration: underline;
@@ -465,14 +446,8 @@ a {
   background: var(--gold);
   color: #fff;
 }
-:root[data-theme='dark'] .btn--primary,
-[data-theme='dark'] .btn--primary {
+:root[data-theme='dark'] .btn--primary {
   color: #14171d;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .btn--primary {
-    color: #14171d;
-  }
 }
 .btn--primary:hover {
   background: var(--gold-strong);
@@ -532,6 +507,36 @@ a {
   .deflist__key {
     padding-top: 0;
   }
+}
+
+/* Language flags. Decorative, sized to the text they sit beside, and inline-flex
+   so a wrapped list never leaves a flag stranded at the end of a line. */
+.flag {
+  display: inline-flex;
+  width: 1.35em;
+  height: 0.9em;
+  flex: none;
+  vertical-align: -0.06em;
+  margin-right: 0.42em;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(23, 28, 38, 0.16);
+}
+.flag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+:root[data-theme='dark'] .flag {
+  box-shadow: 0 0 0 1px rgba(236, 234, 229, 0.28);
+}
+/* In the mono, uppercase key columns the flag would otherwise tower over the
+   caps height. */
+.deflist__key .flag,
+.desk__rowkey .flag {
+  width: 1.5em;
+  height: 1em;
+  vertical-align: -0.14em;
 }
 
 .tag-row {
@@ -676,8 +681,10 @@ a {
   height: 19px;
   display: block;
 }
-/* The theme toggle swaps which glyph is shown; JS only flips a data attribute. */
-.iconbtn__moon {
+/* The theme toggle swaps which glyph is shown; JS only flips a data attribute.
+   Scoped through .iconbtn so it outweighs the `.iconbtn svg` sizing rule above,
+   which would otherwise keep the moon on screen next to the sun. */
+.iconbtn .iconbtn__moon {
   display: none;
 }
 :root[data-theme='dark'] .iconbtn__sun {
@@ -685,14 +692,6 @@ a {
 }
 :root[data-theme='dark'] .iconbtn__moon {
   display: block;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .iconbtn__sun {
-    display: none;
-  }
-  :root:not([data-theme='light']) .iconbtn__moon {
-    display: block;
-  }
 }
 
 .nav-toggle {
@@ -804,7 +803,7 @@ a {
   font-size: var(--step-4);
   max-width: 22ch;
 }
-/* A page intro is a paragraph, not a hero line — the hero's 46ch measure
+/* A page intro is a paragraph, not a hero line, and the hero's 46ch measure
    chops it into four stubs. */
 .section__head .lead {
   max-width: 58ch;

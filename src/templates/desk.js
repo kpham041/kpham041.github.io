@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { esc, attr, md } = require('./esc.js');
+const { flags } = require('./flags.js');
 
 const DEFS = fs.readFileSync(path.join(__dirname, 'svg', 'desk-defs.svg'), 'utf8');
 const SCENE_RAW = fs.readFileSync(path.join(__dirname, 'svg', 'desk-scene.svg'), 'utf8');
@@ -24,7 +25,7 @@ module.exports = function desk(ctx) {
   const d = content.desk[lang];
   const order = content.desk.order;
 
-  // Hotspot accessible names come from the panel titles — one source of truth.
+  // Hotspot accessible names come from the panel titles: one source of truth.
   let scene = SCENE_RAW;
   for (const id of order) {
     const panel = d.panels[id];
@@ -59,7 +60,7 @@ module.exports = function desk(ctx) {
       const items = p.items
         .map(
           (it) => `          <div class="desk__row">
-            ${it.label ? `<div class="desk__rowkey">${esc(it.label)}</div>` : ''}
+            ${it.label ? `<div class="desk__rowkey">${flags(esc(it.label))}</div>` : ''}
             <p class="desk__rowtext">${md(it.text)}</p>
           </div>`
         )

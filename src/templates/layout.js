@@ -20,7 +20,7 @@ module.exports = function layout(ctx) {
   const path = urlFor(lang, page);
   const canonical = site.url + path;
   const title = ctx.title;
-  const fullTitle = page === 'home' ? `${title}` : `${title} — ${site.name}`;
+  const fullTitle = page === 'home' ? `${title}` : `${title} · ${site.name}`;
   const description = ctx.description;
   const ogImage = site.url + '/img/og-' + lang + '.png';
 
@@ -70,7 +70,7 @@ module.exports = function layout(ctx) {
     jobTitle: t.jsonLdJobTitle,
     worksFor: {
       '@type': 'Organization',
-      name: 'CHEO Research Institute — Clinical Research Unit',
+      name: 'CHEO Research Institute, Clinical Research Unit',
       url: 'https://www.cheoresearch.ca/',
     },
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of Ottawa' },
@@ -92,9 +92,10 @@ module.exports = function layout(ctx) {
 ${alternates}
   <link rel="alternate" hreflang="x-default" href="${attr(site.url + urlFor('en', page))}">
 
-  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#14171d" media="(prefers-color-scheme: dark)">
-  <meta name="color-scheme" content="light dark">
+  <!-- The site opens light whatever the OS prefers; site.js repaints this
+       when the reader turns dark mode on. -->
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="color-scheme" content="light">
 
   <meta property="og:type" content="${attr(ctx.ogType || 'website')}">
   <meta property="og:site_name" content="${attr(site.name)}">
@@ -121,7 +122,8 @@ ${alternates}
   <link rel="stylesheet" href="/assets/css/site.css">
 
   <script>
-    /* Set the theme before first paint so there is no flash of the wrong one.
+    /* Light is the default. This only re-applies a dark choice the reader
+       made earlier, before first paint, so there is no flash of light.
        Also drops the no-js class so [data-reveal] can animate. */
     (function () {
       var d = document.documentElement;
