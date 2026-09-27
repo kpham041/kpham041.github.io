@@ -135,8 +135,8 @@ async function main() {
             // The site no longer follows the OS, so this only proves it does
             // not: a dark shot comes from data-theme below, not from here.
             { name: 'prefers-color-scheme', value: view.scheme },
-            // Reduced motion pins every [data-reveal] to its final state, so a
-            // still is never captured mid-fade. The end state is identical.
+            // Reduced motion snaps every transition, so a still is never
+            // captured mid-animation.
             { name: 'prefers-reduced-motion', value: 'reduce' },
           ],
         });
@@ -155,11 +155,9 @@ async function main() {
           })()`,
         });
 
-        // Belt and braces: reduced motion should already have revealed
-        // everything, but force it so a slow font swap can never leave a gap.
+        // Wait for the web fonts so a late swap is never captured.
         await S('Runtime.evaluate', {
           expression: `(async () => {
-            document.querySelectorAll('[data-reveal]').forEach(el => el.setAttribute('data-revealed',''));
             if (document.fonts && document.fonts.ready) await document.fonts.ready;
             await new Promise(r => setTimeout(r, 250));
           })()`,

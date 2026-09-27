@@ -2,8 +2,7 @@
  * site.js: progressive enhancement only.
  *
  * Every page is complete, readable and navigable with this file blocked. What
- * it adds: the theme toggle, the mobile drawer (with a real focus trap), and
- * scroll reveals.
+ * it adds: the theme toggle and the mobile drawer (with a real focus trap).
  */
 (function () {
   'use strict';
@@ -121,33 +120,5 @@
     window.matchMedia('(min-width: 801px)').addEventListener('change', function (e) {
       if (e.matches && !drawer.hidden) closeDrawer();
     });
-  }
-
-  /* ------------------------------------------------------------- reveals */
-
-  var revealables = document.querySelectorAll('[data-reveal]');
-  if (revealables.length) {
-    if (reduced.matches || !('IntersectionObserver' in window)) {
-      Array.prototype.forEach.call(revealables, function (el) {
-        el.setAttribute('data-revealed', '');
-      });
-    } else {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            var el = entry.target;
-            var i = parseFloat(el.getAttribute('data-reveal')) || 0;
-            el.style.transitionDelay = Math.min(i, 6) * 0.07 + 's';
-            el.setAttribute('data-revealed', '');
-            io.unobserve(el);
-          });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }
-      );
-      Array.prototype.forEach.call(revealables, function (el) {
-        io.observe(el);
-      });
-    }
   }
 })();

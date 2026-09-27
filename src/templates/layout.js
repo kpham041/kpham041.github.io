@@ -124,7 +124,7 @@ ${alternates}
   <script>
     /* Light is the default. This only re-applies a dark choice the reader
        made earlier, before first paint, so there is no flash of light.
-       Also drops the no-js class so [data-reveal] can animate. */
+       Also drops the no-js class, which the desk panels key off. */
     (function () {
       var d = document.documentElement;
       d.classList.remove('no-js');

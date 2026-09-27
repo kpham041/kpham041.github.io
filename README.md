@@ -24,7 +24,7 @@ src/templates/           the page generators (plain JS, no template language)
   flags.js               the three language flags, as inline SVG
   svg/                   the desk illustration, as SVG fragments
 src/css/                 site.css (design system) + desk.css
-src/js/                  site.js (theme, drawer, reveals) + desk.js (the scene)
+src/js/                  site.js (theme, drawer) + desk.js (the scene)
 static/                  copied to the site root verbatim: fonts, images, icons
 scripts/check.js         the build gate
 scripts/shots.js         full-page screenshots of every page, for review
@@ -99,7 +99,7 @@ site open dark for some readers again.
 ## Progressive enhancement
 
 Every page is complete with JavaScript disabled. `site.js` adds the theme
-toggle, the mobile drawer and scroll reveals; `desk.js` upgrades the desk
+toggle and the mobile drawer; `desk.js` upgrades the desk
 scene's links into a modal. With scripts blocked, the desk hotspots are ordinary
 anchors to panels that are visible in the page.
 

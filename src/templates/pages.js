@@ -7,14 +7,11 @@ const desk = require('./desk.js');
 /* --------------------------------------------------------------- helpers */
 
 // A key/value row list: mono label in a fixed column, prose beside it.
-function defList(rows, opts) {
-  const o = opts || {};
+function defList(rows) {
   return `<dl class="deflist">
 ${rows
   .map(
-    (r, i) => `        <div class="deflist__row"${
-      o.reveal === false ? '' : ` data-reveal="${i}"`
-    }>
+    (r) => `        <div class="deflist__row">
           <dt class="deflist__key">${esc(r.k)}</dt>
           <dd class="deflist__val">${md(r.v)}</dd>
         </div>`
@@ -27,11 +24,11 @@ function sectionHead(overline, title, id, lead) {
   // An overline that just repeats the heading is noise, so drop it.
   const kicker =
     overline && overline.toLowerCase() !== title.toLowerCase()
-      ? `<p class="overline" data-reveal="0">${esc(overline)}</p>\n        `
+      ? `<p class="overline">${esc(overline)}</p>\n        `
       : '';
   return `      <div class="section__head">
-        ${kicker}<h1 id="${attr(id)}" data-reveal="1">${esc(title)}</h1>
-        ${lead ? `<p class="lead" data-reveal="2">${md(lead)}</p>` : ''}
+        ${kicker}<h1 id="${attr(id)}">${esc(title)}</h1>
+        ${lead ? `<p class="lead">${md(lead)}</p>` : ''}
       </div>`;
 }
 
@@ -57,20 +54,20 @@ function home(ctx) {
     body: `    <div class="shell">
       <section class="hero" aria-labelledby="hero-name">
         <div class="hero__text">
-          <h1 class="hero__name" id="hero-name" data-reveal="0">
+          <h1 class="hero__name" id="hero-name">
             <span lang="vi">${esc(site.nameVi)}</span>
             <span class="hero__latin">${esc(site.name)}</span>
           </h1>
-          <p class="hero__role" data-reveal="1">${md(c.role)}</p>
-          <p class="hero__blurb" data-reveal="2">${md(c.blurb)}</p>
-          <div class="hero__actions" data-reveal="3">
+          <p class="hero__role">${md(c.role)}</p>
+          <p class="hero__blurb">${md(c.blurb)}</p>
+          <div class="hero__actions">
             <a class="btn btn--primary" href="${attr(urlFor(lang, 'contact'))}">${esc(
       c.ctaPrimary
     )}</a>
             <a class="link" href="${attr(urlFor(lang, 'work'))}">${esc(c.ctaSecondary)} &rarr;</a>
           </div>
         </div>
-        <figure class="hero__figure" data-reveal="1">
+        <figure class="hero__figure">
           <picture>
             <source type="image/webp" srcset="/img/portrait-380.webp 380w, /img/portrait-560.webp 560w, /img/portrait-760.webp 760w" sizes="(max-width: 860px) 260px, 380px">
             <img src="/img/portrait-560.jpg" srcset="/img/portrait-380.jpg 380w, /img/portrait-560.jpg 560w, /img/portrait-760.jpg 760w" sizes="(max-width: 860px) 260px, 380px" width="1024" height="1024" alt="${attr(
@@ -106,19 +103,19 @@ function about(ctx) {
       <section class="section" aria-labelledby="about-h">
 ${sectionHead(c.overline, c.title, 'about-h')}
 
-        <h2 class="overline" data-reveal="0">${esc(c.factsLabel)}</h2>
+        <h2 class="overline">${esc(c.factsLabel)}</h2>
         ${defList(c.facts)}
 
         <div class="section" style="padding-bottom:0">
-          <h2 class="overline" data-reveal="0">${esc(c.storyLabel)}</h2>
+          <h2 class="overline">${esc(c.storyLabel)}</h2>
           <div class="prose" style="margin-top:var(--space-m)">
-${c.story.map((p, i) => `            <p data-reveal="${i}">${md(p)}</p>`).join('\n')}
+${c.story.map((p, i) => `            <p>${md(p)}</p>`).join('\n')}
           </div>
         </div>
 
         <div class="section">
-          <h2 class="overline" data-reveal="0">${esc(c.skillsLabel)}</h2>
-          <p class="lead" data-reveal="1" style="margin-top:.6rem">${md(c.skillsIntro)}</p>
+          <h2 class="overline">${esc(c.skillsLabel)}</h2>
+          <p class="lead" style="margin-top:.6rem">${md(c.skillsIntro)}</p>
           <div style="margin-top:var(--space-m)">${defList(skills)}</div>
         </div>
       </section>
@@ -138,7 +135,7 @@ function work(ctx) {
   const entries = content.projects
     .map((proj, i) => {
       const p = proj[lang];
-      return `        <li class="entry" data-reveal="${i}">
+      return `        <li class="entry">
           <p class="entry__meta">${esc(p.meta)}</p>
           <div class="entry__body">
             <h2 class="entry__title">${esc(p.title)}</h2>
@@ -163,12 +160,12 @@ ${entries}
         </ul>
 
         <div class="section">
-          <h2 class="overline" data-reveal="0">${esc(c.speakingLabel)}</h2>
-          <p class="lead" data-reveal="1" style="margin-top:.6rem">${md(c.speakingIntro)}</p>
+          <h2 class="overline">${esc(c.speakingLabel)}</h2>
+          <p class="lead" style="margin-top:.6rem">${md(c.speakingIntro)}</p>
           <div style="margin-top:var(--space-m)">${defList(c.speaking)}</div>
         </div>
 
-        <p class="lead" data-reveal="0" style="margin-top:var(--space-l)">${esc(
+        <p class="lead" style="margin-top:var(--space-l)">${esc(
           c.closingPre
         )} <a class="link" href="${attr(urlFor(lang, 'contact'))}">${esc(c.closingLink)}</a></p>
       </section>
@@ -194,7 +191,7 @@ function publications(ctx) {
           )}" target="_blank" rel="noopener">${esc(c.doiLabel)}: ${esc(p.doi)} &nearr;</a></li>`
         );
       }
-      return `        <li class="pub" data-reveal="${i}">
+      return `        <li class="pub">
           <h2 class="pub__title">${esc(p.title)}</h2>
           <p class="pub__authors">${md(p.authors).replace(
             /<strong>/g,
@@ -216,7 +213,7 @@ ${sectionHead(c.overline, c.title, 'pubs-h', c.intro)}
 ${items}
         </ol>
 
-        <p class="lead" data-reveal="0" style="margin-top:var(--space-l)">${esc(
+        <p class="lead" style="margin-top:var(--space-l)">${esc(
           c.moreLabel
         )} <a class="link" href="${attr(scholar.url)}" target="_blank" rel="noopener">${esc(
       scholar.label
@@ -255,22 +252,22 @@ function contact(ctx) {
       <section class="section" aria-labelledby="contact-h">
 ${sectionHead(c.overline, c.title, 'contact-h', c.intro)}
 
-        <p class="overline" data-reveal="0">${esc(c.emailLabel)}</p>
-        <p style="margin-top:.5rem" data-reveal="1">
+        <p class="overline">${esc(c.emailLabel)}</p>
+        <p style="margin-top:.5rem">
           <a class="contact-email link" href="mailto:${attr(profile.email)}">${esc(
       profile.email
     )}</a>
         </p>
 ${
   cv
-    ? `        <p style="margin-top:var(--space-l)" data-reveal="2"><a class="btn btn--ghost" href="${attr(
+    ? `        <p style="margin-top:var(--space-l)"><a class="btn btn--ghost" href="${attr(
         profile.cv.url
       )}">CV (PDF)</a></p>`
     : ''
 }
 ${
   links.length
-    ? `        <h2 class="overline" style="margin-top:var(--space-xl)" data-reveal="0">${esc(
+    ? `        <h2 class="overline" style="margin-top:var(--space-xl)">${esc(
         c.elsewhereLabel
       )}</h2>
         <ul class="linkgrid" role="list">
