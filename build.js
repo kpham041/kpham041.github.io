@@ -26,7 +26,7 @@ const CONTENT = path.join(ROOT, 'content', 'site.json');
 
 const content = JSON.parse(fs.readFileSync(CONTENT, 'utf8'));
 const pages = require('./src/templates/pages.js');
-const layout = require('./src/templates/layout.js');
+let layout = require('./src/templates/layout.js');
 const { LANGS, urlFor } = require('./src/templates/routes.js');
 
 /* ------------------------------------------------------------------ helpers */
@@ -198,6 +198,7 @@ function serve() {
       }
       try {
         Object.assign(content, JSON.parse(fs.readFileSync(CONTENT, 'utf8')));
+        layout = require('./src/templates/layout.js');
         const p = require('./src/templates/pages.js');
         Object.keys(pages).forEach((k) => delete pages[k]);
         Object.assign(pages, p);
