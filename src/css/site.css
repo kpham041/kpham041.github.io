@@ -183,8 +183,11 @@
   --space-xl: clamp(3rem, 2rem + 4vw, 5rem);
   --space-2xl: clamp(4rem, 2.5rem + 6vw, 7rem);
 
-  --measure: 68ch;          /* comfortable reading width for body copy */
-  --measure-tight: 46ch;    /* lead paragraphs, hero copy              */
+  /* Measures are in em, not ch: ch is the width of '0', which in Be Vietnam
+     Pro is about 40% wider than the average letter, so 68ch set ~92
+     characters to the line. 34em is ~68; 30em is ~60. */
+  --measure: 34em;          /* running text                            */
+  --measure-tight: 30em;    /* lead paragraphs, hero copy              */
   --shell: 1140px;          /* max content width                       */
   --gutter: clamp(1.25rem, 4vw, 2rem);
 
@@ -372,7 +375,7 @@ a {
 
 .lead {
   font-size: var(--step-1);
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--ink-2);
   max-width: var(--measure-tight);
 }
@@ -382,9 +385,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.1em;
-}
-.prose p {
-  line-height: 1.75;
 }
 .prose strong {
   font-weight: 600;
@@ -803,10 +803,9 @@ a {
   font-size: var(--step-4);
   max-width: 22ch;
 }
-/* A page intro is a paragraph, not a hero line, and the hero's 46ch measure
-   chops it into four stubs. */
+/* A page intro is a paragraph, not a hero line: give it the full measure. */
 .section__head .lead {
-  max-width: 58ch;
+  max-width: var(--measure);
 }
 
 /* ------------------------------------------------------------------- hero */
@@ -856,7 +855,6 @@ a {
   margin-top: var(--space-s);
   color: var(--ink-2);
   max-width: var(--measure-tight);
-  line-height: 1.7;
 }
 .hero__actions {
   margin-top: var(--space-l);
@@ -953,7 +951,7 @@ a {
   font-size: var(--step--1);
   line-height: 1.6;
   color: var(--muted);
-  max-width: 72ch;
+  max-width: var(--measure);
 }
 .pub__authors .self {
   color: var(--ink);
@@ -1038,7 +1036,7 @@ a {
   border-radius: 0 var(--radius) var(--radius) 0;
   color: var(--ink-2);
   font-size: var(--step--1);
-  line-height: 1.7;
+  line-height: 1.6;
   max-width: var(--measure);
 }
 .note strong {
@@ -1081,7 +1079,7 @@ a {
 .footer__note {
   margin-top: var(--space-m);
   max-width: var(--measure);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 /* ------------------------------------------------------------- motion */
