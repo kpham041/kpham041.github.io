@@ -24,6 +24,18 @@ module.exports = function layout(ctx) {
   const description = ctx.description;
   const ogImage = site.url + '/img/og-' + lang + '.png';
 
+  // Preload exactly the font files the first screen paints with, so nothing
+  // swaps after first paint: the display serif and the body at 400 and 500
+  // (nav, hero role, buttons). The Vietnamese subsets are needed wherever
+  // Vietnamese letters are above the fold: every /vi/ page, and the hero name
+  // on the English home page (the dot under the a in Pham).
+  const fonts = ['fraunces-latin', 'bevietnampro-400-latin', 'bevietnampro-500-latin'];
+  if (lang === 'vi' || page === 'home') fonts.push('fraunces-vietnamese');
+  if (lang === 'vi') fonts.push('bevietnampro-400-vietnamese', 'bevietnampro-500-vietnamese');
+  const preloads = fonts
+    .map((f) => `  <link rel="preload" href="/assets/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin>`)
+    .join('\n');
+
   // hreflang: every page exists in both languages at a predictable URL.
   const alternates = LANGS.map(
     (l) =>
@@ -117,8 +129,7 @@ ${alternates}
   <link rel="apple-touch-icon" href="/img/icon-180.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/bevietnampro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+${preloads}
   <link rel="stylesheet" href="/assets/css/site.css">
 
   <script>
