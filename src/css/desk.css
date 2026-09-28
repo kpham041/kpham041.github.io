@@ -290,7 +290,9 @@
   width: calc(100% - 2 * var(--gutter));
   max-height: 86vh;
   box-shadow: var(--shadow-m);
-  overflow: visible;
+  /* Clip the scrolling panel to the dialog's rounded edge; nothing of the
+     next line may show past its border. */
+  overflow: hidden;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity var(--dur-out) var(--ease-in), transform var(--dur-out) var(--ease-in),
@@ -334,7 +336,8 @@ html:has(.desk__dialog[open]) {
   padding: var(--pad);
   overflow-y: auto;
   overscroll-behavior: contain;
-  max-height: 86vh;
+  /* The dialog's border takes 2px of its 86vh. */
+  max-height: calc(86vh - 2px);
 }
 .desk__dialogbody .desk__panel {
   border: 0;

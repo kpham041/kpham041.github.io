@@ -59,6 +59,10 @@
     if (!fill(id)) return false;
     opener = trigger || null;
     dialog.showModal();
+    // Every panel opens at its top, not where the last one was scrolled to.
+    // (Set after showModal: a closed dialog has no box, and Chrome restores
+    // the old offset when it is shown again.)
+    body.scrollTop = 0;
     if (window.history && history.pushState) {
       history.pushState({ desk: id }, '', '#desk-' + id);
       pushed = true;
