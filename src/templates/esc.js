@@ -59,4 +59,11 @@ function arrow(dir) {
   );
 }
 
-module.exports = { esc, attr, md, arrow };
+// "Phạm Nguyên Khôi" may break after the family name, never inside the given
+// name: the last space becomes a no-break space. Typesetting only; the copy in
+// site.json is unchanged.
+function keepGivenName(name) {
+  return String(name).replace(/ (?=\S+$)/, '\u00a0');
+}
+
+module.exports = { esc, attr, md, arrow, keepGivenName };

@@ -1113,6 +1113,10 @@ p.overline,
     grid-template-columns: 1fr;
   }
 }
+/* A link home moves to the next line whole rather than splitting. */
+.notfound__pair .link {
+  white-space: nowrap;
+}
 
 /* --------------------------------------------------------------- contact */
 
@@ -1191,6 +1195,10 @@ p.overline,
   font-weight: 500;
   font-size: 1.0625rem;
   color: var(--ink);
+}
+/* Each name wraps as a unit: a narrow footer breaks after the middle dot. */
+.footer__name [lang] {
+  white-space: nowrap;
 }
 /* Inline links in a balanced block rather than a flex row, so when the five
    links do not fit one line they break 3 + 2, never 4 + 1. */

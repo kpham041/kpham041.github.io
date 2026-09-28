@@ -1,7 +1,7 @@
 'use strict';
 
 const { LANGS, SEGMENTS, urlFor } = require('./routes.js');
-const { esc, attr } = require('./esc.js');
+const { esc, attr, keepGivenName } = require('./esc.js');
 
 const NAV_PAGES = ['about', 'work', 'publications', 'contact'];
 
@@ -33,8 +33,11 @@ module.exports = function layout(ctx) {
   // Vietnamese letters are above the fold: every /vi/ page, and the hero name
   // on the English home page (the dot under the a in Pham).
   const fonts = ['fraunces-latin', 'bevietnampro-400-latin', 'bevietnampro-500-latin'];
-  if (lang === 'vi' || page === 'home') fonts.push('fraunces-vietnamese');
-  if (lang === 'vi') fonts.push('bevietnampro-400-vietnamese', 'bevietnampro-500-vietnamese');
+  // The 404 carries both languages on one page, so it counts as Vietnamese too.
+  const showsVi = lang === 'vi' || !isRoute;
+  if (showsVi || page === 'home') fonts.push('fraunces-vietnamese');
+  if (showsVi) fonts.push('bevietnampro-400-vietnamese');
+  if (lang === 'vi') fonts.push('bevietnampro-500-vietnamese');
   const preloads = fonts
     .map((f) => `  <link rel="preload" href="/assets/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin>`)
     .join('\n');
@@ -214,7 +217,7 @@ ${body}
     <div class="shell">
       <div class="footer__top">
         <span class="footer__name">${esc(site.name)} · <span lang="vi">${esc(
-    site.nameVi
+    keepGivenName(site.nameVi)
   )}</span></span>
         <nav class="footer__nav" aria-label="${attr(t.footerNav)}">
             ${footerNav}

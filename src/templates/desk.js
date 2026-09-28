@@ -20,6 +20,13 @@ const SCENE_RAW = fs.readFileSync(path.join(__dirname, 'svg', 'desk-scene.svg'),
  *   3. Every panel's content is real HTML in the page, not a JS-only string, so
  *      it is crawlable and readable without the modal.
  */
+// The date follows its label mid-phrase ('Cập nhật tháng 9 năm 2026'). Vietnamese
+// writes the month word in lower case there; the copy keeps its capital for
+// places it starts a line. English month names stay capitalised.
+function midSentence(text, lang) {
+  return lang === 'vi' ? String(text).replace(/^\p{Lu}/u, (c) => c.toLocaleLowerCase('vi')) : text;
+}
+
 module.exports = function desk(ctx) {
   const { content, lang } = ctx;
   const d = content.desk[lang];
@@ -75,7 +82,7 @@ ${items}
         </div>
         ${
           p.updated
-            ? `<p class="desk__updated">${esc(p.updatedLabel)} ${esc(p.updated)}</p>`
+            ? `<p class="desk__updated">${esc(p.updatedLabel)} ${esc(midSentence(p.updated, lang))}</p>`
             : ''
         }
       </article>`;

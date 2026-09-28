@@ -1,6 +1,6 @@
 'use strict';
 
-const { esc, attr, md, arrow } = require('./esc.js');
+const { esc, attr, md, arrow, keepGivenName } = require('./esc.js');
 const { urlFor } = require('./routes.js');
 const desk = require('./desk.js');
 
@@ -38,11 +38,6 @@ function sectionHead(overline, title, id, lead, navLabel) {
 }
 
 // Line-breaking at render time; the copy in site.json is never changed.
-// "Phạm Nguyên Khôi" may break after the family name, never inside the given name.
-function keepGivenName(name) {
-  return String(name).replace(/ (?=\S+$)/, '\u00a0');
-}
-
 // "Liu, B. C." stays one unit: no break between a surname and its initials,
 // or between initials.
 function keepInitials(authors) {
