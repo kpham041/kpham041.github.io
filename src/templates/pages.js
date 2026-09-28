@@ -125,7 +125,7 @@ ${sectionHead(c.overline, c.title, 'about-h', null, t.nav.about)}
         <h2 class="overline">${esc(c.factsLabel)}</h2>
         ${defList(c.facts)}
 
-        <div class="section" style="padding-bottom:0">
+        <div class="section">
           <h2 class="overline">${esc(c.storyLabel)}</h2>
           <div class="prose">
 ${c.story.map((p, i) => `            <p>${md(p)}</p>`).join('\n')}
@@ -184,7 +184,7 @@ ${entries}
           ${defList(c.speaking)}
         </div>
 
-        <p class="lead" style="margin-top:var(--space-l)">${esc(
+        <p class="lead coda">${esc(
           c.closingPre
         )} <a class="link" href="${attr(urlFor(lang, 'contact'))}">${esc(c.closingLink)}</a></p>
       </section>
@@ -232,7 +232,7 @@ ${sectionHead(c.overline, c.title, 'pubs-h', c.intro, t.nav.publications)}
 ${items}
         </ol>
 
-        <p class="lead" style="margin-top:var(--space-l)">${esc(
+        <p class="lead coda">${esc(
           c.moreLabel
         )} <a class="link" href="${attr(scholar.url)}" target="_blank" rel="noopener">${esc(
       scholar.label
@@ -279,25 +279,24 @@ ${sectionHead(c.overline, c.title, 'contact-h', c.intro, t.nav.contact)}
         </p>
 ${
   cv
-    ? `        <p style="margin-top:var(--space-l)"><a class="btn btn--ghost" href="${attr(
+    ? `        <p class="coda"><a class="btn btn--ghost" href="${attr(
         profile.cv.url
       )}">CV (PDF)</a></p>`
     : ''
 }
 ${
   links.length
-    ? `        <h2 class="overline" style="margin-top:var(--space-xl)">${esc(
-        c.elsewhereLabel
-      )}</h2>
-        <ul class="linkgrid" role="list">
+    ? `        <div class="section">
+          <h2 class="overline">${esc(c.elsewhereLabel)}</h2>
+          <ul class="linkgrid" role="list">
 ${linkGrid}
-        </ul>`
+          </ul>
+        </div>`
     : ''
 }
-        <hr class="rule" style="margin-top:var(--space-xl);max-width:var(--measure)">
-        <p style="margin-top:var(--space-m);color:var(--muted);max-width:var(--measure)">${md(
-          c.muted
-        )}</p>
+        <div class="section">
+          <p class="aside">${md(c.muted)}</p>
+        </div>
       </section>
     </div>`,
   };

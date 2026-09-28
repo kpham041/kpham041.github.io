@@ -416,13 +416,6 @@ a {
   color: var(--ink);
 }
 
-.rule {
-  height: 1px;
-  background: var(--rule);
-  border: 0;
-  margin: 0;
-}
-
 /* Underline-on-hover link, used for every inline link in body copy. */
 .link {
   position: relative;
@@ -815,12 +808,24 @@ a {
 .section--tight {
   padding-block: var(--space-l);
 }
-/* Sub-sections inside a page section: one gap between them, not two. */
+/* Three distances, each clearly larger than the last: label to content
+   (--space-s), head or intro to content (--space-l), and one sub-section to
+   the next (--space-xl). */
 .section .section {
-  padding-block: var(--space-l) 0;
+  padding-block: var(--space-xl) 0;
 }
-.section .section:last-child {
+/* The footer's own margin sets the band above it, the same on every page. */
+.main > .shell > :last-child {
   padding-bottom: 0;
+}
+/* A closing line after a list. */
+.coda {
+  margin-top: var(--space-l);
+}
+/* A quiet closing note. */
+.aside {
+  color: var(--muted);
+  max-width: var(--measure);
 }
 .section__head {
   display: flex;
@@ -1039,7 +1044,7 @@ a {
    fill in naturally as links are added. */
 .linkgrid {
   list-style: none;
-  margin: var(--space-m) 0 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;

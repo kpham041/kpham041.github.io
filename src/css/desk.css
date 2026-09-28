@@ -30,8 +30,9 @@
   margin-bottom: var(--space-l);
 }
 .desk__head h2 {
-  font-size: var(--step-4);
-  letter-spacing: var(--track-4);
+  /* One step below the page title it sits under. */
+  font-size: var(--step-3);
+  letter-spacing: var(--track-3);
   max-width: 20ch;
 }
 
