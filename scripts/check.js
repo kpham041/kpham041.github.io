@@ -80,12 +80,18 @@ function exists(urlPath) {
 for (const file of htmlFiles) {
   const html = readFile(file);
   const name = rel(file);
+  // The 404 page is served at whatever URL was missing: it must not claim a
+  // canonical URL, and it must keep itself out of search results.
+  const isNotFound = name === '404.html';
+  if (isNotFound && !/<meta name="robots" content="noindex">/.test(html)) {
+    errors.push(`${name}: missing noindex`);
+  }
 
   // --- required metadata -------------------------------------------------
   for (const [label, re] of [
     ['<title>', /<title>[^<]{5,}<\/title>/],
     ['meta description', /<meta name="description" content="[^"]{40,}"/],
-    ['canonical', /<link rel="canonical"/],
+    ['canonical', isNotFound ? /(?:)/ : /<link rel="canonical"/],
     ['og:image', /<meta property="og:image"/],
     ['lang attribute', /<html lang="(en|vi)"/],
     ['h1', /<h1[\s>]/],
@@ -179,6 +185,7 @@ for (const loc of locs) {
 const enPages = htmlFiles.filter((f) => !rel(f).startsWith('vi/')).map(rel);
 const viPages = htmlFiles.filter((f) => rel(f).startsWith('vi/')).map((f) => rel(f).slice(3));
 for (const p of enPages) {
+  if (p === '404.html') continue; // one bilingual page serves both languages
   if (!viPages.includes(p)) errors.push(`no Vietnamese counterpart for ${p}`);
 }
 

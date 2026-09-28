@@ -1,6 +1,6 @@
 'use strict';
 
-const { LANGS, urlFor } = require('./routes.js');
+const { LANGS, SEGMENTS, urlFor } = require('./routes.js');
 const { esc, attr } = require('./esc.js');
 
 const NAV_PAGES = ['about', 'work', 'publications', 'contact'];
@@ -17,8 +17,11 @@ module.exports = function layout(ctx) {
   const site = content.site;
   const profile = content.profile;
 
-  const path = urlFor(lang, page);
-  const canonical = site.url + path;
+  // A page outside the route map (the 404) has no canonical URL, no language
+  // twin and no place in the nav; everything that depends on those is skipped.
+  const isRoute = Object.prototype.hasOwnProperty.call(SEGMENTS, page);
+  const path = isRoute ? urlFor(lang, page) : null;
+  const canonical = isRoute ? site.url + path : null;
   const title = ctx.title;
   const fullTitle = page === 'home' ? `${title}` : `${title} · ${site.name}`;
   const description = ctx.description;
@@ -37,7 +40,7 @@ module.exports = function layout(ctx) {
     .join('\n');
 
   // hreflang: every page exists in both languages at a predictable URL.
-  const alternates = LANGS.map(
+  const alternates = !isRoute ? '' : LANGS.map(
     (l) =>
       `  <link rel="alternate" hreflang="${l === 'vi' ? 'vi-VN' : 'en'}" href="${attr(
         site.url + urlFor(l, page)
@@ -59,9 +62,9 @@ module.exports = function layout(ctx) {
   }).join('\n          ');
 
   const langSwitch = LANGS.map((l) => {
-    const isCurrent = l === lang;
+    const isCurrent = isRoute && l === lang;
     const label = l === 'en' ? 'EN' : 'VI';
-    return `<a href="${attr(urlFor(l, page))}" lang="${l}" hreflang="${l}"${
+    return `<a href="${attr(urlFor(l, isRoute ? page : 'home'))}" lang="${l}" hreflang="${l}"${
       isCurrent ? ' aria-current="true"' : ''
     } title="${attr(t.langNames[l])}">${label}</a>`;
   }).join('<span class="langswitch__sep" aria-hidden="true">|</span>');
@@ -100,9 +103,13 @@ module.exports = function layout(ctx) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(fullTitle)}</title>
   <meta name="description" content="${attr(description)}">
-  <link rel="canonical" href="${attr(canonical)}">
+${
+    isRoute
+      ? `  <link rel="canonical" href="${attr(canonical)}">
 ${alternates}
-  <link rel="alternate" hreflang="x-default" href="${attr(site.url + urlFor('en', page))}">
+  <link rel="alternate" hreflang="x-default" href="${attr(site.url + urlFor('en', page))}">`
+      : '  <meta name="robots" content="noindex">'
+  }
 
   <!-- The site opens light whatever the OS prefers; site.js repaints this
        when the reader turns dark mode on. -->
@@ -114,8 +121,7 @@ ${alternates}
   <meta property="og:locale" content="${attr(lang === 'vi' ? 'vi_VN' : 'en_CA')}">
   <meta property="og:title" content="${attr(fullTitle)}">
   <meta property="og:description" content="${attr(description)}">
-  <meta property="og:url" content="${attr(canonical)}">
-  <meta property="og:image" content="${attr(ogImage)}">
+${isRoute ? `  <meta property="og:url" content="${attr(canonical)}">\n` : ''}  <meta property="og:image" content="${attr(ogImage)}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="${attr(t.ogImageAlt)}">
@@ -152,7 +158,7 @@ ${preloads}
     })();
   </script>
 
-  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+${isRoute ? `  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${ctx.head ? '  ' + ctx.head : ''}
 </head>
 <body>

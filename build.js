@@ -73,6 +73,12 @@ function build() {
     }
   }
 
+  // 404.html: GitHub Pages serves it for every missing path, in either
+  // language, so it is built once, outside the route map.
+  const notFound = require('./src/templates/notfound.js');
+  const nfCtx = { content, lang: 'en', page: 'notfound' };
+  written.push(write(STAGE, '404.html', layout({ ...nfCtx, ...notFound(nfCtx) })));
+
   // Static assets: fonts, images, favicons, robots.txt …
   copyDir(path.join(ROOT, 'static'), STAGE);
   copyDir(path.join(ROOT, 'src', 'css'), path.join(STAGE, 'assets', 'css'));
@@ -179,8 +185,10 @@ function serve() {
       }
       if (!fs.existsSync(file) && fs.existsSync(file + '.html')) file += '.html';
       if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+        // Serve the real 404 page, as GitHub Pages does.
+        const nf = path.join(OUT, '404.html');
         res.writeHead(404, { 'content-type': 'text/html; charset=utf-8' });
-        res.end('<h1>404</h1><p>Not found: ' + p + '</p>');
+        res.end(fs.existsSync(nf) ? fs.readFileSync(nf) : '<h1>404</h1><p>Not found: ' + p + '</p>');
         return;
       }
       res.writeHead(200, { 'content-type': MIME[path.extname(file)] || 'application/octet-stream' });

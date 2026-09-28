@@ -357,6 +357,13 @@
         "emailLabel": "Email",
         "elsewhereLabel": "Elsewhere",
         "muted": "Based in Ottawa, Canada. I reply in Vietnamese, English, or French, whichever you are more comfortable writing in."
+      },
+      "notFound": {
+        "metaTitle": "Page not found",
+        "metaDescription": "There is no page at this address on Michael Pham's site. The home page is one link away.",
+        "title": "Page not found",
+        "body": "There is no page at this address.",
+        "homeLink": "Go to the home page"
       }
     },
     "vi": {
@@ -487,6 +494,11 @@
         "emailLabel": "Email",
         "elsewhereLabel": "Các kênh khác",
         "muted": "Hiện sống tại Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp, tùy ngôn ngữ nào bạn thấy thoải mái hơn khi viết."
+      },
+      "notFound": {
+        "title": "Không tìm thấy trang",
+        "body": "Không có trang nào ở địa chỉ này.",
+        "homeLink": "Về trang chủ"
       }
     }
   },
