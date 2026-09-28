@@ -143,8 +143,8 @@
 }
 .desk__tile:hover,
 .desk__tile:focus-visible {
-  border-color: var(--desk-gold);
-  color: var(--desk-gold);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -218,7 +218,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--desk-gold);
+  color: var(--muted);
   margin: 0;
 }
 .desk__title {

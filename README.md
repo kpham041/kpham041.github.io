@@ -88,7 +88,9 @@ to `src/templates/pages.js`, add its nav label to both `i18n.en.nav` and
 All tokens are custom properties at the top of `src/css/site.css`. Change a
 colour there and it changes everywhere, in light and dark. Text colours were
 picked to meet WCAG AA on their own background (`--muted` is 5.0:1, `--accent`
-8.6:1, `--gold` 4.9:1), so do not lighten them without re-checking.
+8.6:1), so do not lighten them without re-checking. There is one accent, navy,
+and it means "you can act on this": links and the primary button. Gold lives
+only inside the desk illustration (`--desk-gold`) and the favicon.
 
 The site opens light for everyone, whatever the operating system prefers. Dark
 is opt-in through the header toggle, which sets `data-theme` on `<html>` and
