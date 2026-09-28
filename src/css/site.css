@@ -913,8 +913,13 @@ p.overline,
   padding-block: clamp(3rem, 7vw, 6rem) var(--space-l);
 }
 
+/* The name is sized to its own column as well as to the viewport, so it
+   holds one line at every width, the two-column tablet range included. */
+.hero__text {
+  container-type: inline-size;
+}
 .hero__name {
-  font-size: var(--step-5);
+  font-size: min(var(--step-5), 12.6cqi);
   letter-spacing: var(--track-5);
   line-height: 1.02;
   margin: 0;
@@ -929,7 +934,7 @@ p.overline,
    144, and its 144 end, the sharp high-contrast display drawing, is spent on
    exactly one string on the whole site: the name, in Vietnamese. Keep it to
    this one selector. The display cut is already tight, so tracking eases to
-   -1%; it is also narrower, so the name holds one line on a 375px phone. */
+   -1%. */
 .hero__name span[lang='vi'] {
   font-variation-settings: 'opsz' 144;
   letter-spacing: -0.01em;
