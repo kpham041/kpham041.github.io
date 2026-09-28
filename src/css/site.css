@@ -198,8 +198,10 @@
   --shell: 1140px;          /* max content width                       */
   --gutter: clamp(1.25rem, 4vw, 2rem);
 
+  /* Two radii: small for controls and cards, large for the two big
+     surfaces (the portrait and the dialog). Flags keep 2px, tags are pills. */
   --radius: 6px;
-  --radius-l: 18px;
+  --radius-l: 12px;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 

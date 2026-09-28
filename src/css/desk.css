@@ -126,7 +126,7 @@
   gap: 0.6rem;
   padding: 1.15rem 0.75rem 0.85rem;
   border: 1px solid var(--rule);
-  border-radius: 10px;
+  border-radius: var(--radius);
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -199,7 +199,7 @@
 .desk__panel {
   scroll-margin-top: calc(var(--header-h) + 1.5rem);
   border: 1px solid var(--rule);
-  border-radius: var(--radius);
+  border-radius: var(--radius-l);
   padding: var(--space-l);
   background: var(--paper-warm);
 }
@@ -277,7 +277,7 @@
 
 .desk__dialog {
   border: 1px solid var(--rule);
-  border-radius: 12px;
+  border-radius: var(--radius-l);
   background: var(--paper);
   color: var(--ink);
   padding: 0;
