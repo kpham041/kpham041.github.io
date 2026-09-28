@@ -373,11 +373,12 @@ a {
 }
 
 /* The signature, part two: every label on the site is Fraunces at the other
-   end of its optical axis, the sturdy 9pt caption drawing, in sentence case.
-   One typeface builds the hierarchy from the name at 144 to the smallest
-   label at 9; the size and the drawing change, nothing else. Labels are ink,
-   not the accent, so navy only ever means 'you can act on this'. Three
-   levels: section heads a step up in weight, row keys, and quiet kickers. */
+   end of its optical axis, the sturdy caption drawing (optical size 9), in
+   sentence case. One typeface builds the hierarchy from the name at opsz 144
+   to the smallest label at opsz 9. Labels are ink, not the accent, so navy
+   only ever means 'you can act on this'. Three levels: section heads a step
+   up in size and weight (at the text optical size), row keys, and quiet
+   kickers. */
 .overline,
 .deflist__key,
 .entry__meta,
@@ -514,7 +515,7 @@ p.overline,
   transform: scale(0.985);
 }
 
-/* Definition-list rows: a mono label in a fixed column, content beside it.
+/* Definition-list rows: a caption label in a fixed column, content beside it.
    Used for the About facts and the home highlights. */
 /* Rules mark groups, not rows, the way a journal sets a table: one rule
    opens a list and one closes it. Single-line rows separate by space alone;

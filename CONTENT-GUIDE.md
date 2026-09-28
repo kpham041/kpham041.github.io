@@ -104,7 +104,7 @@ Add an object to `projects`. Each needs both `en` and `vi`:
 }
 ```
 
-`meta` is the small mono label in the left column. `tags` are optional.
+`meta` is the small caption label in the left column. `tags` are optional.
 
 ### The essays panel on the desk
 

@@ -6,7 +6,7 @@ const desk = require('./desk.js');
 
 /* --------------------------------------------------------------- helpers */
 
-// A key/value row list: mono label in a fixed column, prose beside it.
+// A key/value row list: a caption label in a fixed column, prose beside it.
 function defList(rows) {
   return `<dl class="deflist">
 ${rows
