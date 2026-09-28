@@ -51,6 +51,12 @@ function keepInitials(authors) {
     .replace(/(\p{Lu}\.) (?=\p{Lu}\.)/gu, '$1\u00a0');
 }
 
+// An address may break after the @ and nowhere else.
+function emailBreakable(email) {
+  const at = String(email).lastIndexOf('@');
+  return at < 0 ? esc(email) : `${esc(email.slice(0, at + 1))}<wbr>${esc(email.slice(at + 1))}`;
+}
+
 function tagRow(tags) {
   if (!tags || !tags.length) return '';
   return `<ul class="tag-row" role="list">${tags
@@ -273,7 +279,7 @@ ${sectionHead(c.overline, c.title, 'contact-h', c.intro, t.nav.contact)}
 
         <p class="overline">${esc(c.emailLabel)}</p>
         <p>
-          <a class="contact-email link" href="mailto:${attr(profile.email)}">${esc(
+          <a class="contact-email link" href="mailto:${attr(profile.email)}">${emailBreakable(
       profile.email
     )}</a>
         </p>

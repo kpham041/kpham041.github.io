@@ -1051,10 +1051,13 @@ a {
 .contact-email {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: var(--step-3);
+  /* Sized so the whole address fits one line from 375px up; below that it
+     breaks after the @ (a <wbr> in the markup), never inside a word. */
+  font-size: clamp(1.3125rem, 0.85rem + 2.2vw, 2.125rem);
+  line-height: 1.2;
   letter-spacing: var(--track-3);
   color: var(--accent);
-  word-break: break-word;
+  overflow-wrap: normal;
 }
 
 /* Flex rather than grid: with a single link (which is the state until the
