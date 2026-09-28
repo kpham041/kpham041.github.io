@@ -370,7 +370,8 @@ a {
 .skip-link {
   position: absolute;
   top: 0;
-  left: var(--gutter);
+  /* On the content edge, where the brand starts, not the viewport edge. */
+  left: max(var(--gutter), calc((100% - var(--shell)) / 2 + var(--gutter)));
   z-index: 300;
   transform: translateY(-120%);
   background: var(--ink);
@@ -383,6 +384,11 @@ a {
 .skip-link:focus {
   transform: translateY(0);
   transition: transform var(--dur-in) var(--ease);
+}
+/* Appearing is its focus indicator; a ring around the filled tab as well
+   is two indicators for one state. */
+.skip-link:focus-visible {
+  outline: none;
 }
 
 /* ------------------------------------------------------------- primitives */
