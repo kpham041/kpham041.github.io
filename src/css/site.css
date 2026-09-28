@@ -1180,21 +1180,32 @@ a {
   font-size: 1.0625rem;
   color: var(--ink);
 }
+/* Inline links in a balanced block rather than a flex row, so when the five
+   links do not fit one line they break 3 + 2, never 4 + 1. */
 .footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  text-wrap: balance;
+  line-height: 2;
 }
 .footer__nav a {
+  display: inline-block;
+  margin-right: 0.95rem;
   color: var(--muted);
 }
-.footer__nav a:hover {
-  color: var(--accent);
+.footer__nav a:last-child {
+  margin-right: 0;
+}
+@media (hover: hover) {
+  .footer__nav a:hover {
+    color: var(--accent);
+  }
 }
 .footer__note {
   margin-top: var(--space-m);
   max-width: var(--measure);
   line-height: 1.6;
+}
+.footer__note + .footer__note {
+  margin-top: 0.6rem;
 }
 
 /* ------------------------------------------------------------- motion */

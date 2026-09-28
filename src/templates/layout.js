@@ -221,7 +221,7 @@ ${body}
         </nav>
       </div>
       <p class="footer__note">${esc(t.footerNote)}</p>
-      <p class="footer__note" style="margin-top:.6rem">${esc(t.footerColophon)}</p>
+      <p class="footer__note">${esc(t.footerColophon)}</p>
     </div>
   </footer>
 
