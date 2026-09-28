@@ -939,9 +939,6 @@ a:not(.btn):active {
 
 /* ------------------------------------------------------------------ main */
 
-.main {
-  min-height: 60vh;
-}
 
 .section {
   padding-block: var(--space-xl);
@@ -959,9 +956,13 @@ a:not(.btn):active {
 .main > .shell > :last-child {
   padding-bottom: 0;
 }
-/* A closing line after a list. */
+/* A closing line after a list. Its link is a few words; it moves to the
+   next line whole rather than leaving one word underlined behind. */
 .coda {
   margin-top: var(--space-l);
+}
+.coda .link {
+  white-space: nowrap;
 }
 /* A quiet closing note. */
 .aside {
@@ -1205,8 +1206,11 @@ a:not(.btn):active {
     grid-template-columns: 1fr;
   }
 }
-/* A link home moves to the next line whole rather than splitting. */
+/* Each language's way home sits on its own line under its sentence. */
 .notfound__pair .link {
+  display: block;
+  width: fit-content;
+  margin-top: 0.35rem;
   white-space: nowrap;
 }
 
