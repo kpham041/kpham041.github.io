@@ -198,6 +198,7 @@
   --shadow-m: 0 8px 32px rgba(23, 28, 38, 0.1);
   --scrim: rgb(23 28 38 / 0.42);
   --flag-edge: rgb(23 28 38 / 0.16);
+  --rule-raised: #e4dfd5;   /* hairlines on raised surfaces                  */
   --selection-bg: #2c4a73;
   --selection-fg: #fbfaf7;
 
@@ -227,6 +228,7 @@
   --shadow-m: 0 8px 32px rgb(6 5 3 / 0.55);
   --scrim: rgb(6 5 3 / 0.62);
   --flag-edge: rgb(0 0 0 / 0.3);
+  --rule-raised: #3a3631;
   --selection-bg: #a3bde0;
   --selection-fg: #161512;
   color-scheme: dark;
@@ -783,6 +785,8 @@ p.overline,
     z-index: 200;
     background: var(--paper-raised);
     border-left: 1px solid var(--rule);
+    /* Hairlines keep their contrast on the lighter surface in dark. */
+    --rule: var(--rule-raised);
     padding: 0 var(--gutter) var(--space-l);
     display: flex;
     flex-direction: column;
@@ -1236,7 +1240,8 @@ p.overline,
   }
   *,
   *::before,
-  *::after {
+  *::after,
+  ::backdrop {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

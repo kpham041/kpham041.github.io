@@ -303,7 +303,9 @@
   transition-timing-function: var(--ease);
 }
 .desk__dialog::backdrop {
-  background: var(--scrim);
+  /* ::backdrop inherits custom properties only in recent browsers; the
+     fallback keeps older ones dimmed. */
+  background: var(--scrim, rgb(23 28 38 / 0.42));
   opacity: 0;
   transition: opacity var(--dur-out) var(--ease-in), overlay var(--dur-out) allow-discrete,
     display var(--dur-out) allow-discrete;
