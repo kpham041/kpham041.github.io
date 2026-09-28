@@ -18,7 +18,8 @@
     // deliberately not consulted: dark is a choice the reader makes here, and
     // it is remembered until they change it back.
     var themeColor = document.querySelector('meta[name="theme-color"]');
-    var PAINT = { light: '#fbfaf7', dark: '#14171d' };
+    var colorScheme = document.querySelector('meta[name="color-scheme"]');
+    var PAINT = { light: '#fbfaf7', dark: '#161512' };
 
     var effective = function () {
       return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -30,6 +31,7 @@
       toggle.setAttribute('aria-label', toggle.dataset[next + 'Label'] || toggle.getAttribute('aria-label'));
       toggle.setAttribute('aria-pressed', effective() === 'dark' ? 'true' : 'false');
       if (themeColor) themeColor.setAttribute('content', PAINT[effective()]);
+      if (colorScheme) colorScheme.setAttribute('content', effective());
     };
 
     toggle.addEventListener('click', function () {

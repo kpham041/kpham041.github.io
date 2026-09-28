@@ -142,6 +142,12 @@ ${preloads}
       try {
         var s = localStorage.getItem('theme');
         if (s === 'light' || s === 'dark') d.setAttribute('data-theme', s);
+        // Paint the browser chrome to match before first paint, not when the
+        // deferred script gets round to it.
+        if (s === 'dark') {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#161512');
+          document.querySelector('meta[name="color-scheme"]').setAttribute('content', 'dark');
+        }
       } catch (e) {}
     })();
   </script>

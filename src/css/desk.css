@@ -19,6 +19,8 @@
   padding-block: var(--space-xl) 0;
 }
 :root[data-theme='dark'] .desk {
+  /* Line art at full ink glares at night and outweighs the text. */
+  --desk-line: var(--ink-2);
   --desk-gold: #d6a462;
   --desk-red: #d98d8d;
 }
@@ -286,7 +288,7 @@
   --pad: clamp(1.75rem, 4vw, 2.75rem);
   border: 1px solid var(--rule);
   border-radius: var(--radius-l);
-  background: var(--paper);
+  background: var(--paper-raised);
   color: var(--ink);
   padding: 0;
   max-width: 680px;
@@ -306,7 +308,7 @@
   transition-timing-function: var(--ease);
 }
 .desk__dialog::backdrop {
-  background: rgba(12, 14, 18, 0.5);
+  background: var(--scrim);
   opacity: 0;
   transition: opacity var(--dur-out) var(--ease-in), overlay var(--dur-out) allow-discrete,
     display var(--dur-out) allow-discrete;

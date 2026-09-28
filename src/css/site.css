@@ -213,7 +213,7 @@
   /* Colour, light. Every text pairing below meets WCAG AA on its background. */
   --paper: #fbfaf7;         /* page                                          */
   --paper-warm: #f4f1e9;    /* recessed panels, the desk scene ground        */
-  --paper-raised: #ffffff;  /* cards that should sit above the page          */
+  --paper-raised: #fdfcfa;  /* surfaces above the page: dialog, drawer       */
   --ink: #171c26;           /* primary text, 15.4:1 on --paper               */
   --ink-2: #3b424f;         /* secondary text, 9.3:1                         */
   --muted: #666d7a;         /* meta and captions, 5.0:1                      */
@@ -224,6 +224,8 @@
   --rule-strong: #cdc6b8;
   --shadow-s: 0 1px 2px rgba(23, 28, 38, 0.06), 0 2px 8px rgba(23, 28, 38, 0.04);
   --shadow-m: 0 8px 32px rgba(23, 28, 38, 0.1);
+  --scrim: rgb(23 28 38 / 0.42);
+  --flag-edge: rgb(23 28 38 / 0.16);
   --selection-bg: #2c4a73;
   --selection-fg: #fbfaf7;
 
@@ -236,21 +238,27 @@
    Dark is opt-in: it applies only once the toggle has set data-theme, which
    site.js remembers in localStorage. */
 :root[data-theme='dark'] {
-  --paper: #14171d;
-  --paper-warm: #1b1f27;
-  --paper-raised: #1e222b;
-  --ink: #eceae5;
-  --ink-2: #c2c7d0;
-  --muted: #949aa6;
-  --accent: #9dbbe0;
-  --accent-strong: #c3d6ee;
-  --accent-wash: #1d2530;
-  --rule: #2b313b;
-  --rule-strong: #3d4552;
-  --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-m: 0 8px 32px rgba(0, 0, 0, 0.45);
-  --selection-bg: #9dbbe0;
-  --selection-fg: #14171d;
+  /* The same warm paper at night, not the light palette inverted: every
+     neutral keeps the light theme's warm hue (~40deg) instead of turning
+     slate blue, so headings and body text share one temperature. Surfaces
+     above the page are lighter, as they would be under a lamp. */
+  --paper: #161512;
+  --paper-warm: #1d1b18;
+  --paper-raised: #24221e;
+  --ink: #ece8e1;           /* 14.9:1 */
+  --ink-2: #c9c4ba;         /* 10.5:1 */
+  --muted: #9d978c;         /*  6.3:1 */
+  --accent: #a3bde0;        /*  9.5:1 */
+  --accent-strong: #c6d6ea;
+  --accent-wash: #1f2328;
+  --rule: #2e2b26;
+  --rule-strong: #433f38;
+  --shadow-s: 0 1px 2px rgb(6 5 3 / 0.5), 0 2px 8px rgb(6 5 3 / 0.35);
+  --shadow-m: 0 8px 32px rgb(6 5 3 / 0.55);
+  --scrim: rgb(6 5 3 / 0.62);
+  --flag-edge: rgb(0 0 0 / 0.3);
+  --selection-bg: #a3bde0;
+  --selection-fg: #161512;
   color-scheme: dark;
 }
 
@@ -535,7 +543,10 @@ a {
   margin-right: 0.42em;
   border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(23, 28, 38, 0.16);
+  /* A hairline drawn inside the flag's edge, so white stripes hold their
+     shape on paper without a halo around the flag in dark. */
+  outline: 1px solid var(--flag-edge);
+  outline-offset: -1px;
 }
 .flagged {
   white-space: nowrap;
@@ -544,9 +555,6 @@ a {
   width: 100%;
   height: 100%;
   display: block;
-}
-:root[data-theme='dark'] .flag {
-  box-shadow: 0 0 0 1px rgba(236, 234, 229, 0.28);
 }
 /* In the mono, uppercase key columns the flag would otherwise tower over the
    caps height. */
@@ -765,7 +773,7 @@ a {
     inset: 0 0 0 auto;
     width: min(86vw, 340px);
     z-index: 200;
-    background: var(--paper);
+    background: var(--paper-raised);
     border-left: 1px solid var(--rule);
     padding: 0 var(--gutter) var(--space-l);
     display: flex;
@@ -782,7 +790,7 @@ a {
     position: fixed;
     inset: 0;
     z-index: 190;
-    background: rgba(10, 12, 16, 0.4);
+    background: var(--scrim);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--dur-out) var(--ease-in);
