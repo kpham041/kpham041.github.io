@@ -277,7 +277,7 @@ function contact(ctx) {
       <section class="section" aria-labelledby="contact-h">
 ${sectionHead(c.overline, c.title, 'contact-h', c.intro, t.nav.contact)}
 
-        <p class="overline">${esc(c.emailLabel)}</p>
+        <h2 class="overline">${esc(c.emailLabel)}</h2>
         <p>
           <a class="contact-email link" href="mailto:${attr(profile.email)}">${emailBreakable(
       profile.email

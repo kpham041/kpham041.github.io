@@ -42,11 +42,10 @@ function card(lang) {
   @font-face{font-family:B;font-weight:400;src:url(data:font/woff2;base64,${b64('bevietnampro-400-latin.woff2')}) format('woff2');unicode-range:U+0000-00FF;}
   @font-face{font-family:B;font-weight:400;src:url(data:font/woff2;base64,${b64('bevietnampro-400-vietnamese.woff2')}) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
   @font-face{font-family:B;font-weight:400;src:url(data:font/woff2;base64,${b64('bevietnampro-400-latin-ext.woff2')}) format('woff2');unicode-range:U+0100-02BA,U+1E00-1E9F,U+2C60-2C7F,U+A720-A7FF;}
-  @font-face{font-family:M;src:url(data:font/woff2;base64,${b64('ibmplexmono-500-latin.woff2')}) format('woff2');unicode-range:U+0000-00FF;}
   *{margin:0;padding:0;box-sizing:border-box}
   body{width:1200px;height:630px;background:#fbfaf7;color:#171c26;font-family:B,sans-serif;
        display:grid;grid-template-columns:1fr 400px;align-items:center;gap:64px;padding:72px 80px;overflow:hidden}
-  .kicker{font-family:M,monospace;font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:#2c4a73;margin-bottom:26px}
+  .kicker{font-family:F,serif;font-variation-settings:'opsz' 9;font-size:22px;font-weight:500;color:#3b424f;margin-bottom:24px}
   h1{font-family:F,serif;font-weight:600;font-size:82px;line-height:1.0;letter-spacing:-.028em}
   .latin{font-family:F,serif;font-weight:500;font-size:36px;color:#666d7a;letter-spacing:-.01em;margin-top:12px}
   .role{font-size:26px;line-height:1.45;color:#3b424f;margin-top:34px;max-width:22ch}
