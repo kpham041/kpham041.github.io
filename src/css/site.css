@@ -580,27 +580,23 @@ a {
 
 /* ---------------------------------------------------------------- header */
 
+/* Solid paper: headings scrolling under a translucent blur read as a smear. */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  backdrop-filter: blur(14px) saturate(1.4);
+  background: var(--paper);
   border-bottom: 1px solid var(--rule);
 }
-@supports not (background: color-mix(in srgb, red 50%, blue)) {
-  .header {
-    background: var(--paper);
-  }
-}
 
+/* Three columns, the outer two equal, so the nav sits on the page's true
+   centre however wide the brand and the tools are. */
 .header__inner {
   height: var(--header-h);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-m);
+  column-gap: var(--space-m);
 }
 
 .brand {
@@ -610,6 +606,7 @@ a {
   letter-spacing: var(--track-1);
   color: var(--ink);
   white-space: nowrap;
+  justify-self: start;
 }
 .brand:hover {
   color: var(--accent);
@@ -647,11 +644,19 @@ a {
   color: var(--accent);
 }
 
+.nav-desktop {
+  grid-column: 2;
+}
+
+/* The last icon's ink, not its 36px hit area, ends on the content edge:
+   the button's own inset (36 - 19) / 2 is given back to the gutter. */
 .header__tools {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding-left: 0.25rem;
+  margin-right: -8.5px;
 }
 
 .langswitch {
@@ -666,7 +671,8 @@ a {
 }
 .langswitch a {
   color: var(--muted);
-  padding: 0.15rem 0.2rem;
+  /* A 44px-tall target for the control the Vietnamese audience needs most. */
+  padding: 0.7rem 0.3rem;
   font-weight: 400;
 }
 .langswitch a:hover {
@@ -717,8 +723,27 @@ a {
   display: none;
 }
 
+/* Below ~400px the brand and tools only just fit: tighten, never overflow. */
+@media (max-width: 400px) {
+  .header__inner {
+    column-gap: var(--space-s);
+  }
+  .brand {
+    font-size: 1.125rem;
+  }
+  .header__tools {
+    gap: 0.25rem;
+  }
+}
+
 /* Mobile drawer */
 @media (max-width: 800px) {
+  .header__inner {
+    grid-template-columns: auto 1fr;
+  }
+  .header__tools {
+    grid-column: 2;
+  }
   .nav-desktop {
     display: none;
   }
