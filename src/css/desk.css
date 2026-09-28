@@ -67,8 +67,15 @@
 .desk__svg .hotspot:focus-visible {
   color: var(--desk-gold);
 }
+/* The dashed ring is also the hit area: it does not move, so an object
+   lifting on hover never slides out from under the pointer, and the whole
+   object responds rather than only its painted strokes. */
 .desk__svg .hs-ring {
   opacity: 0;
+  pointer-events: all;
+}
+.desk__svg .lift {
+  pointer-events: none;
 }
 .desk__svg .hotspot:focus-visible .hs-ring,
 .desk__svg .hotspot:hover .hs-ring {
@@ -119,7 +126,8 @@
 
 .desk__tiles {
   display: none;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  /* Nine objects, three by three: no orphan tile at any width. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
 }
 .desk__tile {
@@ -188,6 +196,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
+}
+/* Where the tiles show, they are already a labelled list: the text index
+   would repeat the same nine names directly beneath them. */
+@media (max-width: 900px) {
+  .desk__index {
+    display: none;
+  }
 }
 
 /* ----------------------------------------------------------------- panels */
