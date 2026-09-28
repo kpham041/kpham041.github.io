@@ -497,7 +497,8 @@ a {
   gap: 0.35rem clamp(1.5rem, 4vw, 3.5rem);
   padding: var(--space-m) 0;
   border-bottom: 1px solid var(--rule);
-  align-items: start;
+  /* Key and value share the first baseline, whatever their fonts. */
+  align-items: baseline;
 }
 .deflist__row:first-child {
   border-top: 1px solid var(--rule);
@@ -510,7 +511,6 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  padding-top: 0.4em;
   margin: 0;
 }
 .deflist__val {
@@ -518,13 +518,10 @@ a {
   max-width: var(--measure);
   color: var(--ink);
 }
-@media (max-width: 620px) {
+@media (max-width: 700px) {
   .deflist__row {
     grid-template-columns: 1fr;
     gap: 0.4rem;
-  }
-  .deflist__key {
-    padding-top: 0;
   }
 }
 
@@ -948,6 +945,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
   gap: 0.5rem clamp(1.5rem, 4vw, 3.5rem);
+  align-items: baseline;
 }
 .entry:last-child {
   border-bottom: 1px solid var(--rule);
@@ -959,7 +957,6 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  padding-top: 0.5em;
 }
 .entry__body {
   min-width: 0;
@@ -977,9 +974,6 @@ a {
 @media (max-width: 700px) {
   .entry {
     grid-template-columns: 1fr;
-  }
-  .entry__meta {
-    padding-top: 0;
   }
 }
 
