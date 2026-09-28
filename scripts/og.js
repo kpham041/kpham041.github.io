@@ -27,13 +27,17 @@ const CHROME =
 
 const FONT_DIR = path.join(ROOT, 'static', 'assets', 'fonts');
 const b64 = (f) => fs.readFileSync(path.join(FONT_DIR, f)).toString('base64');
+const { esc } = require('../src/templates/esc.js');
 const portrait = fs.readFileSync(path.join(ROOT, 'static', 'img', 'portrait-560.jpg')).toString('base64');
 
 function card(lang) {
   const t = content.i18n[lang];
   const site = content.site;
-  const role = t.home.role;
-  const kicker = lang === 'vi' ? 'Ottawa, Canada' : 'Ottawa, Canada';
+  // Same typesetting as the site: real apostrophes (esc), and the given name
+  // held together so the name can only break after the family name.
+  const role = esc(t.home.role);
+  const nameVi = esc(site.nameVi).replace(/ (?=\S+$)/, '\u00a0');
+  const kicker = 'Ottawa, Canada';
 
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><style>
   @font-face{font-family:F;src:url(data:font/woff2;base64,${b64('fraunces-latin.woff2')}) format('woff2');unicode-range:U+0000-00FF;}
@@ -45,21 +49,21 @@ function card(lang) {
   *{margin:0;padding:0;box-sizing:border-box}
   body{width:1200px;height:630px;background:#fbfaf7;color:#171c26;font-family:B,sans-serif;
        display:grid;grid-template-columns:1fr 400px;align-items:center;gap:64px;padding:72px 80px;overflow:hidden}
-  .kicker{font-family:F,serif;font-variation-settings:'opsz' 9;font-size:22px;font-weight:500;color:#3b424f;margin-bottom:24px}
-  h1{font-family:F,serif;font-weight:600;font-size:82px;line-height:1.0;letter-spacing:-.028em}
-  .latin{font-family:F,serif;font-weight:500;font-size:36px;color:#666d7a;letter-spacing:-.01em;margin-top:12px}
-  .role{font-size:26px;line-height:1.45;color:#3b424f;margin-top:34px;max-width:22ch}
-  .rule{width:96px;height:5px;background:#8f6129;margin-top:40px;border-radius:3px}
-  figure{width:400px;height:400px;border-radius:34px;overflow:hidden;border:1px solid #e4dfd5;
-         box-shadow:0 2px 4px rgba(23,28,38,.06),0 18px 48px rgba(23,28,38,.10)}
+  /* The card is the home hero in miniature: the name in Fraunces' 144 display
+     cut, the one place it is used, over the Latin name; the kicker in the 9pt
+     caption cut; the portrait as a photograph, not a card. No ornament. */
+  .kicker{font-family:F,serif;font-variation-settings:'opsz' 9;font-size:22px;font-weight:500;color:#666d7a;margin-bottom:22px}
+  h1{font-family:F,serif;font-weight:600;font-variation-settings:'opsz' 144;font-size:74px;line-height:1.02;letter-spacing:-.01em;margin-left:-.03em}
+  .latin{font-family:F,serif;font-weight:500;font-size:34px;color:#666d7a;letter-spacing:-.012em;margin-top:10px}
+  .role{font-size:26px;line-height:1.45;color:#3b424f;margin-top:34px;max-width:24ch;text-wrap:balance}
+  figure{width:400px;height:400px;border-radius:13px;overflow:hidden}
   img{width:100%;height:100%;object-fit:cover;display:block}
   </style></head><body>
   <div>
     <div class="kicker">${kicker}</div>
-    <h1>${site.nameVi}</h1>
+    <h1>${nameVi}</h1>
     <div class="latin">${site.name}</div>
     <div class="role">${role}</div>
-    <div class="rule"></div>
   </div>
   <figure><img src="data:image/jpeg;base64,${portrait}" alt=""></figure>
   </body></html>`;
