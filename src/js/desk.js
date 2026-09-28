@@ -73,8 +73,9 @@
   }
 
   // Every exit (close button, backdrop click, Escape) ends up here.
+  // The panel stays in place while the dialog fades out; fill() replaces it
+  // on the next open.
   dialog.addEventListener('close', function () {
-    body.textContent = '';
     pendingFocus = opener;
     opener = null;
     if (pushed) {

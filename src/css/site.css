@@ -272,6 +272,9 @@
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  /* Keep the scrollbar's space when a modal locks scrolling, so the page does
+     not shift sideways on systems with classic scrollbars. */
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 1rem);
 }

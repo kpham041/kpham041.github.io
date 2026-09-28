@@ -118,8 +118,8 @@ ${panels}
   </div>
 
   <dialog class="desk__dialog" data-desk-dialog aria-label="${attr(d.dialogLabel)}">
-    <button class="desk__close" type="button" data-desk-close aria-label="${attr(d.closeLabel)}">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    <button class="iconbtn desk__close" type="button" data-desk-close aria-label="${attr(d.closeLabel)}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <div class="desk__dialogbody" data-desk-dialogbody></div>
   </dialog>
