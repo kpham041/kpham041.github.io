@@ -206,7 +206,7 @@
   --gutter: clamp(1.25rem, 4vw, 2rem);
 
   /* Two radii: small for controls and cards, large for the two big
-     surfaces (the portrait and the dialog). Flags keep 2px, tags are pills. */
+     surfaces (the portrait and the dialog). Flags keep 2px. */
   --radius: 6px;
   --radius-l: 12px;
 
@@ -627,22 +627,26 @@ p.overline,
   display: block;
 }
 
+/* Methods and tools under a project, set like the keywords under a paper's
+   abstract: a quiet line, separated by middle dots. Filled pills looked like
+   buttons or filters, and did nothing when tapped. */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  row-gap: 0.15rem;
   margin: var(--space-m) 0 0;
   padding: 0;
   list-style: none;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 .tag {
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  background: var(--paper-warm);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 0.3rem 0.7rem;
   white-space: nowrap;
+}
+/* The dot trails its item, so a wrapped line still starts on the edge. */
+.tag:not(:last-child)::after {
+  content: '·';
+  padding-inline: 0.55em;
 }
 
 /* ---------------------------------------------------------------- header */
