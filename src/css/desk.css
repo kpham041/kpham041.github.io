@@ -31,6 +31,7 @@
 }
 .desk__head h2 {
   font-size: var(--step-4);
+  letter-spacing: var(--track-4);
   max-width: 20ch;
 }
 
@@ -222,7 +223,6 @@
 .desk__title {
   font-size: var(--step-3);
   margin: 0.5rem 0 0;
-  letter-spacing: -0.02em;
 }
 .desk__intro {
   margin: 0.85rem 0 0;

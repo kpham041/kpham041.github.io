@@ -174,6 +174,13 @@
   --step-4: clamp(1.875rem, 1.5rem + 1.9vw, 2.75rem);       /* 30–44px, h1      */
   --step-5: clamp(2.375rem, 1.7rem + 3.4vw, 3.875rem);      /* 38–62px, display */
 
+  /* Tracking tightens as size grows, one value per step. */
+  --track-1: -0.008em;
+  --track-2: -0.012em;
+  --track-3: -0.016em;
+  --track-4: -0.02em;
+  --track-5: -0.025em;
+
   /* Spacing: a 4px-rooted rhythm, fluid where it matters */
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -290,7 +297,7 @@ h4 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.018em;
+  letter-spacing: var(--track-3);
   margin: 0;
   text-wrap: balance;
 }
@@ -600,7 +607,7 @@ a {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--track-1);
   color: var(--ink);
   white-space: nowrap;
 }
@@ -762,6 +769,7 @@ a {
   .drawer__nav a {
     font-family: var(--font-display);
     font-size: 1.375rem;
+    letter-spacing: var(--track-2);
     font-weight: 500;
     color: var(--ink);
     padding: 0.85rem 0;
@@ -813,6 +821,7 @@ a {
 .section__head h1,
 .section__head h2 {
   font-size: var(--step-4);
+  letter-spacing: var(--track-4);
   max-width: 22ch;
 }
 /* A page intro is a paragraph, not a hero line: give it the full measure. */
@@ -842,9 +851,15 @@ a {
 
 .hero__name {
   font-size: var(--step-5);
-  letter-spacing: -0.025em;
+  letter-spacing: var(--track-5);
   line-height: 1.02;
   margin: 0;
+}
+/* Optical margin: the side bearing of the P and M sits the ink ~2px inside
+   the column at display size. Pull both lines back onto the edge. */
+.hero__name > span {
+  display: block;
+  margin-left: -0.03em;
 }
 .hero__latin {
   display: block;
@@ -852,7 +867,7 @@ a {
   font-weight: 500;
   font-size: var(--step-2);
   color: var(--muted);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--track-2);
   margin-top: 0.35rem;
 }
 .hero__role {
@@ -926,6 +941,7 @@ a {
 }
 .entry__title {
   font-size: var(--step-2);
+  letter-spacing: var(--track-2);
   margin: 0 0 var(--space-s);
   max-width: 34ch;
   line-height: 1.25;
@@ -958,7 +974,7 @@ a {
   color: var(--ink);
   margin: 0;
   max-width: 56ch;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--track-1);
 }
 .pub__authors {
   margin: 0.5rem 0 0;
@@ -992,7 +1008,7 @@ a {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--step-3);
-  letter-spacing: -0.015em;
+  letter-spacing: var(--track-3);
   color: var(--accent);
   word-break: break-word;
 }
