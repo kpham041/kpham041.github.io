@@ -767,15 +767,16 @@ a {
     z-index: 200;
     background: var(--paper);
     border-left: 1px solid var(--rule);
-    padding: var(--space-m) var(--gutter) var(--space-l);
+    padding: 0 var(--gutter) var(--space-l);
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
-    transition: transform 0.32s var(--ease);
+    transition: transform var(--dur-out) var(--ease-in);
     overflow-y: auto;
   }
   .drawer[data-open] {
     transform: translateX(0);
+    transition: transform var(--dur-in) var(--ease);
   }
   .drawer__scrim {
     position: fixed;
@@ -784,18 +785,24 @@ a {
     background: rgba(10, 12, 16, 0.4);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--dur-out) var(--ease-in);
   }
   .drawer__scrim[data-open] {
     opacity: 1;
     pointer-events: auto;
+    transition: opacity var(--dur-in) var(--ease);
   }
+  /* The head is the header's height and the close button takes the menu
+     button's exact place, so the X appears where the finger already is. */
   .drawer__head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: calc(var(--header-h) - 1.5rem);
-    margin-bottom: var(--space-m);
+    justify-content: flex-end;
+    height: var(--header-h);
+    margin-bottom: var(--space-s);
+  }
+  .drawer__head .iconbtn {
+    margin-right: -8.5px;
   }
   .drawer__nav {
     display: flex;
@@ -819,6 +826,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  /* The switch's tap padding would set EN 5px inside the nav's text edge. */
+  .drawer__foot .langswitch {
+    margin-left: -0.3rem;
   }
 }
 @media (min-width: 801px) {

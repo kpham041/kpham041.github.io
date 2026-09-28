@@ -53,10 +53,13 @@
 
   if (drawer && openBtn) {
     var lastFocused = null;
+    var hideTimer = null;
     var FOCUSABLE =
       'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
     var openDrawer = function () {
+      // A close still animating out must not hide the drawer we are opening.
+      clearTimeout(hideTimer);
       lastFocused = document.activeElement;
       drawer.hidden = false;
       if (scrim) scrim.hidden = false;
@@ -83,8 +86,10 @@
         drawer.hidden = true;
         if (scrim) scrim.hidden = true;
       };
-      if (reduced.matches) finish();
-      else setTimeout(finish, 320);
+      // Hide once the exit transition has run, however long the CSS says it is.
+      var exit = parseFloat(getComputedStyle(drawer).transitionDuration) * 1000 || 0;
+      if (reduced.matches || !exit) finish();
+      else hideTimer = setTimeout(finish, exit + 30);
 
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     };

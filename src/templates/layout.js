@@ -182,7 +182,6 @@ ${ctx.head ? '  ' + ctx.head : ''}
     t.primaryNav
   )}" hidden>
     <div class="drawer__head">
-      <span class="footer__name">${esc(site.name)}</span>
       <button class="iconbtn" type="button" data-drawer-close aria-label="${attr(t.closeMenu)}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
