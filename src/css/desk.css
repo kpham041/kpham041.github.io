@@ -60,7 +60,6 @@
   cursor: pointer;
   color: var(--desk-line);
   outline: none;
-  transition: color 0.3s ease;
 }
 .desk__svg .hotspot:hover,
 .desk__svg .hotspot:focus-visible {
@@ -68,19 +67,21 @@
 }
 .desk__svg .hs-ring {
   opacity: 0;
-  transition: opacity 0.2s ease;
 }
 .desk__svg .hotspot:focus-visible .hs-ring,
 .desk__svg .hotspot:hover .hs-ring {
   opacity: 1;
 }
+/* The one piece of hover motion on the site: an object lifts off the desk
+   to say it opens. Up with an ease-out, back down faster. */
 .desk__svg .lift {
-  transition: transform 0.35s var(--ease);
+  transition: transform var(--dur-out) var(--ease-in);
 }
 @media (prefers-reduced-motion: no-preference) {
   .desk__svg .hotspot:hover .lift,
   .desk__svg .hotspot:focus-visible .lift {
     transform: translateY(-9px);
+    transition: transform var(--dur-in) var(--ease);
   }
   .desk__svg .cloud {
     animation: desk-drift 46s linear infinite;
@@ -133,7 +134,6 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
-  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
 }
 .desk__tile svg {
   width: 72px;
@@ -141,11 +141,15 @@
   overflow: visible;
   color: var(--ink);
 }
-.desk__tile:hover,
 .desk__tile:focus-visible {
   border-color: var(--accent);
   color: var(--accent);
-  transform: translateY(-2px);
+}
+@media (hover: hover) {
+  .desk__tile:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 
 @media (max-width: 900px) {
@@ -342,11 +346,12 @@
   background: var(--paper);
   color: var(--ink);
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
 }
-.desk__close:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+@media (hover: hover) {
+  .desk__close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 .desk__close svg {
   width: 18px;

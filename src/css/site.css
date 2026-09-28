@@ -203,7 +203,12 @@
   --radius: 6px;
   --radius-l: 12px;
 
+  /* Motion. Things arrive with an ease-out and leave faster with an ease-in.
+     Hover, focus and press are instant: colour never fades. */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
+  --dur-in: 200ms;
+  --dur-out: 150ms;
 
   /* Colour, light. Every text pairing below meets WCAG AA on its background. */
   --paper: #fbfaf7;         /* page                                          */
@@ -266,6 +271,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 14%, transparent);
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 1rem);
 }
@@ -361,10 +367,11 @@ a {
   padding: 0.75rem 1.25rem;
   border-radius: 0 0 var(--radius) var(--radius);
   font-weight: 500;
-  transition: transform 0.2s var(--ease);
+  transition: transform var(--dur-out) var(--ease-in);
 }
 .skip-link:focus {
   transform: translateY(0);
+  transition: transform var(--dur-in) var(--ease);
 }
 
 /* ------------------------------------------------------------- primitives */
@@ -449,25 +456,25 @@ a {
   border-radius: var(--radius);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.22s var(--ease), background 0.22s ease, border-color 0.22s ease,
-    color 0.22s ease;
 }
 .btn--primary {
   background: var(--accent);
   color: var(--paper);
-}
-.btn--primary:hover {
-  background: var(--accent-strong);
-  transform: translateY(-1px);
 }
 .btn--ghost {
   background: transparent;
   color: var(--accent);
   border-color: var(--rule-strong);
 }
-.btn--ghost:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
+/* Hover styles only where there is a real hover, so a tap on a phone never
+   leaves a control stuck in its hover state. */
+@media (hover: hover) {
+  .btn--primary:hover {
+    background: var(--accent-strong);
+  }
+  .btn--ghost:hover {
+    border-color: var(--accent);
+  }
 }
 .btn:active {
   transform: scale(0.985);
@@ -623,13 +630,14 @@ a {
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.25s var(--ease);
+  transition: transform var(--dur-out) var(--ease-in);
 }
 /* Hover draws a quiet rule; only the current page gets the accent, so
    hovering never shows two 'current' items. */
 .nav__link:hover::after {
   transform: scaleX(1);
   background: var(--rule-strong);
+  transition: transform var(--dur-in) var(--ease);
 }
 .nav__link[aria-current='page']::after {
   transform: scaleX(1);
@@ -689,12 +697,16 @@ a {
   background: none;
   color: var(--ink);
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.iconbtn:hover {
+@media (hover: hover) {
+  .iconbtn:hover {
+    background: var(--paper-warm);
+    border-color: var(--rule);
+    color: var(--accent);
+  }
+}
+.iconbtn:active {
   background: var(--paper-warm);
-  border-color: var(--rule);
-  color: var(--accent);
 }
 .iconbtn svg {
   width: 19px;
@@ -1081,12 +1093,12 @@ a {
   border-radius: var(--radius);
   background: var(--paper);
   color: var(--ink);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease);
 }
-.linkgrid a:hover {
-  background: var(--paper-warm);
-  border-color: var(--rule-strong);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .linkgrid a:hover {
+    background: var(--paper-warm);
+    border-color: var(--rule-strong);
+  }
 }
 .linkgrid .k {
   font-family: var(--font-mono);
