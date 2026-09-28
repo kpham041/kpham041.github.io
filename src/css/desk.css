@@ -126,8 +126,10 @@
 
 .desk__tiles {
   display: none;
-  /* Nine objects, three by three: no orphan tile at any width. */
+  /* Nine objects, three by three: no orphan tile at any width, and every
+     row as tall as the tallest, so labels line up across the grid. */
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 0.75rem;
 }
 .desk__tile {
@@ -353,8 +355,8 @@ html:has(.desk__dialog[open]) {
    never under a bare glyph. */
 .desk__close {
   position: absolute;
-  top: calc(var(--pad) - 9px);
-  right: calc(var(--pad) - 9px);
+  top: calc(var(--pad) - var(--ib-inset) + 1.5px);
+  right: calc(var(--pad) - var(--ib-inset) - 0.5px);
   z-index: 1;
   background: var(--paper-raised);
   border-color: var(--rule);

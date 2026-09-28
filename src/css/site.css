@@ -236,6 +236,11 @@
   --selection-fg: #fbfaf7;
 
   --header-h: 64px;
+  /* Icon buttons: a 19px glyph centred in the button. The inset is how far
+     the glyph's edge sits inside the button's, so a button can overhang the
+     content edge by exactly that much and the glyph still lands on it. */
+  --ib: 36px;
+  --ib-inset: calc((var(--ib) - 19px) / 2);
   color-scheme: light;
 }
 
@@ -284,7 +289,9 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  /* The browser's tap flash is a hard square that ignores radii and lingers
+     through transitions; presses are shown by the elements themselves. */
+  -webkit-tap-highlight-color: transparent;
   /* Keep the scrollbar's space when a modal locks scrolling, so the page does
      not shift sideways on systems with classic scrollbars. */
   scrollbar-gutter: stable;
@@ -723,7 +730,7 @@ p.overline,
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-right: -8.5px;
+  margin-right: calc(-1 * var(--ib-inset));
 }
 
 .langswitch {
@@ -753,8 +760,8 @@ p.overline,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--ib);
+  height: var(--ib);
   border: 1px solid transparent;
   border-radius: var(--radius);
   background: none;
@@ -812,8 +819,27 @@ p.overline,
     font-size: 1.125rem;
   }
   .header__tools {
+    gap: 0.375rem;
+  }
+}
+@media (max-width: 360px) {
+  .header__inner {
+    column-gap: 0.5rem;
+  }
+  .header__tools {
     gap: 0.25rem;
   }
+}
+/* A thumb needs a 44px target: on touch screens the icon buttons grow while
+   their glyphs stay put on the content edge. */
+@media (pointer: coarse) {
+  :root {
+    --ib: 44px;
+  }
+}
+/* Pressing a link dims it for as long as the finger is down. */
+a:not(.btn):active {
+  opacity: 0.7;
 }
 
 /* Mobile drawer */
@@ -874,7 +900,7 @@ p.overline,
     margin-bottom: var(--space-s);
   }
   .drawer__head .iconbtn {
-    margin-right: -8.5px;
+    margin-right: calc(-1 * var(--ib-inset));
   }
   .drawer__nav {
     display: flex;
@@ -1140,7 +1166,7 @@ p.overline,
   font-style: italic;
 }
 .pub__links {
-  margin: 0.7rem 0 0;
+  margin: 0.25rem 0 0;
   padding: 0;
   list-style: none;
   display: flex;
@@ -1149,6 +1175,11 @@ p.overline,
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
+}
+/* The DOI is the only way into each paper: a target tall enough to hit. */
+.pub__links a {
+  display: inline-block;
+  padding-block: 0.5rem;
 }
 
 /* ------------------------------------------------------------------ 404 */
