@@ -32,6 +32,20 @@ function sectionHead(overline, title, id, lead) {
       </div>`;
 }
 
+// Line-breaking at render time; the copy in site.json is never changed.
+// "Phạm Nguyên Khôi" may break after the family name, never inside the given name.
+function keepGivenName(name) {
+  return String(name).replace(/ (?=\S+$)/, '\u00a0');
+}
+
+// "Liu, B. C." stays one unit: no break between a surname and its initials,
+// or between initials.
+function keepInitials(authors) {
+  return String(authors)
+    .replace(/(\p{L}), (?=\p{Lu}\.)/gu, '$1,\u00a0')
+    .replace(/(\p{Lu}\.) (?=\p{Lu}\.)/gu, '$1\u00a0');
+}
+
 function tagRow(tags) {
   if (!tags || !tags.length) return '';
   return `<ul class="tag-row" role="list">${tags
@@ -55,7 +69,7 @@ function home(ctx) {
       <section class="hero" aria-labelledby="hero-name">
         <div class="hero__text">
           <h1 class="hero__name" id="hero-name">
-            <span lang="vi">${esc(site.nameVi)}</span>
+            <span lang="vi">${esc(keepGivenName(site.nameVi))}</span>
             <span class="hero__latin">${esc(site.name)}</span>
           </h1>
           <p class="hero__role">${md(c.role)}</p>
@@ -193,7 +207,7 @@ function publications(ctx) {
       }
       return `        <li class="pub">
           <h2 class="pub__title">${esc(p.title)}</h2>
-          <p class="pub__authors">${md(p.authors).replace(
+          <p class="pub__authors">${md(keepInitials(p.authors)).replace(
             /<strong>/g,
             '<strong class="self">'
           )} <span>(${esc(p.year)})</span>. <span class="pub__venue">${esc(p.venue)}</span>.</p>

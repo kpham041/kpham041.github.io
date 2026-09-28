@@ -33,6 +33,9 @@ const FR = `<rect width="10" height="20" fill="#002654"/>
 const FLAGS = { vi: VN, en: UK, fr: FR };
 
 const TOKEN = /:flag-(vi|en|fr):\s*/g;
+// The token plus the language name after it (one or two words), so a line can
+// never break between a flag and its name, or inside "Tiếng Việt".
+const TOKEN_NAME = /:flag-(vi|en|fr):\s*(\p{L}+(?: \p{L}+)?)?/gu;
 
 function flag(code) {
   return (
@@ -44,7 +47,10 @@ function flag(code) {
 
 /** Replaces every :flag-xx: token in an already-escaped string. */
 function flags(html) {
-  return String(html == null ? '' : html).replace(TOKEN, (m, code) => flag(code));
+  return String(html == null ? '' : html).replace(
+    TOKEN_NAME,
+    (m, code, name) => `<span class="flagged">${flag(code)}${name || ''}</span>`
+  );
 }
 
 /** Strips the tokens instead, for places that take plain text (alt, aria-label). */

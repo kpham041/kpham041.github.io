@@ -13,10 +13,15 @@
 const { flags } = require('./flags.js');
 
 function esc(s) {
-  return String(s == null ? '' : s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  return (
+    String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      // A straight apostrophe between letters is always a typewriter stand-in
+      // (CHEO's, can't, O'Donnell): set the real one. The copy stays as typed.
+      .replace(/(\p{L})'(?=\p{L})/gu, '$1\u2019')
+  );
 }
 
 function attr(s) {
