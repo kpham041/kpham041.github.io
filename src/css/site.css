@@ -498,6 +498,14 @@ p.overline,
 
 /* Definition-list rows: a mono label in a fixed column, content beside it.
    Used for the About facts and the home highlights. */
+/* Rules mark groups, not rows, the way a journal sets a table: one rule
+   opens a list and one closes it. Single-line rows separate by space alone;
+   multi-paragraph items (projects, publications) keep a hairline between
+   them. */
+.deflist,
+.entry-list {
+  border-block: 1px solid var(--rule-strong);
+}
 .deflist {
   margin: 0;
   display: flex;
@@ -508,12 +516,8 @@ p.overline,
   grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
   gap: 0.35rem clamp(1.5rem, 4vw, 3.5rem);
   padding: var(--space-m) 0;
-  border-bottom: 1px solid var(--rule);
   /* Key and value share the first baseline, whatever their fonts. */
   align-items: baseline;
-}
-.deflist__row:first-child {
-  border-top: 1px solid var(--rule);
 }
 .deflist__key {
   text-wrap: balance;
@@ -992,14 +996,13 @@ p.overline,
 
 .entry {
   padding-block: var(--space-l);
-  border-top: 1px solid var(--rule);
   display: grid;
   grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
   gap: 0.5rem clamp(1.5rem, 4vw, 3.5rem);
   align-items: baseline;
 }
-.entry:last-child {
-  border-bottom: 1px solid var(--rule);
+.entry + .entry {
+  border-top: 1px solid var(--rule);
 }
 .entry__meta {
   text-wrap: balance;
@@ -1026,9 +1029,8 @@ p.overline,
 /* Publications */
 .pub {
   padding-block: var(--space-m);
-  border-bottom: 1px solid var(--rule);
 }
-.pub:first-child {
+.pub + .pub {
   border-top: 1px solid var(--rule);
 }
 .pub__title {

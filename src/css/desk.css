@@ -249,11 +249,9 @@
   gap: 0.25rem 1.25rem;
   padding-bottom: 1.1rem;
   margin-bottom: 1.1rem;
-  border-bottom: 1px solid var(--rule);
   align-items: baseline;
 }
 .desk__row:last-child {
-  border-bottom: 0;
   margin-bottom: 0;
   padding-bottom: 0;
 }
