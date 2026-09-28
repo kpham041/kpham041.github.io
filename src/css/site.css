@@ -1275,6 +1275,11 @@ p.overline,
   body {
     font-size: 10.5pt;
   }
+  /* Labels, meta and captions are sized in rem for the screen; on paper they
+     sit a step below the 10.5pt text they label. */
+  :root {
+    --step--1: 9.5pt;
+  }
   /* The header prints as a running head: the name, nothing else. */
   .header {
     position: static;
