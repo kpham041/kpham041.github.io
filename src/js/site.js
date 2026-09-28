@@ -93,7 +93,9 @@
       if (reduced.matches || !exit) finish();
       else hideTimer = setTimeout(finish, exit + 30);
 
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
+      // preventScroll: handing focus back must not move the page the reader
+      // was on (it jumped ~430px on long pages).
+      if (lastFocused && lastFocused.focus) lastFocused.focus({ preventScroll: true });
     };
 
     var onKeydown = function (e) {

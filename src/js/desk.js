@@ -69,7 +69,7 @@
   function restoreFocus() {
     var el = pendingFocus;
     pendingFocus = null;
-    if (el && el.focus) el.focus();
+    if (el && el.focus) el.focus({ preventScroll: true });
   }
 
   // Every exit (close button, backdrop click, Escape) ends up here.

@@ -750,6 +750,16 @@ p.overline,
 .nav-toggle {
   display: none;
 }
+/* Without JavaScript the menu and theme buttons cannot do anything, so they
+   are not offered; the footer nav still reaches every page. */
+.no-js .nav-toggle,
+.no-js [data-theme-toggle] {
+  display: none !important;
+}
+/* The last item is then 'VI', whose inset is its own padding, not an icon's. */
+.no-js .header__tools {
+  margin-right: -0.3rem;
+}
 
 /* Below ~400px the brand and tools only just fit: tighten, never overflow. */
 @media (max-width: 400px) {
