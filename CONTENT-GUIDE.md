@@ -127,6 +127,12 @@ panel from `desk.order`.
 
 ---
 
+### The 404 page
+
+`i18n.en.notFound` and `i18n.vi.notFound` hold the few words on the page
+people see when a link is wrong. GitHub Pages serves one 404 for both
+languages, so the page shows the English and the Vietnamese together.
+
 ## Formatting inside copy
 
 Body text supports three things and nothing else:

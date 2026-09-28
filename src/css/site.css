@@ -182,8 +182,6 @@
   --track-5: -0.025em;
 
   /* Spacing: a 4px-rooted rhythm, fluid where it matters */
-  --space-2xs: 0.25rem;
-  --space-xs: 0.5rem;
   --space-s: 0.875rem;
   --space-m: 1.5rem;
   --space-l: clamp(2rem, 1.5rem + 2vw, 3rem);
@@ -219,10 +217,8 @@
   --muted: #666d7a;         /* meta and captions, 5.0:1                      */
   --accent: #2c4a73;        /* the one accent: links, actions, 8.6:1         */
   --accent-strong: #1e3555; /* link hover                                    */
-  --accent-wash: #eef1f6;   /* accent-tinted fill                            */
   --rule: #e4dfd5;          /* hairlines                                     */
   --rule-strong: #cdc6b8;
-  --shadow-s: 0 1px 2px rgba(23, 28, 38, 0.06), 0 2px 8px rgba(23, 28, 38, 0.04);
   --shadow-m: 0 8px 32px rgba(23, 28, 38, 0.1);
   --scrim: rgb(23 28 38 / 0.42);
   --flag-edge: rgb(23 28 38 / 0.16);
@@ -250,10 +246,8 @@
   --muted: #9d978c;         /*  6.3:1 */
   --accent: #a3bde0;        /*  9.5:1 */
   --accent-strong: #c6d6ea;
-  --accent-wash: #1f2328;
   --rule: #2e2b26;
   --rule-strong: #433f38;
-  --shadow-s: 0 1px 2px rgb(6 5 3 / 0.5), 0 2px 8px rgb(6 5 3 / 0.35);
   --shadow-m: 0 8px 32px rgb(6 5 3 / 0.55);
   --scrim: rgb(6 5 3 / 0.62);
   --flag-edge: rgb(0 0 0 / 0.3);
@@ -1162,21 +1156,6 @@ a {
 .linkgrid .v {
   font-size: var(--step--1);
   color: var(--ink-2);
-}
-
-/* Callout: an honest, bounded note (e.g. "not yet enrolled", "coming soon"). */
-.note {
-  border-left: 2px solid var(--accent);
-  background: var(--accent-wash);
-  padding: var(--space-m);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  color: var(--ink-2);
-  font-size: var(--step--1);
-  line-height: 1.6;
-  max-width: var(--measure);
-}
-.note strong {
-  color: var(--ink);
 }
 
 /* ---------------------------------------------------------------- footer */
