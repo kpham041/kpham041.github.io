@@ -341,12 +341,17 @@ html:has(.desk__dialog[open]) {
 }
 
 /* An ordinary icon button (.iconbtn), placed so its glyph centres on the
-   kicker line and its ink ends on the panel's right text edge. */
+   kicker line and its ink ends on the panel's right text edge. It sits over
+   the scrolling panel, so it rests on its own surface with a hairline edge
+   (the icon button's hover look, quieter): text scrolls under a control,
+   never under a bare glyph. */
 .desk__close {
   position: absolute;
   top: calc(var(--pad) - 9px);
   right: calc(var(--pad) - 9px);
   z-index: 1;
+  background: var(--paper-raised);
+  border-color: var(--rule);
 }
 
 /* A dated panel is honest about being a snapshot; an undated "Currently" that
