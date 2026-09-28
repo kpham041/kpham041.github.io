@@ -414,34 +414,28 @@ a {
   color: var(--ink);
 }
 
-/* Underline-on-hover link, used for every inline link in body copy. */
-.link {
-  position: relative;
-  display: inline;
-  color: var(--accent);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: background-size 0.28s var(--ease), color 0.2s ease;
-}
-.link:hover,
-.link:focus-visible {
-  color: var(--accent-strong);
-  background-size: 100% 1px;
-}
-/* Links inside running prose stay underlined: discoverability beats subtlety. */
+/* Links: one underline system. The underline is text-decoration, sitting
+   just below the baseline and skipping descenders. A link inside a sentence
+   is always underlined, quietly, so it never relies on colour alone; a link
+   that stands on its own (an action, an index entry, a DOI, the address)
+   shows its underline on hover and focus. Hover is instant. */
+.link,
 .prose a:not(.btn) {
   color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+  text-decoration-line: underline;
   text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
   text-decoration-color: var(--rule-strong);
-  transition: text-decoration-color 0.2s ease, color 0.2s ease;
 }
+.link:hover,
+.link:focus-visible,
 .prose a:not(.btn):hover {
   color: var(--accent-strong);
   text-decoration-color: currentColor;
+}
+:is(.hero__actions, .desk__indexlinks, .pub__links) .link:not(:hover, :focus-visible),
+.contact-email:not(:hover, :focus-visible) {
+  text-decoration-color: transparent;
 }
 
 .btn {
@@ -631,9 +625,15 @@ a {
   transform-origin: left;
   transition: transform 0.25s var(--ease);
 }
-.nav__link:hover::after,
+/* Hover draws a quiet rule; only the current page gets the accent, so
+   hovering never shows two 'current' items. */
+.nav__link:hover::after {
+  transform: scaleX(1);
+  background: var(--rule-strong);
+}
 .nav__link[aria-current='page']::after {
   transform: scaleX(1);
+  background: var(--accent);
 }
 .nav__link[aria-current='page'] {
   color: var(--accent);
