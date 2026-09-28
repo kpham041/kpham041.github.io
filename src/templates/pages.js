@@ -122,15 +122,15 @@ ${sectionHead(c.overline, c.title, 'about-h')}
 
         <div class="section" style="padding-bottom:0">
           <h2 class="overline">${esc(c.storyLabel)}</h2>
-          <div class="prose" style="margin-top:var(--space-m)">
+          <div class="prose">
 ${c.story.map((p, i) => `            <p>${md(p)}</p>`).join('\n')}
           </div>
         </div>
 
         <div class="section">
           <h2 class="overline">${esc(c.skillsLabel)}</h2>
-          <p class="lead" style="margin-top:.6rem">${md(c.skillsIntro)}</p>
-          <div style="margin-top:var(--space-m)">${defList(skills)}</div>
+          <p class="lead">${md(c.skillsIntro)}</p>
+          ${defList(skills)}
         </div>
       </section>
 
@@ -175,8 +175,8 @@ ${entries}
 
         <div class="section">
           <h2 class="overline">${esc(c.speakingLabel)}</h2>
-          <p class="lead" style="margin-top:.6rem">${md(c.speakingIntro)}</p>
-          <div style="margin-top:var(--space-m)">${defList(c.speaking)}</div>
+          <p class="lead">${md(c.speakingIntro)}</p>
+          ${defList(c.speaking)}
         </div>
 
         <p class="lead" style="margin-top:var(--space-l)">${esc(
@@ -267,7 +267,7 @@ function contact(ctx) {
 ${sectionHead(c.overline, c.title, 'contact-h', c.intro)}
 
         <p class="overline">${esc(c.emailLabel)}</p>
-        <p style="margin-top:.5rem">
+        <p>
           <a class="contact-email link" href="mailto:${attr(profile.email)}">${esc(
       profile.email
     )}</a>

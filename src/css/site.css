@@ -382,10 +382,20 @@ a {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
+  line-height: 1.4;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
+}
+/* One gap between a label and whatever it introduces (a list, prose, a
+   lead, the email), and one between an intro line and its list. Heads that
+   are flex columns set their own gap. */
+:not(.section__head, .desk__head) > .overline + * {
+  margin-top: var(--space-s);
+}
+.lead + .deflist {
+  margin-top: var(--space-m);
 }
 
 .lead {
