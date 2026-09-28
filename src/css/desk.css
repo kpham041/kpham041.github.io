@@ -148,7 +148,15 @@
   width: 72px;
   height: 62px;
   overflow: visible;
-  color: var(--ink);
+  color: var(--desk-line);
+}
+/* Three across on the narrowest phones: less side padding and a smaller
+   label, so a word like 'Languages' never reaches the tile's edge. */
+@media (max-width: 400px) {
+  .desk__tile {
+    padding-inline: 0.375rem;
+    font-size: 0.8125rem;
+  }
 }
 .desk__tile:focus-visible {
   border-color: var(--accent);
@@ -187,13 +195,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
-}
-/* Where the tiles show, they are already a labelled list: the text index
-   would repeat the same nine names directly beneath them. */
-@media (max-width: 900px) {
-  .desk__index {
-    display: none;
-  }
 }
 
 /* ----------------------------------------------------------------- panels */
