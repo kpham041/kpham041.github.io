@@ -461,6 +461,22 @@ p.overline,
   text-decoration-color: transparent;
 }
 
+/* The drawn arrow: the stroke of a text weight, centred on the cap height,
+   in the link's colour. The link's underline stops at the word. */
+.arrow {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.28em;
+  vertical-align: -0.02em;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

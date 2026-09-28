@@ -1,6 +1,6 @@
 'use strict';
 
-const { esc, attr, md } = require('./esc.js');
+const { esc, attr, md, arrow } = require('./esc.js');
 const { urlFor } = require('./routes.js');
 const desk = require('./desk.js');
 
@@ -89,7 +89,7 @@ function home(ctx) {
             <a class="btn btn--primary" href="${attr(urlFor(lang, 'contact'))}">${esc(
       c.ctaPrimary
     )}</a>
-            <a class="link" href="${attr(urlFor(lang, 'work'))}">${esc(c.ctaSecondary)} &rarr;</a>
+            <a class="link" href="${attr(urlFor(lang, 'work'))}">${esc(c.ctaSecondary)}${arrow('right')}</a>
           </div>
         </div>
         <figure class="hero__figure">
@@ -213,7 +213,7 @@ function publications(ctx) {
         links.push(
           `<li><a class="link" href="https://doi.org/${attr(
             p.doi
-          )}" target="_blank" rel="noopener">${esc(c.doiLabel)}: ${esc(p.doi)} &nearr;</a></li>`
+          )}" target="_blank" rel="noopener">${esc(c.doiLabel)}: ${esc(p.doi)}${arrow('out')}</a></li>`
         );
       }
       return `        <li class="pub">
@@ -242,7 +242,7 @@ ${items}
           c.moreLabel
         )} <a class="link" href="${attr(scholar.url)}" target="_blank" rel="noopener">${esc(
       scholar.label
-    )} &nearr;</a></p>
+    )}${arrow('out')}</a></p>
       </section>
     </div>`,
   };
@@ -262,7 +262,7 @@ function contact(ctx) {
   const linkGrid = links
     .map(
       (l) => `          <li><a href="${attr(l.url)}" target="_blank" rel="noopener me">
-            <span class="k">${esc(l.label)} &nearr;</span>
+            <span class="k">${esc(l.label)}${arrow('out')}</span>
             <span class="v">${esc(l.note[lang])}</span>
           </a></li>`
     )

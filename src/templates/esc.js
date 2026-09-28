@@ -42,4 +42,21 @@ function md(s) {
   );
 }
 
-module.exports = { esc, attr, md };
+/**
+ * The site's two arrows, drawn rather than typed: neither U+2192 nor U+2197
+ * is in any of the shipped font subsets, so as characters they came from
+ * whatever font the operating system had, at its weight and size. Decorative
+ * (the link text says where it goes), so hidden from assistive tech.
+ */
+const ARROWS = {
+  right: 'M1.5 6h8.5M6.75 2.75 10 6 6.75 9.25',
+  out: 'M2.25 9.75 9.75 2.25M4 2.25h5.75V8',
+};
+function arrow(dir) {
+  return (
+    `<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true" focusable="false">` +
+    `<path d="${ARROWS[dir]}"/></svg>`
+  );
+}
+
+module.exports = { esc, attr, md, arrow };
