@@ -838,16 +838,6 @@ a {
   align-items: center;
   padding-block: clamp(3rem, 7vw, 6rem) var(--space-l);
 }
-@media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: var(--space-l);
-  }
-  .hero__figure {
-    order: -1;
-    max-width: 260px;
-  }
-}
 
 .hero__name {
   font-size: var(--step-5);
@@ -892,21 +882,35 @@ a {
   gap: var(--space-s) var(--space-m);
 }
 
+/* A photograph, not a card: no border, shadow or hover. It sits on the
+   column's right edge, and its top meets the cap line of the name
+   (0.18em of the display size below the name's box). The figure's UA margin
+   (1em 40px) is reset, or it misses every edge. */
 .hero__figure {
-  position: relative;
+  margin: calc(var(--step-5) * 0.18) 0 0;
+  width: 100%;
+  max-width: 380px;
+  justify-self: end;
+  align-self: start;
 }
 .hero__figure img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--radius-l);
-  border: 1px solid var(--rule);
-  box-shadow: var(--shadow-s);
   display: block;
-  transition: transform 0.6s var(--ease);
 }
-.hero__figure:hover img {
-  transform: scale(1.02);
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-l);
+  }
+  .hero__figure {
+    order: -1;
+    justify-self: start;
+    max-width: 260px;
+    margin-top: 0;
+  }
 }
 
 /* --------------------------------------------------------------- entries */
