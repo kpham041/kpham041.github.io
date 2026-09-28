@@ -20,10 +20,15 @@ ${rows
       </dl>`;
 }
 
-function sectionHead(overline, title, id, lead) {
-  // An overline that just repeats the heading is noise, so drop it.
+// A page head: title and optional intro. The kicker above the title is shown
+// only when it adds something. On every page today it would repeat either the
+// title or the nav item already marked as current, and a kicker on some pages
+// but not others moved the title 30px as you navigated, so it is dropped in
+// both cases. The words stay in site.json.
+function sectionHead(overline, title, id, lead, navLabel) {
+  const same = (a, b) => String(a || '').toLowerCase() === String(b || '').toLowerCase();
   const kicker =
-    overline && overline.toLowerCase() !== title.toLowerCase()
+    overline && !same(overline, title) && !same(overline, navLabel)
       ? `<p class="overline">${esc(overline)}</p>\n        `
       : '';
   return `      <div class="section__head">
@@ -115,7 +120,7 @@ function about(ctx) {
     head: '<link rel="stylesheet" href="/assets/css/desk.css">',
     body: `    <div class="shell">
       <section class="section" aria-labelledby="about-h">
-${sectionHead(c.overline, c.title, 'about-h')}
+${sectionHead(c.overline, c.title, 'about-h', null, t.nav.about)}
 
         <h2 class="overline">${esc(c.factsLabel)}</h2>
         ${defList(c.facts)}
@@ -167,7 +172,7 @@ ${p.body.map((para) => `              <p>${md(para)}</p>`).join('\n')}
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="work-h">
-${sectionHead(c.overline, c.title, 'work-h', c.intro)}
+${sectionHead(c.overline, c.title, 'work-h', c.intro, t.nav.work)}
 
         <ul class="entry-list" role="list">
 ${entries}
@@ -221,7 +226,7 @@ function publications(ctx) {
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="pubs-h">
-${sectionHead(c.overline, c.title, 'pubs-h', c.intro)}
+${sectionHead(c.overline, c.title, 'pubs-h', c.intro, t.nav.publications)}
 
         <ol class="entry-list" role="list">
 ${items}
@@ -264,7 +269,7 @@ function contact(ctx) {
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="contact-h">
-${sectionHead(c.overline, c.title, 'contact-h', c.intro)}
+${sectionHead(c.overline, c.title, 'contact-h', c.intro, t.nav.contact)}
 
         <p class="overline">${esc(c.emailLabel)}</p>
         <p>
