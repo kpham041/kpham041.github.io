@@ -89,8 +89,8 @@ function home(ctx) {
         </div>
         <figure class="hero__figure">
           <picture>
-            <source type="image/webp" srcset="/img/portrait-380.webp 380w, /img/portrait-560.webp 560w, /img/portrait-760.webp 760w" sizes="(max-width: 700px) 260px, 380px">
-            <img src="/img/portrait-560.jpg" srcset="/img/portrait-380.jpg 380w, /img/portrait-560.jpg 560w, /img/portrait-760.jpg 760w" sizes="(max-width: 700px) 260px, 380px" width="1024" height="1024" alt="${attr(
+            <source type="image/webp" srcset="/img/portrait-380.webp 380w, /img/portrait-560.webp 560w, /img/portrait-760.webp 760w" sizes="(max-width: 700px) 176px, 380px">
+            <img src="/img/portrait-560.jpg" srcset="/img/portrait-380.jpg 380w, /img/portrait-560.jpg 560w, /img/portrait-760.jpg 760w" sizes="(max-width: 700px) 176px, 380px" width="1024" height="1024" alt="${attr(
               t.ogImageAlt
             )}" fetchpriority="high" decoding="async">
           </picture>

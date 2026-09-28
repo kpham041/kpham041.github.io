@@ -1009,15 +1009,19 @@ p.overline,
   border-radius: var(--radius-l);
   display: block;
 }
+/* On a phone the name and the two actions are the first screen; the
+   portrait stays, at a size that leaves them well above the browser's
+   toolbar instead of pressed against the bottom edge. */
 @media (max-width: 700px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: var(--space-l);
+    gap: var(--space-m);
+    padding-top: var(--space-l);
   }
   .hero__figure {
     order: -1;
     justify-self: start;
-    max-width: 260px;
+    max-width: 176px;
     margin-top: 0;
   }
 }
