@@ -878,8 +878,14 @@ a {
   margin-top: var(--space-l);
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-s) var(--space-m);
+}
+/* The pair shares one size, weight and baseline; only the button's fill
+   ranks it above the link. */
+.hero__actions .link {
+  font-size: var(--step--1);
+  font-weight: 500;
 }
 
 /* A photograph, not a card: no border, shadow or hover. It sits on the
