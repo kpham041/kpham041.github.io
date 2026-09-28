@@ -1236,30 +1236,73 @@ a {
 
 /* ---------------------------------------------------------------- print */
 
+/* Paper is paper: whatever theme the reader is in, a printout is ink on
+   white, says whose page it is, and drops everything that only works on a
+   screen. */
+@page {
+  margin: 16mm 16mm 18mm;
+}
 @media print {
-  .header,
+  :root,
+  :root[data-theme='dark'] {
+    --paper: #fff;
+    --paper-warm: #fff;
+    --paper-raised: #fff;
+    --ink: #000;
+    --ink-2: #222;
+    --muted: #555;
+    --accent: #000;
+    --accent-strong: #000;
+    --rule: #bbb;
+    --rule-strong: #999;
+    color-scheme: light;
+  }
+  body {
+    font-size: 10.5pt;
+  }
+  /* The header prints as a running head: the name, nothing else. */
+  .header {
+    position: static;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-desktop,
+  .header__tools,
   .footer__nav,
   .skip-link,
   .drawer,
   .drawer__scrim,
-  .desk {
+  .desk,
+  .hero__actions {
     display: none !important;
   }
-  body {
-    background: #fff;
-    color: #000;
-    font-size: 11pt;
+  .hero {
+    padding-block: var(--space-l) var(--space-m);
+  }
+  .hero__figure {
+    max-width: 45mm;
+  }
+  .footer {
+    margin-top: var(--space-l);
   }
   a {
-    color: #000;
+    color: inherit;
   }
-  .prose a::after {
+  /* An external link in a sentence prints its address; on paper the words
+     alone lead nowhere. DOIs and the email already are their address. */
+  :is(.prose, .lead, .aside) a[href^="http"]::after {
     content: ' (' attr(href) ')';
     font-size: 0.85em;
-    color: #444;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
   }
   .entry,
-  .pub {
+  .pub,
+  .deflist__row {
     break-inside: avoid;
   }
 }
