@@ -581,10 +581,18 @@ p.overline,
   color: var(--ink);
 }
 @media (max-width: 700px) {
+  /* Stacked, a key sits on its value; rows need less air between them than
+     side-by-side rows do. */
   .deflist__row {
     grid-template-columns: 1fr;
     gap: 0.4rem;
+    padding-block: 1rem;
   }
+}
+/* A list that ends the page is closed by the footer's rule; its own closing
+   rule would make a double line with nothing between. */
+.main > .shell > :last-child > .deflist:last-child {
+  border-bottom: 0;
 }
 
 /* Language flags. Decorative, sized to the text they sit beside, and inline-flex
