@@ -2,17 +2,18 @@
 
 const { esc, attr, md, arrow, keepGivenName } = require('./esc.js');
 const { urlFor } = require('./routes.js');
+const { tone, scene, stamp } = require('./ui.js');
 const desk = require('./desk.js');
 
 /* --------------------------------------------------------------- helpers */
 
-// A key/value row list: a caption label in a fixed column, prose beside it.
+// A key/value row list: a stamp label in a fixed column, prose beside it.
 function defList(rows) {
   return `<dl class="deflist">
 ${rows
   .map(
     (r) => `        <div class="deflist__row">
-          <dt class="deflist__key">${esc(r.k)}</dt>
+          <dt class="deflist__key"><span class="label">${esc(r.k)}</span></dt>
           <dd class="deflist__val">${md(r.v)}</dd>
         </div>`
   )
@@ -20,20 +21,18 @@ ${rows
       </dl>`;
 }
 
-// A page head: title and optional intro. The kicker above the title is shown
-// only when it adds something. On every page today it would repeat either the
-// title or the nav item already marked as current, and a kicker on some pages
-// but not others moved the title 30px as you navigated, so it is dropped in
-// both cases. The words stay in site.json.
-function sectionHead(overline, title, id, lead, navLabel) {
+// A page head: the two-tone title and an optional intro. The kicker above the
+// title is shown only when it adds something: on every page today it would
+// repeat either the title or the nav item already marked as current.
+function sectionHead(c, id, navLabel) {
   const same = (a, b) => String(a || '').toLowerCase() === String(b || '').toLowerCase();
   const kicker =
-    overline && !same(overline, title) && !same(overline, navLabel)
-      ? `<p class="overline">${esc(overline)}</p>\n        `
+    c.overline && !same(c.overline, c.title) && !same(c.overline, navLabel)
+      ? `<p class="overline">${esc(c.overline)}</p>\n        `
       : '';
   return `      <div class="section__head">
-        ${kicker}<h1 id="${attr(id)}">${esc(title)}</h1>
-        ${lead ? `<p class="lead">${md(lead)}</p>` : ''}
+        ${kicker}<h1 id="${attr(id)}">${tone(c.title, c.toneWords)}</h1>
+        ${c.intro ? `<p class="lead">${md(c.intro)}</p>` : ''}
       </div>`;
 }
 
@@ -42,8 +41,8 @@ function sectionHead(overline, title, id, lead, navLabel) {
 // or between initials.
 function keepInitials(authors) {
   return String(authors)
-    .replace(/(\p{L}), (?=\p{Lu}\.)/gu, '$1,\u00a0')
-    .replace(/(\p{Lu}\.) (?=\p{Lu}\.)/gu, '$1\u00a0');
+    .replace(/(\p{L}), (?=\p{Lu}\.)/gu, '$1, ')
+    .replace(/(\p{Lu}\.) (?=\p{Lu}\.)/gu, '$1 ');
 }
 
 // An address may break after the @ and nowhere else.
@@ -84,24 +83,35 @@ function home(ctx) {
             <a class="btn btn--primary" href="${attr(urlFor(lang, 'contact'))}">${esc(
       c.ctaPrimary
     )}</a>
-            <a class="link" href="${attr(urlFor(lang, 'work'))}">${esc(c.ctaSecondary)}${arrow('right')}</a>
+            <a class="btn btn--ghost" data-page="work" href="${attr(urlFor(lang, 'work'))}">${esc(
+      c.ctaSecondary
+    )}${arrow('right')}</a>
           </div>
         </div>
         <figure class="hero__figure">
-          <picture>
-            <source type="image/webp" srcset="/img/portrait-380.webp 380w, /img/portrait-560.webp 560w, /img/portrait-760.webp 760w" sizes="(max-width: 700px) 176px, 380px">
-            <img src="/img/portrait-560.jpg" srcset="/img/portrait-380.jpg 380w, /img/portrait-560.jpg 560w, /img/portrait-760.jpg 760w" sizes="(max-width: 700px) 176px, 380px" width="1024" height="1024" alt="${attr(
-              t.ogImageAlt
-            )}" fetchpriority="high" decoding="async">
-          </picture>
+          <div class="print">
+            <span class="print__tape" aria-hidden="true"></span>
+            <picture>
+              <source type="image/webp" srcset="/img/portrait-380.webp 380w, /img/portrait-560.webp 560w, /img/portrait-760.webp 760w" sizes="(max-width: 700px) 176px, 380px">
+              <img src="/img/portrait-560.jpg" srcset="/img/portrait-380.jpg 380w, /img/portrait-560.jpg 560w, /img/portrait-760.jpg 760w" sizes="(max-width: 700px) 176px, 380px" width="1024" height="1024" alt="${attr(
+                t.ogImageAlt
+              )}" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
         </figure>
       </section>
+    </div>
 
+${scene('horizon', ctx)}
+
+    <div class="shell">
       <section class="section section--tight" aria-labelledby="highlights-h">
         <h2 class="visually-hidden" id="highlights-h">${esc(c.highlightsLabel)}</h2>
         ${defList(c.highlights)}
       </section>
-    </div>`,
+    </div>
+
+${scene('wayback', ctx)}`,
   };
 }
 
@@ -121,16 +131,20 @@ function about(ctx) {
     head: '<link rel="stylesheet" href="/assets/css/desk.css">',
     body: `    <div class="shell">
       <section class="section" aria-labelledby="about-h">
-${sectionHead(c.overline, c.title, 'about-h', null, t.nav.about)}
+${sectionHead(c, 'about-h', t.nav.about)}
 
         <h2 class="overline">${esc(c.factsLabel)}</h2>
         ${defList(c.facts)}
+      </section>
+    </div>
 
-        <div class="section">
-          <h2 class="overline">${esc(c.storyLabel)}</h2>
-          <div class="prose">
-${c.story.map((p, i) => `            <p>${md(p)}</p>`).join('\n')}
-          </div>
+${scene('river', ctx)}
+
+    <div class="shell">
+      <section class="section" aria-labelledby="story-h">
+        <h2 class="overline" id="story-h">${esc(c.storyLabel)}</h2>
+        <div class="prose">
+${c.story.map((p) => `          <p>${md(p)}</p>`).join('\n')}
         </div>
 
         <div class="section">
@@ -139,7 +153,11 @@ ${c.story.map((p, i) => `            <p>${md(p)}</p>`).join('\n')}
           ${defList(skills)}
         </div>
       </section>
+    </div>
 
+${scene('hills', ctx)}
+
+    <div class="shell">
 ${desk(ctx)}
     </div>`,
   };
@@ -152,11 +170,13 @@ function work(ctx) {
   const t = content.i18n[lang];
   const c = t.work;
 
-  const entries = content.projects
-    .map((proj, i) => {
-      const p = proj[lang];
-      return `        <li class="entry">
-          <p class="entry__meta">${esc(p.meta)}</p>
+  const entry = (proj, i) => {
+    const p = proj[lang];
+    return `        <li class="entry">
+          <div class="entry__aside">
+            <span class="num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+            <p class="entry__meta"><span class="label">${esc(p.meta)}</span></p>
+          </div>
           <div class="entry__body">
             <h2 class="entry__title">${esc(p.title)}</h2>
             <div class="prose">
@@ -165,18 +185,40 @@ ${p.body.map((para) => `              <p>${md(para)}</p>`).join('\n')}
             ${tagRow(p.tags)}
           </div>
         </li>`;
-    })
-    .join('\n');
+  };
+
+  // The crossing, homeward, sits before the Vietnamese hospital study: the
+  // layout tells the biography's direction once, where it is true.
+  const projects = content.projects;
+  const last = projects.length - 1;
+  const firstGroup = projects.slice(0, last).map(entry).join('\n');
+  const lastEntry = projects.slice(last).map((p) => entry(p, last)).join('\n');
 
   return {
     title: c.metaTitle,
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="work-h">
-${sectionHead(c.overline, c.title, 'work-h', c.intro, t.nav.work)}
+${sectionHead(c, 'work-h', t.nav.work)}
+      </section>
+    </div>
 
+${scene('skyline', ctx)}
+
+    <div class="shell">
+      <section class="section section--tight" aria-label="${attr(c.title)}">
         <ul class="entry-list" role="list">
-${entries}
+${firstGroup}
+        </ul>
+      </section>
+    </div>
+
+${scene('plane', ctx)}
+
+    <div class="shell">
+      <section class="section section--tight" aria-label="${attr(c.title)}">
+        <ul class="entry-list entry-list--continued" role="list">
+${lastEntry}
         </ul>
 
         <div class="section">
@@ -187,13 +229,17 @@ ${entries}
 
         <p class="lead coda">${esc(
           c.closingPre
-        )} <a class="link" href="${attr(urlFor(lang, 'contact'))}">${esc(c.closingLink)}</a></p>
+        )} <a class="link" data-page="contact" href="${attr(urlFor(lang, 'contact'))}">${esc(c.closingLink)}</a></p>
       </section>
-    </div>`,
+    </div>
+
+${scene('wayback', ctx)}`,
   };
 }
 
 /* ---------------------------------------------------------- publications */
+
+const STAMP_HUES = ['plum', 'orange', 'teal', 'red'];
 
 function publications(ctx) {
   const { content, lang } = ctx;
@@ -212,12 +258,15 @@ function publications(ctx) {
         );
       }
       return `        <li class="pub">
-          <h2 class="pub__title">${esc(p.title)}</h2>
-          <p class="pub__authors">${md(keepInitials(p.authors)).replace(
-            /<strong>/g,
-            '<strong class="self">'
-          )} <span>(${esc(p.year)})</span>. <span class="pub__venue">${esc(p.venue)}</span>.</p>
-          ${links.length ? `<ul class="pub__links" role="list">${links.join('')}</ul>` : ''}
+          <div class="pub__stamp">${stamp(p.year, STAMP_HUES[i % STAMP_HUES.length], i)}</div>
+          <div class="pub__body">
+            <h2 class="pub__title">${esc(p.title)}</h2>
+            <p class="pub__authors">${md(keepInitials(p.authors)).replace(
+              /<strong>/g,
+              '<strong class="self">'
+            )} <span>(${esc(p.year)})</span>. <span class="pub__venue">${esc(p.venue)}</span>.</p>
+            ${links.length ? `<ul class="pub__links" role="list">${links.join('')}</ul>` : ''}
+          </div>
         </li>`;
     })
     .join('\n');
@@ -227,8 +276,14 @@ function publications(ctx) {
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="pubs-h">
-${sectionHead(c.overline, c.title, 'pubs-h', c.intro, t.nav.publications)}
+${sectionHead(c, 'pubs-h', t.nav.publications)}
+      </section>
+    </div>
 
+${scene('forest', ctx)}
+
+    <div class="shell">
+      <section class="section section--tight" aria-label="${attr(c.title)}">
         <ol class="entry-list" role="list">
 ${items}
         </ol>
@@ -256,7 +311,7 @@ function contact(ctx) {
   const links = Object.values(profile.links).filter((l) => l && l.url);
   const linkGrid = links
     .map(
-      (l) => `          <li><a href="${attr(l.url)}" target="_blank" rel="noopener me">
+      (l) => `          <li><a class="postcard" href="${attr(l.url)}" target="_blank" rel="noopener me">
             <span class="k">${esc(l.label)}${arrow('out')}</span>
             <span class="v">${esc(l.note[lang])}</span>
           </a></li>`
@@ -270,8 +325,14 @@ function contact(ctx) {
     description: c.metaDescription,
     body: `    <div class="shell">
       <section class="section" aria-labelledby="contact-h">
-${sectionHead(c.overline, c.title, 'contact-h', c.intro, t.nav.contact)}
+${sectionHead(c, 'contact-h', t.nav.contact)}
+      </section>
+    </div>
 
+${scene('sky', ctx)}
+
+    <div class="shell">
+      <section class="section section--tight" aria-label="${attr(c.title)}">
         <h2 class="overline">${esc(c.emailLabel)}</h2>
         <p>
           <a class="contact-email link" href="mailto:${attr(profile.email)}">${emailBreakable(
@@ -285,14 +346,19 @@ ${
       )}">CV (PDF)</a></p>`
     : ''
 }
+      </section>
+    </div>
+
+${scene('post', ctx)}
+
+    <div class="shell">
+      <section class="section section--tight" aria-label="${attr(c.elsewhereLabel)}">
 ${
   links.length
-    ? `        <div class="section">
-          <h2 class="overline">${esc(c.elsewhereLabel)}</h2>
-          <ul class="linkgrid" role="list">
+    ? `        <h2 class="overline">${esc(c.elsewhereLabel)}</h2>
+        <ul class="linkgrid" role="list">
 ${linkGrid}
-          </ul>
-        </div>`
+        </ul>`
     : ''
 }
         <div class="section">

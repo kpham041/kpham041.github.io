@@ -11,18 +11,44 @@
    ========================================================================== */
 
 .desk {
+  /* Every desk colour is an alias of a site token, so the scene is painted
+     with the same box of paints as the landscapes and follows both themes
+     without a second palette. */
   --desk-line: var(--ink);
-  --desk-fill: var(--paper-warm);
-  --desk-blue: var(--accent);
-  --desk-gold: #a97b3f;
-  --desk-red: #8a3a3a;
+  --desk-fill: var(--paper-raised);
+  --desk-slab: var(--paper-deep);
+  --desk-band: var(--band);
+  --desk-ring: var(--c-orange);
+  --desk-blue: var(--c-blue);
+  --desk-red: var(--c-red);
+  --desk-green: var(--c-green);
+  --desk-orange: var(--c-orange);
+  --desk-plum: var(--c-plum);
+  --desk-teal: var(--c-teal);
+  --desk-teal-tint: var(--t-teal);
+  --desk-navy: var(--navy);
+  --desk-gold: var(--p-gold);
+  --desk-sweater: var(--p-sweater);
+  --desk-collar: var(--p-sky);
+  --desk-sky: var(--p-sky);
+  --desk-cloud: var(--p-cloud);
+  --desk-wood: var(--p-wood);
+  --desk-cork: var(--p-dirt);
+  --desk-ochre: var(--p-ochre);
+  --desk-ivy: var(--p-ivy);
+  --desk-ivy-deep: var(--p-ivy-deep);
+  --desk-snow: var(--p-snow);
+  --desk-road: var(--p-road);
+  --desk-water: var(--p-water);
+  --desk-water-edge: var(--p-water-edge);
+  --desk-star: var(--p-night-star);
+  --desk-glow: var(--p-night-glow);
   padding-block: var(--space-xl) 0;
 }
 :root[data-theme='dark'] .desk {
-  /* Line art at full ink glares at night and outweighs the text. */
+  /* Line art at full ink glares at night and outweighs the text. The paints
+     carry their own night values. */
   --desk-line: var(--ink-2);
-  --desk-gold: #d6a462;
-  --desk-red: #d98d8d;
 }
 
 .desk__head {
@@ -283,6 +309,8 @@
    state, and display/overlay transition discretely so the exit can play. */
 .desk__dialog {
   --pad: clamp(1.75rem, 4vw, 2.75rem);
+  /* A strip of painted yellow along the top, like the band above the footer. */
+  border-top: 6px solid var(--band);
   border: 1px solid var(--rule);
   border-radius: var(--radius-l);
   background: var(--paper-raised);

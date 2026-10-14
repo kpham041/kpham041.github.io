@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { esc, attr, md } = require('./esc.js');
+const { tone } = require('./ui.js');
 const { flags } = require('./flags.js');
 
 const DEFS = fs.readFileSync(path.join(__dirname, 'svg', 'desk-defs.svg'), 'utf8');
@@ -92,7 +93,7 @@ ${items}
   return `<section class="desk" aria-labelledby="desk-h" data-desk>
   <div class="desk__head">
     <p class="overline">${esc(d.overline)}</p>
-    <h2 id="desk-h">${esc(d.heading)}</h2>
+    <h2 id="desk-h">${tone(d.heading, d.toneWords)}</h2>
     <p class="lead">${esc(d.subcopy)}</p>
   </div>
 

@@ -14,7 +14,7 @@
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
   src: url('../fonts/fraunces-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -22,7 +22,7 @@
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
   src: url('../fonts/fraunces-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
@@ -30,7 +30,7 @@
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
   src: url('../fonts/fraunces-vietnamese.woff2') format('woff2');
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
@@ -134,6 +134,35 @@
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
 }
 
+/* The pen. Patrick Hand carries the handful of margin notes (place names on
+   the horizon, the desk annotation, the 404 signpost). It has a real
+   Vietnamese subset, which is why it was chosen over the usual handwriting
+   faces. Never load-bearing: Plex Mono stands in if it fails. */
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/patrickhand-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/patrickhand-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/patrickhand-400-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
 /* Metric-matched fallbacks. On a slow first load the page paints in Georgia
    until Fraunces arrives; scaled to Fraunces' widths and vertical metrics,
    the swap no longer rewraps the name or moves everything below it.
@@ -159,6 +188,15 @@
 }
 @font-face {
   font-family: 'Fraunces Display Fallback';
+  font-weight: 800 900;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 74%;
+  ascent-override: 97.8%;
+  descent-override: 25.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Display Fallback';
   font-weight: 600 700;
   src: local('Georgia Bold'), local('Georgia-Bold');
   size-adjust: 78%;
@@ -169,11 +207,15 @@
 
 /* ------------------------------------------------------------------ tokens */
 
+/* The board. One warm paper, one warm ink, and six paints that each belong
+   to a page. Every text pairing below meets WCAG AA on its background; the
+   numbers are in the design notes and were computed, not estimated. */
 :root {
   /* Type */
   --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
   --font-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-pen: 'Patrick Hand', 'IBM Plex Mono', ui-monospace, monospace;
 
   --step--1: 0.9375rem;                              /* 15px, captions and meta */
   --step-0: clamp(1.0625rem, 0.99rem + 0.28vw, 1.1875rem);  /* 17–19px, body    */
@@ -182,8 +224,8 @@
   --step-3: clamp(1.625rem, 1.4rem + 1.1vw, 2.125rem);      /* 26–34px, h2      */
   --step-4: clamp(1.875rem, 1.5rem + 1.9vw, 2.75rem);       /* 30–44px, h1      */
   --step-5: clamp(2.375rem, 1.7rem + 3.4vw, 3.875rem);      /* 38–62px, display */
+  --step-6: clamp(2.75rem, 1.6rem + 5.2vw, 5.25rem);        /* 44–84px, the name */
 
-  /* Tracking tightens as size grows, one value per step. */
   --track-1: -0.008em;
   --track-2: -0.012em;
   --track-3: -0.016em;
@@ -197,80 +239,185 @@
   --space-xl: clamp(3rem, 2rem + 4vw, 5rem);
   --space-2xl: clamp(4rem, 2.5rem + 6vw, 7rem);
 
-  /* Measures are in em, not ch: ch is the width of '0', which in Be Vietnam
-     Pro is about 40% wider than the average letter, so 68ch set ~92
-     characters to the line. 34em is ~68; 30em is ~60. */
-  --measure: 34em;          /* running text                            */
-  --measure-tight: 30em;    /* lead paragraphs, hero copy              */
-  --shell: 1140px;          /* max content width                       */
+  --measure: 34em;
+  --measure-tight: 30em;
+  --shell: 1140px;
   --gutter: clamp(1.25rem, 4vw, 2rem);
 
-  /* Two radii: small for controls and cards, large for the two big
-     surfaces (the portrait and the dialog). Flags keep 2px. */
   --radius: 6px;
   --radius-l: 12px;
+  /* The sticker edge: four slightly different corners, the way a label cut
+     by hand never has four equal ones. */
+  --radius-sticker: 6px 14px 7px 13px / 13px 6px 14px 7px;
 
-  /* Motion. Things arrive with an ease-out and leave faster with an ease-in.
-     Hover, focus and press are instant: colour never fades. */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
   --dur-in: 200ms;
   --dur-out: 150ms;
 
-  /* Colour, light. Every text pairing below meets WCAG AA on its background. */
-  --paper: #fbfaf7;         /* page                                          */
-  --paper-warm: #f4f1e9;    /* recessed panels, the desk scene ground        */
-  --paper-raised: #fdfcfa;  /* surfaces above the page: dialog, drawer       */
-  --ink: #171c26;           /* primary text, 15.4:1 on --paper               */
-  --ink-2: #3b424f;         /* secondary text, 9.3:1                         */
-  --muted: #666d7a;         /* meta and captions, 5.0:1                      */
-  --accent: #2c4a73;        /* the one accent: links, actions, 8.6:1         */
-  --accent-strong: #1e3555; /* link hover                                    */
-  --rule: #e4dfd5;          /* hairlines                                     */
-  --rule-strong: #cdc6b8;
-  --shadow-m: 0 8px 32px rgba(23, 28, 38, 0.1);
-  --scrim: rgb(23 28 38 / 0.42);
-  --flag-edge: rgb(23 28 38 / 0.16);
-  --rule-raised: #e4dfd5;   /* hairlines on raised surfaces                  */
-  --selection-bg: #2c4a73;
-  --selection-fg: #fbfaf7;
+  /* Paper and ink */
+  --paper: #f2ede2;
+  --paper-deep: #e7e0d1;
+  --paper-raised: #fffdf8;
+  --ink: #211d18;
+  --ink-2: #46413a;
+  --muted: #655f56;
+  --rule: #d8cfbc;
+  --rule-strong: #bfb398;
+  --navy: #16335c;
 
-  --header-h: 64px;
-  /* Icon buttons: a 19px glyph centred in the button. The inset is how far
-     the glyph's edge sits inside the button's, so a button can overhang the
-     content edge by exactly that much and the glyph still lands on it. */
-  --ib: 36px;
+  /* Paints that carry text: a page each. White text clears 5:1 on all six;
+     each is at least 4.5:1 as text on the paper. */
+  --c-blue: #1d5bb0;
+  --c-green: #2d7447;
+  --c-orange: #a8440e;
+  --c-red: #b5312e;
+  --c-plum: #8d3b86;
+  --c-teal: #176f78;
+  --c-yellow: #f5c84a;   /* a surface, never a text colour */
+  --hi: #f5c84a;         /* highlighter behind text */
+  --band: #f5c84a;       /* the painted strip above the footer */
+  --on-block: #ffffff;   /* text on a colour block */
+
+  /* Tints: the paper of a stamp, the soft fill behind a colour's own text */
+  --t-blue: #dde9fb;
+  --t-green: #dcefe0;
+  --t-orange: #fde3d2;
+  --t-red: #fbe0dc;
+  --t-plum: #f3dff1;
+  --t-teal: #d7eef0;
+
+  /* Paint for the drawings only. Nothing in this group ever sits under a
+     word, so none of it has a contrast number to keep. */
+  --p-sky: #bfe0f2;
+  --p-sky-deep: #7fbfe6;
+  --p-water: #a9d6c9;
+  --p-water-edge: #146a5a;
+  --p-canal: #c4d8ee;
+  --p-canal-edge: #23609e;
+  --p-ivy: #5aa469;
+  --p-ivy-deep: #3f7c3c;
+  --p-ochre: #e4b23f;
+  --p-snow: #e3ebf2;
+  --p-road: #8c8578;
+  --p-wood: #6a4a2e;
+  --p-dirt: #c4925a;
+  --p-maple: #d2601f;
+  --p-lotus: #e48aa8;
+  --p-gold: #f5c84a;
+  --p-cloud: #fffdf8;
+  --p-sweater: #7a2a3e;
+  /* Night only: stars and lit windows are invisible by day. */
+  --p-night-star: transparent;
+  --p-night-glow: transparent;
+
+  --shadow-m: 0 8px 32px rgb(33 29 24 / 0.12);
+  --shadow-lift: 0 2px 0 rgb(33 29 24 / 0.18);
+  --scrim: rgb(33 29 24 / 0.45);
+  --flag-edge: rgb(33 29 24 / 0.16);
+  --rule-raised: #d8cfbc;
+  --selection-bg: #1d5bb0;
+  --selection-fg: #fffdf8;
+
+  /* Hand-drawn rules: one wobbling line, stretched to any width, its stroke
+     kept at 1.6px by vector-effect. Two weights, each with a night twin. */
+  --rule-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3.2C80 2.4 140 4.1 220 3.3S360 2.2 440 3.4 600 4.2 700 3.1 860 2.3 960 3.5 1120 4.3 1220 3 1400 2.4 1600 3.3' fill='none' stroke='%23d8cfbc' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --rule-line-strong: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3.2C80 2.4 140 4.1 220 3.3S360 2.2 440 3.4 600 4.2 700 3.1 860 2.3 960 3.5 1120 4.3 1220 3 1400 2.4 1600 3.3' fill='none' stroke='%23bfb398' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  /* The highlighter stroke under a heading's tone words. */
+  --tone-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 24' preserveAspectRatio='none'%3E%3Cpath d='M6 13C80 9 150 16 220 12S330 8 394 13' fill='none' stroke='%23f5c84a' stroke-width='11' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+
+  /* The paper's tooth: a fine grain and, over it, sparse recycled-paper
+     flecks. Both are procedural SVG tiles, so there is no file and no request. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.24 0 0 0 0 0.19 0 0 0 0 0.11 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --flecks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.12' numOctaves='1' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.24 0 0 0 0 0.19 0 0 0 0 0.11 0 0 0 1 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0.08'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+
+  --header-h: 92px;
+  --ib: 38px;
   --ib-inset: calc((var(--ib) - 19px) / 2);
   color-scheme: light;
 }
 
-/* Dark. Same roles, re-pointed, and nothing else in the stylesheet changes.
-   The site opens light for everyone, whatever the operating system prefers.
-   Dark is opt-in: it applies only once the toggle has set data-theme, which
-   site.js remembers in localStorage. */
+/* The board under a reading lamp. The same warm hue inverted to a warm
+   near-black; blocks go pastel and their text goes dark; the yellow band
+   stays the brightest thing on the page, deliberately. Light is the default
+   for everyone and dark is opt-in through the header toggle, which sets
+   data-theme and remembers it in localStorage. */
 :root[data-theme='dark'] {
-  /* The same warm paper at night, not the light palette inverted: every
-     neutral keeps the light theme's warm hue (~40deg) instead of turning
-     slate blue, so headings and body text share one temperature. Surfaces
-     above the page are lighter, as they would be under a lamp. */
-  --paper: #161512;
-  --paper-warm: #1d1b18;
-  --paper-raised: #24221e;
-  --ink: #ece8e1;           /* 14.9:1 */
-  --ink-2: #c9c4ba;         /* 10.5:1 */
-  --muted: #9d978c;         /*  6.3:1 */
-  --accent: #a3bde0;        /*  9.5:1 */
-  --accent-strong: #c6d6ea;
-  --rule: #2e2b26;
-  --rule-strong: #433f38;
-  --shadow-m: 0 8px 32px rgb(6 5 3 / 0.55);
+  --paper: #171511;
+  --paper-deep: #1d1a15;
+  --paper-raised: #221f1a;
+  --ink: #efe9dd;
+  --ink-2: #cdc6b8;
+  --muted: #a29b8f;
+  --rule: #2f2b24;
+  --rule-strong: #4a443a;
+  --navy: #0f1a2b;
+  --c-blue: #8fb8f2;
+  --c-green: #86c995;
+  --c-orange: #f2a371;
+  --c-red: #f49a90;
+  --c-plum: #d9a1d3;
+  --c-teal: #7ccdd4;
+  --c-yellow: #f0cc5c;
+  --hi: #4a3c10;
+  --band: #f0cc5c;
+  --on-block: #1f1b16;
+  --t-blue: #1f2a3d;
+  --t-green: #1e3024;
+  --t-orange: #3a271a;
+  --t-red: #3a2320;
+  --t-plum: #34203a;
+  --t-teal: #1a3133;
+  --p-sky: #1b2a3d;
+  --p-sky-deep: #2b4668;
+  --p-water: #1f3f38;
+  --p-water-edge: #5fcbb3;
+  --p-canal: #213a56;
+  --p-canal-edge: #8fb9ea;
+  --p-ivy: #3f7a4c;
+  --p-ivy-deep: #2e5c3a;
+  --p-ochre: #e9c76a;
+  --p-snow: #2c3744;
+  --p-road: #5a554c;
+  --p-wood: #cfa97f;
+  --p-dirt: #6b5033;
+  --p-maple: #f3a46a;
+  --p-lotus: #e07aa6;
+  --p-gold: #f0cc5c;
+  --p-cloud: #2a2622;
+  --p-sweater: #9a3a52;
+  --p-night-star: #f0e8d0;
+  --p-night-glow: #f0cc5c;
+  --shadow-m: 0 8px 32px rgb(0 0 0 / 0.55);
+  --shadow-lift: 0 2px 0 rgb(0 0 0 / 0.5);
   --scrim: rgb(6 5 3 / 0.62);
   --flag-edge: rgb(0 0 0 / 0.3);
   --rule-raised: #3a3631;
-  --selection-bg: #a3bde0;
-  --selection-fg: #161512;
+  --selection-bg: #8fb8f2;
+  --selection-fg: #171511;
+  --rule-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3.2C80 2.4 140 4.1 220 3.3S360 2.2 440 3.4 600 4.2 700 3.1 860 2.3 960 3.5 1120 4.3 1220 3 1400 2.4 1600 3.3' fill='none' stroke='%232f2b24' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --rule-line-strong: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3.2C80 2.4 140 4.1 220 3.3S360 2.2 440 3.4 600 4.2 700 3.1 860 2.3 960 3.5 1120 4.3 1220 3 1400 2.4 1600 3.3' fill='none' stroke='%234a443a' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --tone-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 24' preserveAspectRatio='none'%3E%3Cpath d='M6 13C80 9 150 16 220 12S330 8 394 13' fill='none' stroke='%23f0cc5c' stroke-width='11' stroke-linecap='round' opacity='.85'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0 0.76 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --flecks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.12' numOctaves='1' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0 0.76 0 0 0 1 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
   color-scheme: dark;
 }
+
+/* One page, one colour. Every link, label, section head and primary sticker
+   takes the page's paint, so the nav is also the legend. */
+body {
+  --page: var(--c-blue);
+  --page-tint: var(--t-blue);
+}
+body[data-page='about'] { --page: var(--c-green); --page-tint: var(--t-green); }
+body[data-page='work'] { --page: var(--c-orange); --page-tint: var(--t-orange); }
+body[data-page='contact'] { --page: var(--c-red); --page-tint: var(--t-red); }
+/* A thing that points at a page takes that page's colour: a nav block, a
+   drawer row, a sticker, a link. */
+[data-page='home'], [data-page='publications'], [data-page='notfound'] { --block: var(--c-blue); }
+[data-page='about'] { --block: var(--c-green); }
+[data-page='work'] { --block: var(--c-orange); }
+[data-page='contact'] { --block: var(--c-red); }
 
 /* --------------------------------------------------------------- base */
 
@@ -280,28 +427,24 @@
   box-sizing: border-box;
 }
 
-/* A class that sets `display` outclasses the UA's `[hidden]` rule, which would
-   silently leave the mobile drawer laid out and keyboard-focusable off-screen.
-   Make `hidden` win everywhere so `el.hidden = true` always means hidden. */
 [hidden] {
   display: none !important;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
-  /* The browser's tap flash is a hard square that ignores radii and lingers
-     through transitions; presses are shown by the elements themselves. */
   -webkit-tap-highlight-color: transparent;
-  /* Keep the scrollbar's space when a modal locks scrolling, so the page does
-     not shift sideways on systems with classic scrollbars. */
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 1rem);
+  scroll-padding-top: 1rem;
 }
 
 body {
+  position: relative;
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: var(--flecks), var(--grain);
+  background-size: 420px 420px, 280px 280px;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--step-0);
@@ -310,6 +453,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -322,8 +466,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: 800;
+  line-height: 1.12;
   letter-spacing: var(--track-3);
   margin: 0;
   text-wrap: balance;
@@ -333,8 +477,6 @@ p {
   margin: 0;
 }
 
-/* No stranded last words in running text; labels and short display lines
-   break into even lines instead. */
 p,
 dd,
 li {
@@ -351,17 +493,16 @@ img {
 }
 
 a {
-  color: var(--accent);
+  color: var(--page);
   text-decoration: none;
 }
 
+/* Focus never depends on the page colour: ink on paper, cream at night. */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
-
-/* Only hide the outline for mouse users; :focus-visible above still fires. */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -382,7 +523,6 @@ a {
 .skip-link {
   position: absolute;
   top: 0;
-  /* On the content edge, where the brand starts, not the viewport edge. */
   left: max(var(--gutter), calc((100% - var(--shell)) / 2 + var(--gutter)));
   z-index: 300;
   transform: translateY(-120%);
@@ -397,8 +537,6 @@ a {
   transform: translateY(0);
   transition: transform var(--dur-in) var(--ease);
 }
-/* Appearing is its focus indicator; a ring around the filled tab as well
-   is two indicators for one state. */
 .skip-link:focus-visible {
   outline: none;
 }
@@ -412,17 +550,10 @@ a {
   padding-inline: var(--gutter);
 }
 
-/* The signature, part two: every label on the site is Fraunces at the other
-   end of its optical axis, the sturdy caption drawing (optical size 9), in
-   sentence case. One typeface builds the hierarchy from the name at opsz 144
-   to the smallest label at opsz 9. Labels are ink, not the accent, so navy
-   only ever means 'you can act on this'. Three levels: section heads a step
-   up in size and weight (at the text optical size), row keys, and quiet
-   kickers. */
-.overline,
-.deflist__key,
-.entry__meta,
-.linkgrid .k,
+/* Labels. The small caption cut of Fraunces (optical size 9), inside a
+   rubber-stamp frame: a 1.5px line and a thinner one just inside it. The
+   stamp is inked in the page's colour. */
+.label,
 .desk__kicker,
 .desk__rowkey,
 .desk__updated,
@@ -430,31 +561,52 @@ a {
   font-family: var(--font-display);
   font-variation-settings: 'opsz' 9;
   font-size: var(--step--1);
-  font-weight: 500;
-  line-height: 1.45;
+  font-weight: 600;
+  line-height: 1.35;
   letter-spacing: 0;
-  text-transform: none;
+  color: var(--page);
+}
+.label {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 3px currentColor;
+  text-wrap: balance;
+}
+.deflist__key,
+.entry__meta {
+  margin: 0;
+}
+.desk__rowkey {
   color: var(--ink-2);
 }
+.desk__updated,
+.desk__indexlabel {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Section heads: the heavy display cut, in the page's paint. */
 .overline {
   margin: 0;
 }
 h2.overline {
-  font-size: var(--step-0);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--ink);
-  font-variation-settings: normal;
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 48;
+  font-size: var(--step-3);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: var(--track-3);
+  color: var(--page);
 }
-p.overline,
-.desk__kicker,
-.desk__updated,
-.desk__indexlabel {
+p.overline {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--muted);
 }
-/* One gap between a label and whatever it introduces (a list, prose, a
-   lead, the email), and one between an intro line and its list. Heads that
-   are flex columns set their own gap. */
 :not(.section__head, .desk__head) > .overline + * {
   margin-top: var(--space-s);
 }
@@ -480,14 +632,24 @@ p.overline,
   color: var(--ink);
 }
 
-/* Links: one underline system. The underline is text-decoration, sitting
-   just below the baseline and skipping descenders. A link inside a sentence
-   is always underlined, quietly, so it never relies on colour alone; a link
-   that stands on its own (an action, an index entry, a DOI, the address)
-   shows its underline on hover and focus. Hover is instant. */
+/* The two-tone heading. The last words take the page's paint, and a
+   highlighter stroke runs under them, drawn below the baseline so the
+   Vietnamese marks under ậ and ệ are never crossed by yellow. */
+.tone {
+  color: var(--page);
+  background: var(--tone-stroke) 0 100% / 100% 0.3em no-repeat;
+  padding-bottom: 0.02em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.tone--ink {
+  color: inherit;
+}
+
+/* Links: the page's colour and a quiet underline; on hover the highlighter. */
 .link,
 .prose a:not(.btn) {
-  color: var(--accent);
+  color: var(--block, var(--page));
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.22em;
@@ -496,16 +658,15 @@ p.overline,
 .link:hover,
 .link:focus-visible,
 .prose a:not(.btn):hover {
-  color: var(--accent-strong);
   text-decoration-color: currentColor;
+  background: linear-gradient(var(--hi), var(--hi)) 0 92% / 100% 0.45em no-repeat;
 }
 :is(.hero__actions, .desk__indexlinks, .pub__links) .link:not(:hover, :focus-visible),
 .contact-email:not(:hover, :focus-visible) {
   text-decoration-color: transparent;
 }
 
-/* The drawn arrow: the stroke of a text weight, centred on the cap height,
-   in the link's colour. The link's underline stops at the word. */
+/* The drawn arrow. */
 .arrow {
   display: inline-block;
   width: 0.7em;
@@ -520,50 +681,70 @@ p.overline,
   stroke-linejoin: round;
 }
 
+/* Stickers. A painted label stuck to the board: four uneven corners, a
+   rough painted edge on the fill layer only (the text stays crisp), and a
+   hairline of shadow where it lifts. */
 .btn {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.7rem 1.45rem;
   font-family: var(--font-body);
   font-size: var(--step--1);
-  font-weight: 500;
-  padding: 0.85rem 1.6rem;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--on-block);
+  border: 0;
+  border-radius: var(--radius-sticker);
+  box-shadow: var(--shadow-lift);
   cursor: pointer;
+  text-decoration: none;
 }
-.btn--primary {
-  background: var(--accent);
-  color: var(--paper);
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--block, var(--page));
+  filter: url(#rough);
 }
 .btn--ghost {
-  background: transparent;
-  color: var(--accent);
-  border-color: var(--rule-strong);
+  color: var(--block, var(--page));
 }
-/* Hover styles only where there is a real hover, so a tap on a phone never
-   leaves a control stuck in its hover state. */
+.btn--ghost::before {
+  background: var(--paper-raised);
+  box-shadow: inset 0 0 0 1.5px var(--block, var(--page));
+}
+.btn .arrow {
+  margin-left: 0;
+}
 @media (hover: hover) {
-  .btn--primary:hover {
-    background: var(--accent-strong);
-  }
-  .btn--ghost:hover {
-    border-color: var(--accent);
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 0 rgb(33 29 24 / 0.18);
   }
 }
 .btn:active {
-  transform: scale(0.985);
+  transform: translateY(1px);
+  box-shadow: none;
+}
+.btn:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
 }
 
-/* Definition-list rows: a caption label in a fixed column, content beside it.
-   Used for the About facts and the home highlights. */
-/* Rules mark groups, not rows, the way a journal sets a table: one rule
-   opens a list and one closes it. Single-line rows separate by space alone;
-   multi-paragraph items (projects, publications) keep a hairline between
-   them. */
+/* Rows. A stamp label in a fixed column, prose beside it. The rules that
+   open and close a list, and the hairlines between multi-paragraph items,
+   are drawn lines, not borders. */
 .deflist,
 .entry-list {
-  border-block: 1px solid var(--rule-strong);
+  background: var(--rule-line-strong) top / 100% 6px no-repeat,
+    var(--rule-line-strong) bottom / 100% 6px no-repeat;
+  padding-block: 6px;
 }
 .deflist {
   margin: 0;
@@ -572,10 +753,9 @@ p.overline,
 }
 .deflist__row {
   display: grid;
-  grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
-  gap: 0.35rem clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 10.5rem) minmax(0, 1fr);
+  gap: 0.5rem clamp(1.5rem, 4vw, 3.5rem);
   padding: var(--space-m) 0;
-  /* Key and value share the first baseline, whatever their fonts. */
   align-items: baseline;
 }
 .deflist__key {
@@ -588,22 +768,14 @@ p.overline,
   color: var(--ink);
 }
 @media (max-width: 700px) {
-  /* Stacked, a key sits on its value; rows need less air between them than
-     side-by-side rows do. */
   .deflist__row {
     grid-template-columns: 1fr;
-    gap: 0.4rem;
-    padding-block: 1rem;
+    gap: 0.6rem;
+    padding-block: 1.1rem;
   }
 }
-/* A list that ends the page is closed by the footer's rule; its own closing
-   rule would make a double line with nothing between. */
-.main > .shell > :last-child > .deflist:last-child {
-  border-bottom: 0;
-}
 
-/* Language flags. Decorative, sized to the text they sit beside, and inline-flex
-   so a wrapped list never leaves a flag stranded at the end of a line. */
+/* Language flags. */
 .flag {
   display: inline-flex;
   width: 1.35em;
@@ -613,8 +785,6 @@ p.overline,
   margin-right: 0.42em;
   border-radius: 2px;
   overflow: hidden;
-  /* A hairline drawn inside the flag's edge, so white stripes hold their
-     shape on paper without a halo around the flag in dark. */
   outline: 1px solid var(--flag-edge);
   outline-offset: -1px;
 }
@@ -627,9 +797,7 @@ p.overline,
   display: block;
 }
 
-/* Methods and tools under a project, set like the keywords under a paper's
-   abstract: a quiet line, separated by middle dots. Filled pills looked like
-   buttons or filters, and did nothing when tapped. */
+/* Methods and tools under a project: a quiet keywords line. */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
@@ -637,159 +805,192 @@ p.overline,
   margin: var(--space-m) 0 0;
   padding: 0;
   list-style: none;
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .tag {
   white-space: nowrap;
 }
-/* The dot trails its item, so a wrapped line still starts on the edge. */
 .tag:not(:last-child)::after {
   content: '·';
   padding-inline: 0.55em;
 }
 
-/* ---------------------------------------------------------------- header */
-
-/* Solid paper: headings scrolling under a translucent blur read as a smear. */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
+/* The pen: margin notes in a real handwriting face. */
+.pen {
+  font-family: var(--font-pen);
+  font-size: 22px;
+  fill: var(--c-red);
+  letter-spacing: 0.01em;
 }
 
-/* Three columns, the outer two equal, so the nav sits on the page's true
-   centre however wide the brand and the tools are. */
+/* ---------------------------------------------------------------- header */
+
+/* Not sticky: the painted pill is a thing on the board, and nothing ever
+   scrolls under it. */
+.header {
+  position: relative;
+  z-index: 70;
+}
 .header__inner {
-  height: var(--header-h);
+  min-height: var(--header-h);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   column-gap: var(--space-m);
 }
 
+/* The brand on its own is for phones; on desktop it is the pill's centre. */
 .brand {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  letter-spacing: var(--track-1);
+  display: none;
+  align-items: center;
+  height: 44px;
+  padding: 0 0.9rem;
+  background: var(--paper-raised);
   color: var(--ink);
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 24;
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: var(--track-1);
   white-space: nowrap;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lift);
   justify-self: start;
 }
-.brand:hover {
-  color: var(--accent);
-}
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.1rem, 2.2vw, 1.75rem);
+/* The pill: four painted blocks around a paper block carrying the name. */
+.pill {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: stretch;
+  height: 52px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 4px 0 rgb(33 29 24 / 0.1), 0 10px 24px rgb(33 29 24 / 0.14);
 }
-.nav__link {
+.pill__item,
+.pill__brand {
   position: relative;
-  font-weight: 500;
-  font-size: 0.9375rem;
-  color: var(--ink);
-  padding: 0.25rem 0;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
-.nav__link::after {
+.pill__item {
+  padding: 0 1.25rem;
+  background: var(--block);
+  color: var(--on-block);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.pill__brand {
+  padding: 0 1.5rem;
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 24;
+  font-weight: 800;
+  font-size: 1.1875rem;
+  letter-spacing: var(--track-1);
+}
+/* The current page carries a strip of yellow along the top of its block. */
+.pill__item[aria-current='page']::before {
   content: '';
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: -2px;
-  height: 1.5px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-out) var(--ease-in);
+  height: 4px;
+  background: var(--c-yellow);
 }
-/* Hover draws a quiet rule; only the current page gets the accent, so
-   hovering never shows two 'current' items. */
-.nav__link:hover::after {
-  transform: scaleX(1);
-  background: var(--rule-strong);
-  transition: transform var(--dur-in) var(--ease);
+@media (hover: hover) {
+  .pill__item:hover {
+    background: color-mix(in oklab, var(--block), white 12%);
+  }
+  .pill__brand:hover {
+    color: var(--c-blue);
+  }
 }
-.nav__link[aria-current='page']::after {
-  transform: scaleX(1);
-  background: var(--accent);
-}
-.nav__link[aria-current='page'] {
-  color: var(--accent);
+/* A white ring inside an ink ring reads on every block colour. */
+.pill__item:focus-visible,
+.pill__brand:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--paper-raised), inset 0 0 0 5px var(--ink);
 }
 
-.nav-desktop {
-  grid-column: 2;
-}
-
-/* The last icon's ink, not its 36px hit area, ends on the content edge:
-   the button's own inset (36 - 19) / 2 is given back to the gutter. */
 .header__tools {
   grid-column: 3;
   justify-self: end;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-right: calc(-1 * var(--ib-inset));
 }
 
+/* EN | VI as a two-cell stamp: the current language inked, the other outlined. */
 .langswitch {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.8125rem;
-}
-.langswitch__sep {
-  color: var(--rule-strong);
+  display: inline-flex;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--paper-raised);
 }
 .langswitch a {
-  color: var(--muted);
-  /* A 44px-tall target for the control the Vietnamese audience needs most. */
-  padding: 0.7rem 0.3rem;
-  font-weight: 400;
-}
-.langswitch a:hover {
-  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 36px;
+  padding: 0 0.55rem;
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 14;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
 }
 .langswitch a[aria-current='true'] {
-  color: var(--ink);
-  font-weight: 500;
+  background: var(--ink);
+  color: var(--paper);
+}
+@media (hover: hover) {
+  .langswitch a:not([aria-current='true']):hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+}
+.langswitch a:focus-visible {
+  outline-offset: -3px;
 }
 
+/* Round stickers for the two icon buttons. */
 .iconbtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: var(--ib);
   height: var(--ib);
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  background: none;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 50%;
+  background: var(--paper-raised);
   color: var(--ink);
   cursor: pointer;
+  box-shadow: var(--shadow-lift);
 }
 @media (hover: hover) {
   .iconbtn:hover {
-    background: var(--paper-warm);
-    border-color: var(--rule);
-    color: var(--accent);
+    color: var(--page);
+    border-color: var(--page);
   }
 }
 .iconbtn:active {
-  background: var(--paper-warm);
+  transform: translateY(1px);
+  box-shadow: none;
 }
 .iconbtn svg {
   width: 19px;
   height: 19px;
   display: block;
 }
-/* The theme toggle swaps which glyph is shown; JS only flips a data attribute.
-   Scoped through .iconbtn so it outweighs the `.iconbtn svg` sizing rule above,
-   which would otherwise keep the moon on screen next to the sun. */
 .iconbtn .iconbtn__moon {
   display: none;
 }
@@ -803,59 +1004,40 @@ p.overline,
 .nav-toggle {
   display: none;
 }
-/* Without JavaScript the menu and theme buttons cannot do anything, so they
-   are not offered; the footer nav still reaches every page. */
 .no-js .nav-toggle,
 .no-js [data-theme-toggle] {
   display: none !important;
 }
-/* The last item is then 'VI', whose inset is its own padding, not an icon's. */
-.no-js .header__tools {
-  margin-right: -0.3rem;
-}
 
-/* Below ~400px the brand and tools only just fit: tighten, never overflow. */
-@media (max-width: 400px) {
-  .header__inner {
-    column-gap: var(--space-s);
-  }
-  .brand {
-    font-size: 1.125rem;
-  }
-  .header__tools {
-    gap: 0.375rem;
-  }
-}
-@media (max-width: 360px) {
-  .header__inner {
-    column-gap: 0.5rem;
-  }
-  .header__tools {
-    gap: 0.25rem;
-  }
-}
-/* A thumb needs a 44px target: on touch screens the icon buttons grow while
-   their glyphs stay put on the content edge. */
 @media (pointer: coarse) {
   :root {
     --ib: 44px;
   }
+  .langswitch a {
+    height: 42px;
+  }
 }
-/* Pressing a link dims it for as long as the finger is down. */
-a:not(.btn):active {
+a:not(.btn, .pill__item, .pill__brand, .drawer__item):active {
   opacity: 0.7;
 }
 
-/* Mobile drawer */
-@media (max-width: 800px) {
+/* Phones and narrow tablets: the pill folds into the drawer. */
+@media (max-width: 860px) {
+  :root {
+    --header-h: 72px;
+  }
   .header__inner {
     grid-template-columns: auto 1fr;
   }
+  .brand {
+    display: inline-flex;
+  }
+  .pill {
+    display: none;
+  }
   .header__tools {
     grid-column: 2;
-  }
-  .nav-desktop {
-    display: none;
+    gap: 0.5rem;
   }
   .nav-toggle {
     display: inline-flex;
@@ -863,12 +1045,12 @@ a:not(.btn):active {
   .drawer {
     position: fixed;
     inset: 0 0 0 auto;
-    width: min(86vw, 340px);
+    width: min(88vw, 360px);
     z-index: 200;
-    background: var(--paper-raised);
+    background-color: var(--paper);
+    background-image: var(--flecks), var(--grain);
+    background-size: 420px 420px, 280px 280px;
     border-left: 1px solid var(--rule);
-    /* Hairlines keep their contrast on the lighter surface in dark. */
-    --rule: var(--rule-raised);
     padding: 0 var(--gutter) var(--space-l);
     display: flex;
     flex-direction: column;
@@ -894,8 +1076,6 @@ a:not(.btn):active {
     pointer-events: auto;
     transition: opacity var(--dur-in) var(--ease);
   }
-  /* The head is the header's height and the close button takes the menu
-     button's exact place, so the X appears where the finger already is. */
   .drawer__head {
     display: flex;
     align-items: center;
@@ -903,24 +1083,45 @@ a:not(.btn):active {
     height: var(--header-h);
     margin-bottom: var(--space-s);
   }
-  .drawer__head .iconbtn {
-    margin-right: calc(-1 * var(--ib-inset));
-  }
+  /* The pill, unrolled: five painted rows. */
   .drawer__nav {
     display: flex;
     flex-direction: column;
+    gap: 6px;
   }
-  .drawer__nav a {
+  .drawer__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 0 1.25rem;
+    background: var(--block);
+    color: var(--on-block);
     font-family: var(--font-display);
-    font-size: 1.375rem;
+    font-variation-settings: 'opsz' 48;
+    font-weight: 800;
+    font-size: 1.5rem;
     letter-spacing: var(--track-2);
-    font-weight: 500;
-    color: var(--ink);
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
   }
-  .drawer__nav a[aria-current='page'] {
-    color: var(--accent);
+  .drawer__item[data-page='home'] {
+    background: var(--paper-raised);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1.5px var(--rule-strong);
+  }
+  .drawer__item[aria-current='page']::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 6px;
+    background: var(--c-yellow);
+  }
+  .drawer__item:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 3px var(--paper-raised), inset 0 0 0 5px var(--ink);
   }
   .drawer__foot {
     margin-top: auto;
@@ -929,20 +1130,59 @@ a:not(.btn):active {
     align-items: center;
     justify-content: space-between;
   }
-  /* The switch's tap padding would set EN 5px inside the nav's text edge. */
-  .drawer__foot .langswitch {
-    margin-left: -0.3rem;
-  }
 }
-@media (min-width: 801px) {
+@media (min-width: 861px) {
   .drawer,
   .drawer__scrim {
     display: none;
   }
 }
+@media (max-width: 400px) {
+  .brand {
+    font-size: 1rem;
+    padding-inline: 0.7rem;
+  }
+  .header__tools {
+    gap: 0.4rem;
+  }
+}
+
+/* The ivy over the two top corners of the home page: the portrait's own
+   background spilling onto the board. Desktop only. */
+.ivy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.ivy__left,
+.ivy__right {
+  position: absolute;
+  top: -8px;
+  width: clamp(160px, 17vw, 260px);
+}
+.ivy__left {
+  left: 0;
+}
+.ivy__right {
+  right: 0;
+  transform: scaleX(-1);
+}
+.ivy svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 959px) {
+  .ivy {
+    display: none;
+  }
+}
 
 /* ------------------------------------------------------------------ main */
-
 
 .section {
   padding-block: var(--space-xl);
@@ -950,25 +1190,15 @@ a:not(.btn):active {
 .section--tight {
   padding-block: var(--space-l);
 }
-/* Three distances, each clearly larger than the last: label to content
-   (--space-s), head or intro to content (--space-l), and one sub-section to
-   the next (--space-xl). */
 .section .section {
   padding-block: var(--space-xl) 0;
 }
-/* The footer's own margin sets the band above it, the same on every page. */
-.main > .shell > :last-child {
-  padding-bottom: 0;
-}
-/* A closing line after a list. Its link is a few words; it moves to the
-   next line whole rather than leaving one word underlined behind. */
 .coda {
   margin-top: var(--space-l);
 }
 .coda .link {
   white-space: nowrap;
 }
-/* A quiet closing note. */
 .aside {
   color: var(--muted);
   max-width: var(--measure);
@@ -976,65 +1206,134 @@ a:not(.btn):active {
 .section__head {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
   margin-bottom: var(--space-l);
 }
 .section__head h1,
 .section__head h2 {
-  font-size: var(--step-4);
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 120;
+  font-weight: 850;
+  font-size: var(--step-5);
+  line-height: 1.04;
   letter-spacing: var(--track-4);
-  max-width: 22ch;
+  max-width: 18ch;
 }
-/* A page intro is a paragraph, not a hero line: give it the full measure. */
+html[lang='vi'] .section__head h1 {
+  line-height: 1.12;
+}
 .section__head .lead {
   max-width: var(--measure);
+}
+/* A page that opens with its title and a landscape keeps the title's
+   section short, so the picture arrives on the first screen. */
+.section__head:last-child {
+  margin-bottom: 0;
+}
+
+/* The landscapes. Full width, decorative, cropped to their centre on a
+   phone by the fixed height; every drawing keeps its landmarks inside the
+   central 880 units for that reason. */
+.scene {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-block: var(--space-m);
+}
+.scene svg {
+  display: block;
+  width: 100%;
+  height: clamp(110px, 12.5vw, 200px);
+}
+.scene--horizon svg {
+  height: clamp(140px, 16.25vw, 260px);
+}
+.scene--deadend svg {
+  height: clamp(150px, 15vw, 240px);
+}
+.scene--horizon {
+  margin-top: 0;
+}
+.route {
+  fill: none;
+}
+/* The vehicle rides its route as the reader scrolls; without support, or
+   with reduced motion, it is parked a little past the middle. */
+.ride {
+  offset-rotate: auto;
+  offset-distance: 58%;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ride {
+      animation: ride linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+@keyframes ride {
+  from {
+    offset-distance: 2%;
+  }
+  to {
+    offset-distance: 98%;
+  }
+}
+/* The 404's signpost arms are real links. */
+.scene--links a {
+  cursor: pointer;
+}
+.scene--links a .pen {
+  fill: var(--ink);
+}
+.scene--links a:hover .pen,
+.scene--links a:focus-visible .pen {
+  fill: var(--page);
+}
+.scene--links a:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
 }
 
 /* ------------------------------------------------------------------- hero */
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
-  padding-block: clamp(3rem, 7vw, 6rem) var(--space-l);
+  padding-block: clamp(2rem, 5vw, 4rem) var(--space-l);
 }
-
-/* The name is sized to its own column as well as to the viewport, so it
-   holds one line at every width, the two-column tablet range included. */
 .hero__text {
   container-type: inline-size;
 }
+/* The name, in the heaviest cut Fraunces has, at its display optical size:
+   soft terminals, high contrast, a little wonky. Spent on this one string. */
 .hero__name {
-  font-size: min(var(--step-5), 12.6cqi);
-  letter-spacing: var(--track-5);
-  line-height: 1.02;
+  font-size: min(var(--step-6), 13.5cqi);
+  font-weight: 900;
+  font-variation-settings: 'opsz' 144;
+  letter-spacing: var(--track-4);
+  line-height: 1.0;
   margin: 0;
 }
-/* Optical margin: the side bearing of the P and M sits the ink ~2px inside
-   the column at display size. Pull both lines back onto the edge. */
 .hero__name > span {
   display: block;
   margin-left: -0.03em;
 }
-/* The signature, part one. Fraunces carries an optical-size axis from 9 to
-   144, and its 144 end, the sharp high-contrast display drawing, is spent on
-   exactly one string on the whole site: the name, in Vietnamese. Keep it to
-   this one selector. The display cut is already tight, so tracking eases to
-   -1%. */
 .hero__name span[lang='vi'] {
   font-family: 'Fraunces', 'Fraunces Display Fallback', Georgia, serif;
-  font-variation-settings: 'opsz' 144;
-  letter-spacing: -0.01em;
 }
 .hero__latin {
   display: block;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-variation-settings: 'opsz' 48;
+  font-weight: 600;
   font-size: var(--step-2);
-  color: var(--muted);
+  color: var(--c-blue);
   letter-spacing: var(--track-2);
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
 }
 .hero__role {
   margin-top: var(--space-m);
@@ -1054,48 +1353,69 @@ a:not(.btn):active {
   margin-top: var(--space-l);
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-s) var(--space-m);
 }
-/* The pair shares one size, weight and baseline; only the button's fill
-   ranks it above the link. */
-.hero__actions .link {
-  font-size: var(--step--1);
-  font-weight: 500;
-}
 
-/* A photograph, not a card: no border, shadow or hover. It sits on the
-   column's right edge, and its top meets the cap line of the name
-   (0.18em of the display size below the name's box). The figure's UA margin
-   (1em 40px) is reset, or it misses every edge. */
+/* The pinned print: a photograph with a white border, a hairline around
+   the image, a strip of tape across one corner, pinned a little crooked. */
 .hero__figure {
-  margin: calc(var(--step-5) * 0.18) 0 0;
+  margin: 0;
   width: 100%;
   max-width: 380px;
   justify-self: end;
   align-self: start;
 }
-.hero__figure img {
+.print {
+  position: relative;
+  display: block;
+  padding: 8px;
+  background: var(--paper-raised);
+  border-radius: 3px;
+  box-shadow: 0 10px 28px rgb(33 29 24 / 0.16);
+  transform: rotate(-2.5deg);
+}
+.print img {
+  display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--radius-l);
-  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--rule-strong);
 }
-/* On a phone the name and the two actions are the first screen; the
-   portrait stays, at a size that leaves them well above the browser's
-   toolbar instead of pressed against the bottom edge. */
+.print__tape {
+  position: absolute;
+  top: -11px;
+  left: -22px;
+  width: 92px;
+  height: 26px;
+  background: var(--c-yellow);
+  opacity: 0.6;
+  transform: rotate(-32deg);
+  clip-path: polygon(0 0, 100% 0, 97% 25%, 100% 50%, 97% 75%, 100% 100%, 0 100%, 3% 75%, 0 50%, 3% 25%);
+  pointer-events: none;
+}
 @media (max-width: 700px) {
   .hero {
     grid-template-columns: 1fr;
     gap: var(--space-m);
-    padding-top: var(--space-l);
+    padding-top: var(--space-m);
   }
   .hero__figure {
     order: -1;
     justify-self: start;
     max-width: 176px;
-    margin-top: 0;
+  }
+  /* A tilted photo on a narrow screen reads as a layout bug. */
+  .print {
+    transform: none;
+  }
+  /* The tape moves to the corner with room, so nothing pokes past the
+     viewport's edge. */
+  .print__tape {
+    left: auto;
+    right: -20px;
+    transform: rotate(32deg);
   }
 }
 
@@ -1104,18 +1424,24 @@ a:not(.btn):active {
 .entry-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 6px 0;
 }
-
 .entry {
   padding-block: var(--space-l);
   display: grid;
-  grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
-  gap: 0.5rem clamp(1.5rem, 4vw, 3.5rem);
-  align-items: baseline;
+  grid-template-columns: minmax(0, 10.5rem) minmax(0, 1fr);
+  gap: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
 }
 .entry + .entry {
-  border-top: 1px solid var(--rule);
+  background: var(--rule-line) top / 100% 6px no-repeat;
+  padding-top: calc(var(--space-l) + 6px);
+}
+.entry__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
 }
 .entry__meta {
   text-wrap: balance;
@@ -1124,31 +1450,97 @@ a:not(.btn):active {
   min-width: 0;
 }
 .entry__title {
+  font-variation-settings: 'opsz' 48;
   font-size: var(--step-2);
   letter-spacing: var(--track-2);
   margin: 0 0 var(--space-s);
   max-width: 34ch;
-  line-height: 1.25;
+  line-height: 1.22;
 }
 .entry__body .prose {
   color: var(--ink-2);
+}
+/* The numbered sticker on a project. */
+.num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--c-orange);
+  color: var(--on-block);
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 48;
+  font-weight: 800;
+  font-size: 1.125rem;
+  border-radius: var(--radius-sticker);
+  box-shadow: var(--shadow-lift);
+  transform: rotate(-3deg);
 }
 @media (max-width: 700px) {
   .entry {
     grid-template-columns: 1fr;
   }
+  .entry__aside {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
-/* Publications */
+/* Publications: a postage stamp carries the year; the citation is set as a
+   reference list, with the author's own name on a highlighter so all three
+   spellings are found in one glance. */
 .pub {
   padding-block: var(--space-m);
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 0.5rem clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
 }
 .pub + .pub {
-  border-top: 1px solid var(--rule);
+  background: var(--rule-line) top / 100% 6px no-repeat;
+  padding-top: calc(var(--space-m) + 6px);
+}
+.pub__stamp {
+  padding-top: 0.2rem;
+}
+.stamp {
+  display: block;
+  width: 64px;
+  height: 64px;
+  overflow: visible;
+  filter: drop-shadow(0 1px 0 rgb(33 29 24 / 0.12));
+}
+.pub:nth-child(odd) .stamp {
+  transform: rotate(-2deg);
+}
+.pub:nth-child(even) .stamp {
+  transform: rotate(2deg);
+}
+.stamp--plum { --hue: var(--c-plum); --hue-tint: var(--t-plum); }
+.stamp--orange { --hue: var(--c-orange); --hue-tint: var(--t-orange); }
+.stamp--teal { --hue: var(--c-teal); --hue-tint: var(--t-teal); }
+.stamp--red { --hue: var(--c-red); --hue-tint: var(--t-red); }
+.stamp--blue { --hue: var(--c-blue); --hue-tint: var(--t-blue); }
+.stamp__paper {
+  fill: var(--hue-tint);
+}
+.stamp__frame {
+  fill: none;
+  stroke: var(--hue);
+  stroke-width: 1;
+}
+.stamp__year {
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 48;
+  font-weight: 800;
+  font-size: 22px;
+  fill: var(--hue);
 }
 .pub__title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-variation-settings: 'opsz' 24;
+  font-weight: 700;
   font-size: var(--step-1);
   line-height: 1.35;
   color: var(--ink);
@@ -1159,13 +1551,16 @@ a:not(.btn):active {
 .pub__authors {
   margin: 0.5rem 0 0;
   font-size: var(--step--1);
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--muted);
   max-width: var(--measure);
 }
 .pub__authors .self {
   color: var(--ink);
   font-weight: 600;
+  background: linear-gradient(var(--hi), var(--hi)) 0 88% / 100% 0.5em no-repeat;
+  padding-inline: 0.1em;
+  margin-inline: -0.1em;
 }
 .pub__venue {
   font-style: italic;
@@ -1181,22 +1576,31 @@ a:not(.btn):active {
   font-size: 0.75rem;
   letter-spacing: 0.04em;
 }
-/* The DOI is the only way into each paper: a target tall enough to hit. */
 .pub__links a {
   display: inline-block;
   padding-block: 0.5rem;
 }
+@media (max-width: 560px) {
+  .pub {
+    grid-template-columns: 1fr;
+  }
+  .pub__stamp {
+    padding-top: 0;
+  }
+}
 
 /* ------------------------------------------------------------------ 404 */
 
-/* The same pairing as the home hero: English set as the title, Vietnamese
-   under it in the muted display cut. */
 .notfound__vi {
   display: block;
   margin-top: 0.3rem;
-  font-weight: 500;
+  font-weight: 700;
   font-size: var(--step-3);
   letter-spacing: var(--track-3);
+  color: var(--ink-2);
+}
+.notfound__tagline {
+  font-family: var(--font-mono);
   color: var(--muted);
 }
 .notfound__pair {
@@ -1210,7 +1614,6 @@ a:not(.btn):active {
     grid-template-columns: 1fr;
   }
 }
-/* Each language's way home sits on its own line under its sentence. */
 .notfound__pair .link {
   display: block;
   width: fit-content;
@@ -1222,65 +1625,106 @@ a:not(.btn):active {
 
 .contact-email {
   font-family: var(--font-display);
-  font-weight: 500;
-  /* Sized so the whole address fits one line from 375px up; below that it
-     breaks after the @ (a <wbr> in the markup), never inside a word. */
+  font-variation-settings: 'opsz' 48;
+  font-weight: 700;
   font-size: clamp(1.3125rem, 0.85rem + 2.2vw, 2.125rem);
   line-height: 1.2;
   letter-spacing: var(--track-3);
-  color: var(--accent);
+  color: var(--page);
   overflow-wrap: normal;
 }
 
-/* Flex rather than grid: with a single link (which is the state until the
-   ORCID / LinkedIn / GitHub URLs are filled in) a 1fr grid track stretches one
-   card across the whole page. Flex lets it keep a sane width and lets the row
-   fill in naturally as links are added. */
+/* Elsewhere: each link a postcard, address side up. */
 .linkgrid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 .linkgrid li {
-  flex: 1 1 240px;
+  flex: 1 1 260px;
   max-width: 340px;
 }
-.linkgrid a {
+.postcard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.3rem;
   height: 100%;
-  padding: var(--space-m);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  background: var(--paper);
+  min-height: 160px;
+  padding: calc(var(--space-m) + 6px) var(--space-m) var(--space-m);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
   color: var(--ink);
+  box-shadow: 0 2px 0 rgb(33 29 24 / 0.08);
+  overflow: hidden;
 }
-@media (hover: hover) {
-  .linkgrid a:hover {
-    background: var(--paper-warm);
-    border-color: var(--rule-strong);
-  }
+/* The airmail edge. */
+.postcard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: repeating-linear-gradient(
+    100deg,
+    var(--c-red) 0 16px,
+    transparent 16px 22px,
+    var(--c-blue) 22px 38px,
+    transparent 38px 44px
+  );
 }
-/* The card is a link, so its title keeps the accent. */
-.linkgrid .k {
-  color: var(--accent);
+/* Three faint address rules in the lower right. */
+.postcard::after {
+  content: '';
+  position: absolute;
+  right: var(--space-m);
+  bottom: var(--space-m);
+  width: 38%;
+  height: 46px;
+  background: repeating-linear-gradient(to bottom, transparent 0 14px, var(--rule-strong) 14px 15px);
+  opacity: 0.7;
+  pointer-events: none;
 }
-.linkgrid .v {
+.postcard .k {
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 24;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--c-red);
+}
+.postcard .v {
   font-size: var(--step--1);
   color: var(--ink-2);
+  max-width: 60%;
+}
+@media (hover: hover) {
+  .postcard:hover {
+    box-shadow: 0 4px 0 rgb(33 29 24 / 0.1);
+    transform: translateY(-1px);
+  }
 }
 
 /* ---------------------------------------------------------------- footer */
 
+/* The end of the page: a torn strip of painted yellow, then the navy. */
 .footer {
-  border-top: 1px solid var(--rule);
   margin-top: var(--space-2xl);
+}
+.footer__band {
+  margin: 0;
+}
+.footer__band svg {
+  height: clamp(28px, 3vw, 48px);
+}
+.footer__body {
+  background: var(--navy);
+  color: #c9d2de;
   padding-block: var(--space-l);
-  color: var(--muted);
   font-size: var(--step--1);
 }
 .footer__top {
@@ -1292,16 +1736,16 @@ a:not(.btn):active {
 }
 .footer__name {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-variation-settings: 'opsz' 24;
+  font-weight: 700;
   font-size: 1.0625rem;
-  color: var(--ink);
+  /* A fixed cream: the paper token goes near-black at night, and this sits
+     on the navy in both themes. */
+  color: #f2ede2;
 }
-/* Each name wraps as a unit: a narrow footer breaks after the middle dot. */
 .footer__name [lang] {
   white-space: nowrap;
 }
-/* Inline links in a balanced block rather than a flex row, so when the five
-   links do not fit one line they break 3 + 2, never 4 + 1. */
 .footer__nav {
   text-wrap: balance;
   line-height: 2;
@@ -1309,15 +1753,20 @@ a:not(.btn):active {
 .footer__nav a {
   display: inline-block;
   margin-right: 0.95rem;
-  color: var(--muted);
+  color: #bcd3f0;
 }
 .footer__nav a:last-child {
   margin-right: 0;
 }
 @media (hover: hover) {
   .footer__nav a:hover {
-    color: var(--accent);
+    color: #f2ede2;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
   }
+}
+.footer__body :focus-visible {
+  outline-color: var(--paper);
 }
 .footer__note {
   margin-top: var(--space-m);
@@ -1343,13 +1792,16 @@ a:not(.btn):active {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .btn:hover,
+  .postcard:hover,
+  .iconbtn:active,
+  .btn:active {
+    transform: none;
+  }
 }
 
 /* ---------------------------------------------------------------- print */
 
-/* Paper is paper: whatever theme the reader is in, a printout is ink on
-   white, says whose page it is, and drops everything that only works on a
-   screen. */
 @page {
   margin: 16mm 16mm 18mm;
 }
@@ -1357,39 +1809,52 @@ a:not(.btn):active {
   :root,
   :root[data-theme='dark'] {
     --paper: #fff;
-    --paper-warm: #fff;
+    --paper-deep: #fff;
     --paper-raised: #fff;
     --ink: #000;
     --ink-2: #222;
     --muted: #555;
-    --accent: #000;
-    --accent-strong: #000;
+    --page: #000;
+    --c-blue: #000;
+    --c-green: #000;
+    --c-orange: #000;
+    --c-red: #000;
+    --hi: transparent;
     --rule: #bbb;
     --rule-strong: #999;
     color-scheme: light;
   }
   body {
+    background-image: none;
     font-size: 10.5pt;
   }
-  /* Labels, meta and captions are sized in rem for the screen; on paper they
-     sit a step below the 10.5pt text they label. */
   :root {
     --step--1: 9.5pt;
   }
-  /* The header prints as a running head: the name, nothing else. */
   .header {
-    position: static;
     border-bottom: 1px solid var(--rule);
   }
-  .nav-desktop,
+  .brand {
+    display: inline-flex;
+    box-shadow: none;
+  }
+  .pill,
   .header__tools,
   .footer__nav,
+  .footer__band,
   .skip-link,
   .drawer,
   .drawer__scrim,
   .desk,
-  .hero__actions {
+  .scene,
+  .ivy,
+  .hero__actions,
+  .print__tape {
     display: none !important;
+  }
+  .print {
+    transform: none;
+    box-shadow: none;
   }
   .hero {
     padding-block: var(--space-l) var(--space-m);
@@ -1397,28 +1862,25 @@ a:not(.btn):active {
   .hero__figure {
     max-width: 45mm;
   }
-  .footer {
-    margin-top: var(--space-l);
+  .label {
+    box-shadow: none;
   }
-  a {
-    color: inherit;
+  .tone {
+    background: none;
+    color: #000;
   }
-  /* An external link in a sentence prints its address; on paper the words
-     alone lead nowhere. DOIs and the email already are their address. */
-  :is(.prose, .lead, .aside) a[href^="http"]::after {
+  .footer__body {
+    background: none;
+    color: #000;
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--rule);
+  }
+  .footer__name {
+    color: #000;
+  }
+  a[href^='http']::after {
     content: ' (' attr(href) ')';
     font-size: 0.85em;
-    color: var(--muted);
-    overflow-wrap: anywhere;
-  }
-  h1,
-  h2,
-  h3 {
-    break-after: avoid;
-  }
-  .entry,
-  .pub,
-  .deflist__row {
-    break-inside: avoid;
+    color: #555;
   }
 }

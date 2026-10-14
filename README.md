@@ -20,9 +20,14 @@ src/templates/           the page generators (plain JS, no template language)
   layout.js              document shell: head metadata, header, footer
   pages.js               one function per page
   desk.js                the illustrated desk scene
+  ui.js                  the poster-board furniture: tone() headings, scene()
+                         landscapes, the postage stamp, the sticker-edge filter
   esc.js                 escaping, plus the tiny bold/italic/link/flag pass
   flags.js               the three language flags, as inline SVG
-  svg/                   the desk illustration, as SVG fragments
+  svg/                   every illustration, as inline SVG fragments: the desk,
+                         and the landscapes and dividers (horizon, river, hills,
+                         skyline, plane, forest, sky, post, wayback, deadend,
+                         ivy, band)
 src/css/                 site.css (design system) + desk.css
 src/js/                  site.js (theme, drawer) + desk.js (the scene)
 static/                  copied to the site root verbatim: fonts, images, icons
@@ -85,18 +90,78 @@ to `src/templates/pages.js`, add its nav label to both `i18n.en.nav` and
 
 ## Design system
 
-All tokens are custom properties at the top of `src/css/site.css`. Change a
-colour there and it changes everywhere, in light and dark. Text colours were
-picked to meet WCAG AA on their own background (`--muted` is 5.0:1, `--accent`
-8.6:1), so do not lighten them without re-checking. There is one accent, navy,
-and it means "you can act on this": links and the primary button. Gold lives
-only inside the desk illustration (`--desk-gold`) and the favicon.
+The site is drawn as one long conference poster board, and between the
+sections runs the journey from Hanoi to Ottawa: cream card, a bold two-colour
+title, a photograph pinned with tape, highlighter on what matters, rubber-stamp
+labels, the presenter's pen notes in the margins. Everything a reader reads
+(prose, rows, citations, DOIs) is typeset like a journal page; everything
+around it is paint on paper.
 
-The site opens light for everyone, whatever the operating system prefers. Dark
-is opt-in through the header toggle, which sets `data-theme` on `<html>` and
-remembers the choice in `localStorage`. There is deliberately no
-`prefers-color-scheme` rule in the stylesheet: adding one back would make the
-site open dark for some readers again.
+All tokens are custom properties at the top of `src/css/site.css`. Change one
+and it changes everywhere, in light and dark. Three laws, written down so they
+survive the next edit:
+
+1. **No drawn faces.** The only face on the site is the photograph.
+   Landscapes, buildings, vehicles and objects only. (The owl on the desk is
+   the one animal with eyes.)
+2. **Colour is paint on a desaturated ground.** Saturated blocks sit on warm
+   grey-cream paper. Every block colour is dark enough that white 15px text
+   clears 5:1, and every text pairing was computed, not estimated: do not
+   lighten a colour without re-checking. Yellow is a surface (highlighter,
+   tape, band), never a text colour.
+3. **Density.** One landscape per page plus at most two dividers, no card
+   around prose, at most two tilted things per screen.
+
+**One page, one colour.** `body[data-page]` sets `--page`: blue for Home,
+Publications and the 404, green for About, orange for Work, red for Contact.
+Links, stamp labels, section heads and stickers take the page's colour, and the
+nav pill is the legend: its four blocks are those four colours.
+
+**Paint tokens** (`--p-*`) are for the illustrations only and never sit under
+text. **Block tokens** (`--c-*`) carry white text by day and dark text at night.
+Dark mode ("the board under a reading lamp") is opt-in through the header
+toggle and re-points every token: blocks go pastel, the yellow band stays the
+brightest thing on the page, the horizon's sky becomes night with stars and the
+Peace Tower's clock lights up. There is deliberately no `prefers-color-scheme`
+rule: the site opens light for everyone.
+
+**Type.** Fraunces variable at its heavy end (weight 800 to 900, optical size
+144) is the display voice, in sentence case, never uppercase (Vietnamese
+capitals stack two marks). The `@font-face` blocks must declare `100 900` or the
+heavy cut never loads. Patrick Hand, which has a real Vietnamese subset, is the
+pen: a handful of margin notes, never load-bearing, with Plex Mono as its
+fallback.
+
+**Two-tone headings.** `tone()` in `ui.js` sets the last *n* words of a title in
+the page colour with a highlighter stroke drawn below the baseline, so Vietnamese
+marks are never crossed by yellow. *n* lives in `site.json` as `toneWords` beside
+each title, so each language says where its own break goes; `0` means the title
+stays whole and only gets the stroke (as with "Giới thiệu").
+
+**Illustrations.** Each is an inline SVG fragment in `src/templates/svg/`,
+placed with `scene(name, ctx)`. House rules, which a drawing must keep:
+
+- Colours only as `style="fill:var(--p-…)"` / `style="stroke:var(--ink)"`,
+  never a hex (the one exception is a `#000` shading overlay at 12% opacity), so
+  every piece follows light and dark.
+- Objects carry a 2.5 round outline in `--ink`; terrain (water, hills, roads,
+  sky) has none. Flat fills; no gradients, filters, shadows or textures inside
+  a drawing; the paper provides all the texture.
+- Every landmark and label sits inside x 400 to 1200 of the 1600-wide canvas:
+  on a phone the drawing is cropped to its centre and nothing important may
+  fall outside it.
+- No text except the named pen placeholders (`__NOTE_x__`, filled from
+  `i18n.*.notes`), no flags, no crosses, no logos. The 404 signpost's two arms
+  are the one place text is a real link.
+- A vehicle is `<g class="ride" style="offset-path: …">` riding its route; it
+  moves as the reader scrolls (`animation-timeline: view()`), and is parked at
+  58% without support or under reduced motion.
+- Under 12KB per divider, 28KB for the horizon.
+
+**Paper.** Two procedural SVG tiles on `body`, a fine grain and sparse
+recycled-paper flecks, so there is no file and no request. Surfaces "stuck on"
+to the board (the brand block, the photo print, postcards, the dialog) have no
+texture; the contrast is what makes them look stuck on.
 
 ## Progressive enhancement
 
@@ -116,9 +181,14 @@ panel unreachable; it now has a spot. And every colour in the illustration is an
 inline `style="fill:var(--desk-…)"` rather than a hex literal. That is not
 decoration: most objects are drawn with `<use>`, and CSS selectors cannot reach
 into a `<use>` shadow tree, but custom properties inherit into it. It is the only
-way the artwork can follow light and dark. **If you edit the SVG, keep using the
-`--desk-*` variables**; a hard-coded hex will look correct in one theme and
-disappear in the other.
+way the artwork can follow light and dark. Every `--desk-*` is an alias of a site
+token (see the top of `desk.css`), so the desk is painted with the same box of
+paints as the landscapes. **If you edit the SVG, keep using the `--desk-*`
+variables**; a hard-coded hex will look correct in one theme and disappear in
+the other. The window shows Hanoi's Tháp Rùa on the left and Ottawa's Peace
+Tower on the right, which is what the annotation "where I'm from & where I am"
+points at; the drawn figure wears the portrait's burgundy sweater and stays
+faceless.
 
 ## Screenshots
 

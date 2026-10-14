@@ -2,12 +2,13 @@
 
 const { LANGS, SEGMENTS, urlFor } = require('./routes.js');
 const { esc, attr, keepGivenName } = require('./esc.js');
+const { scene, roughDefs } = require('./ui.js');
 
 const NAV_PAGES = ['about', 'work', 'publications', 'contact'];
 
 /**
- * Wraps a page's body HTML in the shared document shell: head metadata,
- * header, mobile drawer, footer, and scripts.
+ * Wraps a page's body HTML in the shared document shell: head metadata, the
+ * painted pill navigation, the mobile drawer, the footer band, and scripts.
  *
  * Expects: { content, lang, page, title, description, body, ogType }
  */
@@ -28,15 +29,15 @@ module.exports = function layout(ctx) {
   const ogImage = site.url + '/img/og-' + lang + '.png';
 
   // Preload exactly the font files the first screen paints with, so nothing
-  // swaps after first paint: the display serif and the body at 400 and 500
-  // (nav, hero role, buttons). The Vietnamese subsets are needed wherever
-  // Vietnamese letters are above the fold: every /vi/ page, and the hero name
-  // on the English home page (the dot under the a in Pham).
-  const fonts = ['fraunces-latin', 'bevietnampro-400-latin', 'bevietnampro-500-latin'];
+  // swaps after first paint: the display serif and the body at 400, 500 and
+  // 600 (nav blocks and stickers are 600). The Vietnamese subsets are needed
+  // wherever Vietnamese letters are above the fold: every /vi/ page, and the
+  // hero name on the English home page (the dot under the a in Phạm).
+  const fonts = ['fraunces-latin', 'bevietnampro-400-latin', 'bevietnampro-500-latin', 'bevietnampro-600-latin'];
   // The 404 carries both languages on one page, so it counts as Vietnamese too.
   const showsVi = lang === 'vi' || !isRoute;
   if (showsVi || page === 'home') fonts.push('fraunces-vietnamese');
-  if (showsVi) fonts.push('bevietnampro-400-vietnamese');
+  if (showsVi) fonts.push('bevietnampro-400-vietnamese', 'bevietnampro-600-vietnamese');
   if (lang === 'vi') fonts.push('bevietnampro-500-vietnamese');
   const preloads = fonts
     .map((f) => `  <link rel="preload" href="/assets/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin>`)
@@ -50,19 +51,27 @@ module.exports = function layout(ctx) {
       )}">`
   ).join('\n');
 
-  const navHtml = NAV_PAGES.map((p) => {
+  // The pill: four painted blocks around a paper block carrying the name.
+  // Each block's colour is its page's colour, so the nav is also the legend.
+  const block = (p) => {
     const current = p === page;
-    return `<a class="nav__link" href="${attr(urlFor(lang, p))}"${
+    return `<a class="pill__item" data-page="${attr(p)}" href="${attr(urlFor(lang, p))}"${
       current ? ' aria-current="page"' : ''
     }>${esc(t.nav[p])}</a>`;
-  }).join('\n        ');
+  };
+  const pillHtml =
+    `${block('about')}\n        ${block('work')}\n        ` +
+    `<a class="pill__brand" href="${attr(urlFor(lang, 'home'))}">${esc(site.name)}</a>\n        ` +
+    `${block('publications')}\n        ${block('contact')}`;
 
-  const drawerNavHtml = NAV_PAGES.map((p) => {
-    const current = p === page;
-    return `<a href="${attr(urlFor(lang, p))}"${current ? ' aria-current="page"' : ''}>${esc(
-      t.nav[p]
-    )}</a>`;
-  }).join('\n          ');
+  const drawerNavHtml = ['home', ...NAV_PAGES]
+    .map((p) => {
+      const current = p === page;
+      return `<a class="drawer__item" data-page="${attr(p)}" href="${attr(urlFor(lang, p))}"${
+        current ? ' aria-current="page"' : ''
+      }>${esc(t.nav[p])}</a>`;
+    })
+    .join('\n          ');
 
   const langSwitch = LANGS.map((l) => {
     const isCurrent = isRoute && l === lang;
@@ -70,10 +79,10 @@ module.exports = function layout(ctx) {
     return `<a href="${attr(urlFor(l, isRoute ? page : 'home'))}" lang="${l}" hreflang="${l}"${
       isCurrent ? ' aria-current="true"' : ''
     } title="${attr(t.langNames[l])}">${label}</a>`;
-  }).join('<span class="langswitch__sep" aria-hidden="true">|</span>');
+  }).join('');
 
   const footerNav = ['home', ...NAV_PAGES]
-    .map((p) => `<a href="${attr(urlFor(lang, p))}">${esc(t.nav[p])}</a>`)
+    .map((p) => `<a href="${attr(urlFor(lang, p))}" data-page="${attr(p)}">${esc(t.nav[p])}</a>`)
     .join('\n            ');
 
   // JSON-LD. Only facts that appear on the site itself go in here.
@@ -99,6 +108,9 @@ module.exports = function layout(ctx) {
       .map((l) => l.url),
   };
 
+  // The page colour. Home and the 404 are blue; every other page has its own.
+  const pageKey = isRoute ? page : 'notfound';
+
   return `<!doctype html>
 <html lang="${attr(lang === 'vi' ? 'vi' : 'en')}" class="no-js">
 <head>
@@ -116,7 +128,7 @@ ${alternates}
 
   <!-- The site opens light whatever the OS prefers; site.js repaints this
        when the reader turns dark mode on. -->
-  <meta name="theme-color" content="#fbfaf7">
+  <meta name="theme-color" content="#f2ede2">
   <meta name="color-scheme" content="light">
 
   <meta property="og:type" content="${attr(ctx.ogType || 'website')}">
@@ -154,7 +166,7 @@ ${preloads}
         // Paint the browser chrome to match before first paint, not when the
         // deferred script gets round to it.
         if (s === 'dark') {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#161512');
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#171511');
           document.querySelector('meta[name="color-scheme"]').setAttribute('content', 'dark');
         }
       } catch (e) {}
@@ -164,29 +176,28 @@ ${preloads}
 ${isRoute ? `  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${ctx.head ? '  ' + ctx.head : ''}
 </head>
-<body>
+<body data-page="${attr(pageKey)}">
+  ${roughDefs}
   <a class="skip-link" href="#main">${esc(t.skipToContent)}</a>
-
+${page === 'home' ? `  ${ivy(ctx)}\n` : ''}
   <header class="header">
     <div class="shell header__inner">
       <a class="brand" href="${attr(urlFor(lang, 'home'))}">${esc(site.name)}</a>
 
-      <nav class="nav nav-desktop" aria-label="${attr(t.primaryNav)}">
-        ${navHtml}
+      <nav class="pill" aria-label="${attr(t.primaryNav)}">
+        ${pillHtml}
       </nav>
 
       <div class="header__tools">
-        <nav class="langswitch" aria-label="${attr(t.languageNav)}">
-          ${langSwitch}
-        </nav>
+        <nav class="langswitch" aria-label="${attr(t.languageNav)}">${langSwitch}</nav>
         <button class="iconbtn" type="button" data-theme-toggle aria-label="${attr(t.toggleTheme)}">
-          <svg class="iconbtn__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/></svg>
-          <svg class="iconbtn__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11Z"/></svg>
+          <svg class="iconbtn__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"/></svg>
+          <svg class="iconbtn__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11Z"/></svg>
         </button>
         <button class="iconbtn nav-toggle" type="button" data-drawer-open aria-label="${attr(
           t.openMenu
         )}" aria-expanded="false" aria-controls="site-drawer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
         </button>
       </div>
     </div>
@@ -198,7 +209,7 @@ ${ctx.head ? '  ' + ctx.head : ''}
   )}" hidden>
     <div class="drawer__head">
       <button class="iconbtn" type="button" data-drawer-close aria-label="${attr(t.closeMenu)}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <nav class="drawer__nav" aria-label="${attr(t.primaryNav)}">
@@ -214,17 +225,20 @@ ${body}
   </main>
 
   <footer class="footer">
-    <div class="shell">
-      <div class="footer__top">
-        <span class="footer__name">${esc(site.name)} · <span lang="vi">${esc(
+    ${scene('band', ctx, { className: 'footer__band' })}
+    <div class="footer__body">
+      <div class="shell">
+        <div class="footer__top">
+          <span class="footer__name">${esc(site.name)} · <span lang="vi">${esc(
     keepGivenName(site.nameVi)
   )}</span></span>
-        <nav class="footer__nav" aria-label="${attr(t.footerNav)}">
+          <nav class="footer__nav" aria-label="${attr(t.footerNav)}">
             ${footerNav}
-        </nav>
+          </nav>
+        </div>
+        <p class="footer__note">${esc(t.footerNote)}</p>
+        <p class="footer__note">${esc(t.footerColophon)}</p>
       </div>
-      <p class="footer__note">${esc(t.footerNote)}</p>
-      <p class="footer__note">${esc(t.footerColophon)}</p>
     </div>
   </footer>
 
@@ -235,3 +249,16 @@ ${body}
 </html>
 `;
 };
+
+// The ivy over the two top corners of the home page: the portrait's own
+// background spilling onto the board. One drawing, mirrored for the right.
+function ivy(ctx) {
+  const one = scene('ivy', ctx);
+  if (!one) return '';
+  const svg = one.replace(/^<div[^>]*>/, '').replace(/<\/div>$/, '');
+  // The right-hand copy gets its own ids, so no id appears twice on a page.
+  const right = svg
+    .replace(/id="(ivy-[^"]+)"/g, 'id="$1-r"')
+    .replace(/href="#(ivy-[^"]+)"/g, 'href="#$1-r"');
+  return `<div class="ivy" aria-hidden="true"><div class="ivy__left">${svg}</div><div class="ivy__right">${right}</div></div>`;
+}

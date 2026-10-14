@@ -1,0 +1,36 @@
+<svg class="piece" viewBox="0 0 1600 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="1129" cy="182" rx="54" ry="7" style="fill:var(--paper-deep)"/>
+<ellipse cx="570" cy="184" rx="54" ry="8" style="fill:var(--p-water)"/>
+<path d="M429 187 q6 -19 24 -23 q22 -6 46 0 q18 6 24 23 z" style="fill:var(--p-ivy)"/>
+<path d="M480 165 q20 -2 32 8 q8 6 11 14 h-43 z" fill="#000" fill-opacity=".12"/>
+<g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)">
+<path class="route" d="M1130 130C1020 10 580 10 470 130" stroke-dasharray="7 9"/>
+<path d="M-40 12 Q0 15 40 12 C52 12 54 -4 42 -4 C44 -18 26 -22 20 -12 C14 -26 -6 -28 -12 -14 C-22 -22 -36 -12 -30 -2 C-44 -2 -46 12 -40 12 z" transform="translate(905 118)" style="fill:var(--p-cloud)"/>
+<path d="M-32 10 Q0 12 32 10 C42 10 44 -3 34 -3 C36 -14 21 -18 16 -10 C11 -21 -5 -22 -10 -11 C-18 -18 -29 -10 -24 -2 C-35 -2 -37 10 -32 10 z" transform="translate(612 92)" style="fill:var(--p-cloud)"/>
+<rect x="454" y="147" width="44" height="19" rx="2" style="fill:var(--p-ochre)"/>
+<rect x="486" y="147" width="12" height="19" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M461 165 v-7 q4 -5 8 0 v7 M472 165 v-7 q4 -5 8 0 v7 M483 165 v-7 q4 -5 8 0 v7" stroke-width="2"/>
+<rect x="449" y="142" width="54" height="5" rx="2" style="fill:var(--p-ochre)"/>
+<rect x="461" y="128" width="31" height="14" rx="2" style="fill:var(--p-ochre)"/>
+<rect x="483" y="128" width="9" height="14" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M467 142 v-6 q3 -4 6 0 v6 M479 142 v-6 q3 -4 6 0 v6" stroke-width="2"/>
+<rect x="457" y="123" width="39" height="5" rx="2" style="fill:var(--p-ochre)"/>
+<rect x="468" y="111" width="17" height="12" rx="2" style="fill:var(--p-ochre)"/>
+<path d="M464 111 L477 100 L490 111 z" style="fill:var(--p-ochre)"/>
+<rect x="1110" y="128" width="36" height="54" rx="2" style="fill:var(--p-snow)"/>
+<rect x="1134" y="128" width="12" height="54" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M1124 182 v-8 q4 -5 8 0 v8 M1119 166 v8 M1136 166 v8" stroke-width="2"/>
+<rect x="1106" y="121" width="44" height="7" rx="2" style="fill:var(--p-snow)"/>
+<path d="M1106 121 L1129 88 L1150 121 z" style="fill:var(--p-ivy-deep)"/>
+<path d="M1129 88 L1150 121 L1136 121 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M1129 88 v-10"/>
+<circle cx="1128" cy="146" r="10" style="fill:var(--p-cloud)"/>
+<circle cx="1128" cy="146" r="8" stroke="none" style="fill:var(--p-night-glow)"/>
+<path d="M1128 146 v-6 M1128 146 h4" stroke-width="2"/>
+<g class="ride" style="offset-path:path('M1130 130C1020 10 580 10 470 130')">
+<path d="M26 0 L-22 -15 L-13 -1 L-22 12 z" style="fill:var(--p-cloud)"/>
+<path d="M26 0 L-13 -1 L-22 12 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M26 0 L-13 -1"/>
+</g>
+</g>
+</svg>

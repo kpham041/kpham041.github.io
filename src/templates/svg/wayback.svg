@@ -1,0 +1,39 @@
+<svg class="piece" viewBox="0 0 1600 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="452" cy="183" rx="34" ry="7" style="fill:var(--p-dirt)"/>
+<ellipse cx="1082" cy="186" rx="98" ry="8" style="fill:var(--p-dirt)"/>
+<g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)">
+<path class="route" d="M476 176C532 182 590 156 648 150C704 144 742 138 766 160C792 184 828 160 810 128C792 97 736 108 742 142C748 166 790 160 834 152C892 142 942 146 976 170C992 188 1030 194 1066 190" stroke-dasharray="3 9"/>
+<path d="M1079 188 L1064 182 L1068 190 L1066 198 z" style="fill:var(--ink)"/>
+<path d="M596 156 q3 -13 14 -16 q13 -4 27 0 q10 4 12 16 z" style="fill:var(--p-ivy)"/>
+<path d="M624 142 q10 0 17 5 q5 4 7 9 h-24 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M905 150 q3 -12 12 -15 q12 -4 24 0 q9 4 11 15 z" style="fill:var(--p-ivy)"/>
+<path d="M930 137 q9 0 15 5 q4 3 6 8 h-21 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M994 182 q4 -16 18 -19 q16 -5 34 0 q12 5 15 19 z" style="fill:var(--p-ivy)"/>
+<path d="M1029 166 q14 -1 22 6 q6 4 8 10 h-30 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M1124 182 q4 -15 16 -18 q13 -4 26 0 q8 4 10 18 z" style="fill:var(--p-ivy)"/>
+<path d="M1150 167 q12 -1 18 5 q5 4 6 10 h-24 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<rect x="431" y="128" width="36" height="54" rx="2" style="fill:var(--p-snow)"/>
+<rect x="455" y="128" width="12" height="54" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M445 182 v-8 q4 -5 8 0 v8 M440 166 v8 M457 166 v8" stroke-width="2"/>
+<rect x="427" y="121" width="44" height="7" rx="2" style="fill:var(--p-snow)"/>
+<path d="M427 121 L450 88 L471 121 z" style="fill:var(--p-ivy-deep)"/>
+<path d="M450 88 L471 121 L457 121 z" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M450 88 v-10"/>
+<circle cx="449" cy="146" r="10" style="fill:var(--p-cloud)"/>
+<circle cx="449" cy="146" r="8" stroke="none" style="fill:var(--p-night-glow)"/>
+<path d="M449 146 v-6 M449 146 h4" stroke-width="2"/>
+<rect x="1031" y="106" width="110" height="76" rx="3" style="fill:var(--p-cloud)"/>
+<rect x="1115" y="108" width="24" height="72" rx="2" fill="#000" fill-opacity=".12" stroke="none"/>
+<path d="M1028 103 h115" stroke-width="3"/>
+<path d="M1033 142 h43 M1098 142 h41" stroke-width="1.5"/>
+<g style="fill:var(--p-sky)" stroke-width="2">
+<rect x="1040" y="114" width="16" height="16" rx="2"/><rect x="1065" y="114" width="16" height="16" rx="2"/>
+<rect x="1090" y="114" width="16" height="16" rx="2"/><rect x="1115" y="114" width="16" height="16" rx="2"/>
+<rect x="1042" y="152" width="16" height="18" rx="2"/><rect x="1113" y="152" width="16" height="18" rx="2"/>
+</g>
+<rect x="1064" y="136" width="42" height="12" rx="2" style="fill:var(--c-teal)"/>
+<path d="M1076 182 v-20 q10 -8 20 0 v20" style="fill:var(--p-dirt)"/>
+<path d="M1089 171 h3" stroke-width="2"/>
+</g>
+<text class="pen" x="733" y="92">__NOTE_wayback__</text>
+</svg>

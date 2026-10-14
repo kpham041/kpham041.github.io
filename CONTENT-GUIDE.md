@@ -28,6 +28,7 @@ publications   the papers
 projects       the Work page entries
 skills         the "What I actually do" rows on About
 i18n.en / .vi  all the page headings, intros and labels, per language
+               (including `notes`, the pen labels inside the drawings)
 desk           the illustrated desk scene's nine panels, per language
 ```
 
@@ -132,6 +133,20 @@ panel from `desk.order`.
 `i18n.en.notFound` and `i18n.vi.notFound` hold the few words on the page
 people see when a link is wrong. GitHub Pages serves one 404 for both
 languages, so the page shows the English and the Vietnamese together.
+
+### Where a heading's colour break goes
+
+Page titles are set in two tones: the last few words take the page's colour and
+get a highlighter stroke. `toneWords` beside each title says how many trailing
+words (`0` keeps the title whole, which suits a single concept such as
+"Giới thiệu"). Vietnamese and English each have their own count, so change a
+title and check its `toneWords` in both languages.
+
+### The pen notes in the drawings
+
+`i18n.en.notes` and `i18n.vi.notes` hold the few words handwritten into the
+illustrations: `hanoi`, `ottawa`, and `wayback` (the label on the route home).
+Keep them short; they sit inside a drawing and must fit.
 
 ## Formatting inside copy
 

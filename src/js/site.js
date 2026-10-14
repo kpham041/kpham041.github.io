@@ -19,7 +19,7 @@
     // it is remembered until they change it back.
     var themeColor = document.querySelector('meta[name="theme-color"]');
     var colorScheme = document.querySelector('meta[name="color-scheme"]');
-    var PAINT = { light: '#fbfaf7', dark: '#161512' };
+    var PAINT = { light: '#f2ede2', dark: '#171511' };
 
     var effective = function () {
       return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';

@@ -1,0 +1,23 @@
+<svg class="piece" viewBox="0 0 260 200" preserveAspectRatio="xMinYMin meet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<g id="ivy-L"><path d="M0 4C-6 -3 -16 -8 -27 -1C-28 6 -25 12 -19 14C-27 17 -37 22 -34 30C-29 32 -19 30 -12 27C-12 38 -7 48 0 58C7 48 12 38 13 27C20 30 29 33 34 31C37 22 27 17 19 14C25 12 28 6 27 -1C16 -8 6 -3 0 4Z"/><path fill="none" d="M0 8C1 24 1 40 0 54"/></g>
+<g id="ivy-M"><path d="M0 3C-5 -2 -13 -6 -22 -1C-22 5 -20 10 -15 11C-22 14 -30 18 -27 24C-23 26 -15 24 -10 22C-10 30 -6 38 0 46C6 38 10 30 10 22C16 24 23 26 27 25C30 18 22 14 15 11C20 10 22 5 22 -1C13 -6 5 -2 0 3Z"/><path fill="none" d="M0 6C1 19 1 32 0 43"/></g>
+<g id="ivy-S"><path d="M0 2C-4 -2 -10 -5 -17 -1C-17 4 -15 8 -12 9C-17 11 -23 14 -21 19C-18 20 -12 19 -8 17C-8 24 -4 30 0 36C4 30 8 24 8 17C12 19 18 21 21 19C23 14 17 11 12 9C15 8 17 4 17 -1C10 -5 4 -2 0 2Z"/><path fill="none" d="M0 5C1 14 1 24 0 33"/></g>
+</defs>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)">
+<path stroke-width="9" d="M44 -4C47 20 46 44 54 64C60 80 76 100 94 116C114 134 136 144 158 148C186 154 210 158 226 165C238 169 242 180 232 184C224 187 222 178 230 177"/>
+<path stroke-width="4" style="stroke:var(--p-wood)" d="M44 -4C47 20 46 44 54 64C60 80 76 100 94 116C114 134 136 144 158 148C186 154 210 158 226 165C238 169 242 180 232 184C224 187 222 178 230 177"/>
+<g stroke-width="2.5">
+<path d="M46 14L40 22M47 24L54 27M49 48L46 54M70 90L78 91M109 128L113 135M125 137L129 130M158 148L164 154M213 160L216 153M196 156L199 163"/>
+<use href="#ivy-S" transform="translate(40 22) rotate(65)" style="fill:var(--p-ivy-deep)"/>
+<use href="#ivy-L" transform="translate(54 27) rotate(-45)" style="fill:var(--p-ivy)"/>
+<use href="#ivy-L" transform="translate(46 54) rotate(20)" style="fill:var(--p-ivy-deep)"/>
+<use href="#ivy-L" transform="translate(78 91) rotate(-80)" style="fill:var(--p-ivy)"/>
+<use href="#ivy-L" transform="translate(113 135) rotate(-30)" style="fill:var(--p-ivy)"/>
+<use href="#ivy-S" transform="translate(129 130) rotate(-150)" style="fill:var(--p-ivy-deep)"/>
+<use href="#ivy-M" transform="translate(164 154) rotate(-50)" style="fill:var(--p-ivy)"/>
+<use href="#ivy-S" transform="translate(216 153) rotate(-165)" style="fill:var(--p-ivy)"/>
+<use href="#ivy-S" transform="translate(199 163) rotate(-35)" style="fill:var(--p-ivy)"/>
+</g>
+</g>
+</svg>

@@ -1,12 +1,14 @@
 
         <!-- Desk surface. Shallower than the original: at 160 units deep the
-             empty foreground read as a slab rather than a desk. -->
+             empty foreground read as a slab rather than a desk. The top is
+             recessed paper; the front face is the site's painted band. -->
         <g aria-hidden="true">
-          <path d="M40 500 L1560 500 L1585 596 L15 596 Z" fill-opacity="0.05" stroke="none" style="fill:var(--desk-blue)"></path>
-          <line x1="40" y1="500" x2="1560" y2="500" stroke-width="2.5" stroke-linecap="round" style="stroke:var(--desk-line)"></line>
-          <line x1="15" y1="596" x2="1585" y2="596" stroke-width="2.5" stroke-linecap="round" style="stroke:var(--desk-line)"></line>
-          <line x1="40" y1="500" x2="15" y2="596" stroke-width="2.5" style="stroke:var(--desk-line)"></line>
-          <line x1="1560" y1="500" x2="1585" y2="596" stroke-width="2.5" style="stroke:var(--desk-line)"></line>
+          <path d="M40 500 L1560 500 L1575 556 L25 556 Z" stroke="none" style="fill:var(--desk-slab)"></path>
+          <path d="M25 556 L1575 556 L1585 596 L15 596 Z" stroke="none" style="fill:var(--desk-band)"></path>
+          <g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--desk-line)">
+            <path d="M40 500 H1560 L1585 596 H15 Z"></path>
+            <path d="M25 556 H1575"></path>
+          </g>
         </g>
 
         <!-- annotation -->
@@ -17,35 +19,72 @@
 
         <!-- CORKBOARD -> work -->
         <a class="hotspot" href="#desk-work" data-panel="work" aria-label="__LABEL_work__">
-          <rect class="hs-ring" x="80" y="60" width="322" height="254" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="80" y="60" width="322" height="254" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-cork" x="90" y="70" width="302" height="234"></use>
         </a>
 
-        <!-- WINDOW -> places -->
+        <!-- WINDOW -> places. Left pane: Hà Nội (Tháp Rùa on its island in
+             Hoàn Kiếm). Right pane: Ottawa (the Peace Tower on the Hill, snow). -->
         <a class="hotspot" href="#desk-places" data-panel="places" aria-label="__LABEL_places__">
-          <rect class="hs-ring" x="1080" y="34" width="450" height="306" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="1080" y="34" width="450" height="306" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <g class="lift">
             <rect class="win-frame" x="1090" y="44" width="430" height="286" rx="4" stroke-width="3" stroke="currentColor" style="fill:var(--desk-fill)"></rect>
-            <rect x="1102" y="60" width="406" height="256" fill-opacity="0.07" style="fill:var(--desk-blue)"></rect>
+            <rect x="1102" y="60" width="406" height="256" style="fill:var(--desk-sky)"></rect>
             <g clip-path="url(#winClip)">
-              <line x1="1102" y1="272" x2="1305" y2="272" stroke-width="2" style="stroke:var(--desk-blue)"></line>
-              <line x1="1305" y1="272" x2="1508" y2="272" stroke-width="2" style="stroke:var(--desk-blue)"></line>
-              <path d="M1112 272 l16 -12 16 12 16 -12 16 12 16 -12 16 12 16 -12 16 12" fill="none" stroke-width="2" stroke="currentColor"></path>
-              <g stroke-width="2" stroke-linejoin="round" stroke="currentColor" style="fill:var(--desk-fill)">
-                <rect x="1196" y="220" width="34" height="30"></rect>
-                <rect x="1202" y="198" width="22" height="22"></rect>
-                <rect x="1207" y="180" width="12" height="18"></rect>
-                <path d="M1213 180 l0 -16" stroke-width="2"></path>
+              <g stroke="none" style="fill:var(--desk-star)">
+                <circle cx="1130" cy="80" r="2"></circle><circle cx="1182" cy="68" r="2"></circle><circle cx="1256" cy="92" r="2"></circle>
+                <circle cx="1216" cy="118" r="1.5"></circle><circle cx="1286" cy="72" r="1.5"></circle>
+                <circle cx="1334" cy="78" r="2"></circle><circle cx="1374" cy="104" r="1.5"></circle><circle cx="1466" cy="68" r="2"></circle><circle cx="1494" cy="110" r="1.5"></circle>
               </g>
-              <g stroke-width="2" stroke-linejoin="round" stroke="currentColor" style="fill:var(--desk-fill)">
-                <rect x="1408" y="150" width="26" height="122"></rect>
-                <path d="M1408 150 l13 -30 13 30 z"></path>
-                <circle cx="1421" cy="196" r="8" style="fill:var(--desk-gold)"></circle>
-                <rect x="1350" y="228" width="40" height="44"></rect>
-                <rect x="1446" y="214" width="40" height="58"></rect>
+              <rect x="1102" y="272" width="203" height="44" stroke="none" style="fill:var(--desk-water)"></rect>
+              <path d="M1102 272 H1305" fill="none" stroke-width="3" style="stroke:var(--desk-water-edge)"></path>
+              <ellipse cx="1206" cy="276" rx="54" ry="12" stroke="none" style="fill:var(--desk-ivy)"></ellipse>
+              <path d="M1206 264 C1236 264 1256 270 1260 276 C1256 282 1236 288 1206 288 C1226 284 1236 278 1236 276 C1236 274 1226 268 1206 264 Z" stroke="none" style="fill:var(--desk-ivy-deep)"></path>
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" style="fill:var(--desk-ochre)">
+                <rect x="1175" y="222" width="56" height="50" rx="2"></rect>
+                <rect x="1213" y="224" width="16" height="48" fill="#000" fill-opacity=".12" stroke="none"></rect>
+                <path d="M1168 219 C1175 225 1181 226 1187 226 H1219 C1225 226 1231 225 1238 219 L1234 212 H1172 Z"></path>
+                <rect x="1184" y="180" width="38" height="32" rx="2"></rect>
+                <rect x="1210" y="182" width="10" height="30" fill="#000" fill-opacity=".12" stroke="none"></rect>
+                <path d="M1178 181 C1185 187 1190 188 1194 188 H1212 C1216 188 1221 187 1228 181 L1225 174 H1181 Z"></path>
+                <rect x="1193" y="148" width="20" height="26" rx="2"></rect>
+                <path d="M1186 147 C1192 153 1195 154 1199 154 H1207 C1211 154 1214 153 1220 147 L1217 140 H1189 Z"></path>
+                <path d="M1196 140 L1203 124 L1210 140 Z"></path>
+                <path d="M1185 272 v-13 a6 6 0 0 1 12 0 v13 M1209 272 v-13 a6 6 0 0 1 12 0 v13 M1197 212 v-10 a6 6 0 0 1 12 0 v10" stroke-width="2" style="fill:var(--desk-sky)"></path>
               </g>
-              <g class="cloud" stroke-width="1.6" opacity="0.9" style="fill:var(--desk-fill);stroke:var(--desk-blue)"><path d="M1120 108 q4 -20 26 -18 q6 -14 26 -8 q20 -4 20 16 q14 4 4 16 h-92 q-14 -8 -10 -14 z"></path></g>
-              <g class="cloud2" stroke-width="1.6" opacity="0.75" style="fill:var(--desk-fill);stroke:var(--desk-blue)"><path d="M1300 150 q4 -16 22 -14 q6 -12 22 -6 q16 -2 16 14 h-70 q-10 -4 -10 -8 z"></path></g>
+              <rect x="1305" y="272" width="203" height="44" stroke="none" style="fill:var(--desk-snow)"></rect>
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+                <g style="fill:var(--desk-snow)">
+                  <rect x="1340" y="230" width="48" height="42"></rect>
+                  <rect x="1452" y="222" width="48" height="50"></rect>
+                  <rect x="1403" y="158" width="34" height="114"></rect>
+                  <rect x="1398" y="125" width="44" height="33" rx="2"></rect>
+                </g>
+                <rect x="1426" y="160" width="10" height="112" fill="#000" fill-opacity=".12" stroke="none"></rect>
+                <rect x="1378" y="232" width="9" height="40" fill="#000" fill-opacity=".12" stroke="none"></rect>
+                <rect x="1490" y="224" width="9" height="48" fill="#000" fill-opacity=".12" stroke="none"></rect>
+                <g style="fill:var(--desk-ivy-deep)">
+                  <path d="M1338 230 L1364 214 L1390 230 Z"></path>
+                  <path d="M1450 222 L1476 204 L1502 222 Z"></path>
+                  <path d="M1396 125 L1420 72 L1444 125 Z"></path>
+                  <path d="M1396 125 L1399 114 L1403 125 Z"></path><path d="M1437 125 L1441 114 L1444 125 Z"></path>
+                </g>
+                <g stroke-width="1.5" style="fill:var(--desk-sky)">
+                  <rect x="1411" y="186" width="6" height="26" rx="2"></rect><rect x="1423" y="186" width="6" height="26" rx="2"></rect>
+                  <rect x="1411" y="228" width="6" height="26" rx="2"></rect><rect x="1423" y="228" width="6" height="26" rx="2"></rect>
+                  <rect x="1350" y="244" width="8" height="14" rx="2"></rect><rect x="1368" y="244" width="8" height="14" rx="2"></rect>
+                  <rect x="1462" y="238" width="8" height="14" rx="2"></rect><rect x="1480" y="238" width="8" height="14" rx="2"></rect>
+                </g>
+                <circle cx="1420" cy="141" r="12" style="fill:var(--desk-cloud)"></circle>
+                <circle cx="1420" cy="141" r="9" stroke="none" style="fill:var(--desk-glow)"></circle>
+                <path d="M1420 141 V134 M1420 141 L1425 145" stroke-width="2"></path>
+              </g>
+              <g stroke="none" style="fill:var(--desk-cloud)">
+                <circle cx="1322" cy="190" r="3"></circle><circle cx="1356" cy="162" r="2"></circle><circle cx="1392" cy="200" r="3"></circle>
+                <circle cx="1462" cy="176" r="2"></circle><circle cx="1484" cy="150" r="3"></circle><circle cx="1498" cy="206" r="2"></circle>
+              </g>
+              <g class="cloud" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:var(--desk-cloud);stroke:var(--desk-line)"><path d="M1120 108 q4 -20 26 -18 q6 -14 26 -8 q20 -4 20 16 q14 4 4 16 h-92 q-14 -8 -10 -14 z"></path></g>
+              <g class="cloud2" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:var(--desk-cloud);stroke:var(--desk-line)"><path d="M1300 150 q4 -16 22 -14 q6 -12 22 -6 q16 -2 16 14 h-70 q-10 -4 -10 -8 z"></path></g>
             </g>
             <line x1="1305" y1="60" x2="1305" y2="316" stroke-width="2.5" stroke="currentColor"></line>
             <line x1="1102" y1="188" x2="1508" y2="188" stroke-width="2.5" stroke="currentColor"></line>
@@ -54,42 +93,42 @@
 
         <!-- BOOKS -> currently -->
         <a class="hotspot" href="#desk-currently" data-panel="currently" aria-label="__LABEL_currently__">
-          <rect class="hs-ring" x="140" y="356" width="200" height="160" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="140" y="356" width="200" height="160" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-books" x="150" y="366" width="180" height="135"></use>
         </a>
 
         <!-- OWL -> languages -->
         <a class="hotspot" href="#desk-languages" data-panel="languages" aria-label="__LABEL_languages__">
-          <rect class="hs-ring" x="368" y="360" width="150" height="176" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="368" y="360" width="150" height="176" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-owl" x="378" y="372" width="128" height="148"></use>
         </a>
 
         <!-- LAPTOP -> about-work -->
         <a class="hotspot" href="#desk-about-work" data-panel="about-work" aria-label="__LABEL_about-work__">
-          <rect class="hs-ring" x="720" y="352" width="300" height="196" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="720" y="352" width="300" height="196" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-laptop" x="730" y="362" width="280" height="181"></use>
         </a>
 
         <!-- MIC -> speaking -->
         <a class="hotspot" href="#desk-speaking" data-panel="speaking" aria-label="__LABEL_speaking__">
-          <rect class="hs-ring" x="1044" y="346" width="150" height="192" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="1044" y="346" width="150" height="192" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-mic" x="1054" y="356" width="130" height="163"></use>
         </a>
 
         <!-- PHOTO -> vietnam -->
         <a class="hotspot" href="#desk-vietnam" data-panel="vietnam" aria-label="__LABEL_vietnam__">
-          <rect class="hs-ring" x="1214" y="366" width="180" height="164" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="1214" y="366" width="180" height="164" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-photo" x="1224" y="376" width="165" height="143"></use>
         </a>
 
         <!-- PERSON -> bio -->
         <a class="hotspot" href="#desk-bio" data-panel="bio" aria-label="__LABEL_bio__">
-          <rect class="hs-ring" x="548" y="322" width="176" height="202" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="548" y="322" width="176" height="202" rx="12" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-person" x="562" y="372" width="130" height="139"></use>
         </a>
 
         <!-- PHIN COFFEE -> writing -->
         <a class="hotspot" href="#desk-writing" data-panel="writing" aria-label="__LABEL_writing__">
-          <rect class="hs-ring" x="1400" y="374" width="150" height="158" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-gold)"></rect>
+          <rect class="hs-ring" x="1400" y="374" width="150" height="158" rx="10" fill="none" stroke-width="2" stroke-dasharray="5 5" style="stroke:var(--desk-ring)"></rect>
           <use class="lift" href="#obj-phin" x="1412" y="386" width="126" height="117"></use>
         </a>

@@ -47,17 +47,22 @@ function card(lang) {
   @font-face{font-family:B;font-weight:400;src:url(data:font/woff2;base64,${b64('bevietnampro-400-vietnamese.woff2')}) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
   @font-face{font-family:B;font-weight:400;src:url(data:font/woff2;base64,${b64('bevietnampro-400-latin-ext.woff2')}) format('woff2');unicode-range:U+0100-02BA,U+1E00-1E9F,U+2C60-2C7F,U+A720-A7FF;}
   *{margin:0;padding:0;box-sizing:border-box}
-  body{width:1200px;height:630px;background:#fbfaf7;color:#171c26;font-family:B,sans-serif;
-       display:grid;grid-template-columns:1fr 400px;align-items:center;gap:64px;padding:72px 80px;overflow:hidden}
-  /* The card is the home hero in miniature: the name in Fraunces' 144 display
-     cut, the one place it is used, over the Latin name; the kicker in the 9pt
-     caption cut; the portrait as a photograph, not a card. No ornament. */
-  .kicker{font-family:F,serif;font-variation-settings:'opsz' 9;font-size:22px;font-weight:500;color:#666d7a;margin-bottom:22px}
-  h1{font-family:F,serif;font-weight:600;font-variation-settings:'opsz' 144;font-size:74px;line-height:1.02;letter-spacing:-.01em;margin-left:-.03em}
-  .latin{font-family:F,serif;font-weight:500;font-size:34px;color:#666d7a;letter-spacing:-.012em;margin-top:10px}
-  .role{font-size:26px;line-height:1.45;color:#3b424f;margin-top:34px;max-width:24ch;text-wrap:balance}
-  figure{width:400px;height:400px;border-radius:13px;overflow:hidden}
-  img{width:100%;height:100%;object-fit:cover;display:block}
+  /* The card is the home hero in miniature, on the same warm paper: the name
+     in the heaviest display cut, the Latin name in the page's blue, the
+     portrait as a print with a strip of tape, pinned a little crooked. */
+  body{width:1200px;height:630px;background:#f2ede2;color:#211d18;font-family:B,sans-serif;
+       display:grid;grid-template-columns:1fr 400px;align-items:center;gap:72px;padding:72px 84px;overflow:hidden;position:relative}
+  .kicker{font-family:F,serif;font-variation-settings:'opsz' 9;font-size:22px;font-weight:600;color:#1d5bb0;margin-bottom:22px;
+          display:inline-block;padding:3px 12px;border:1.5px solid #1d5bb0;border-radius:3px;box-shadow:inset 0 0 0 2px #f2ede2,inset 0 0 0 3px #1d5bb0}
+  h1{font-family:F,serif;font-weight:900;font-variation-settings:'opsz' 144;font-size:78px;line-height:1.0;letter-spacing:-.02em;margin-left:-.03em}
+  .latin{font-family:F,serif;font-weight:600;font-variation-settings:'opsz' 48;font-size:34px;color:#1d5bb0;letter-spacing:-.012em;margin-top:12px}
+  .role{font-size:26px;line-height:1.45;color:#46413a;margin-top:34px;max-width:24ch;text-wrap:balance}
+  .print{position:relative;width:400px;padding:10px;background:#fffdf8;border-radius:3px;transform:rotate(-2.5deg);
+         box-shadow:0 14px 34px rgb(33 29 24 / .16)}
+  .print img{display:block;width:100%;height:380px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px #bfb398}
+  .tape{position:absolute;top:-14px;left:-26px;width:110px;height:30px;background:#f5c84a;opacity:.6;transform:rotate(-32deg);
+        clip-path:polygon(0 0,100% 0,97% 25%,100% 50%,97% 75%,100% 100%,0 100%,3% 75%,0 50%,3% 25%)}
+  .band{position:absolute;left:0;right:0;bottom:0;height:18px;background:#f5c84a}
   </style></head><body>
   <div>
     <div class="kicker">${kicker}</div>
@@ -65,7 +70,8 @@ function card(lang) {
     <div class="latin">${site.name}</div>
     <div class="role">${role}</div>
   </div>
-  <figure><img src="data:image/jpeg;base64,${portrait}" alt=""></figure>
+  <figure class="print"><span class="tape"></span><img src="data:image/jpeg;base64,${portrait}" alt=""></figure>
+  <div class="band"></div>
   </body></html>`;
 }
 

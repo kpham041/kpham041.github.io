@@ -251,7 +251,7 @@
       "jsonLdJobTitle": "Biostatistician and Data Scientist",
       "ogImageAlt": "Michael Pham, biostatistician and data scientist at CHEO's Clinical Research Unit in Ottawa",
       "footerNote": "Based in Ottawa, Canada. Rooted in three languages: Vietnamese, English, and French.",
-      "footerColophon": "Set in Fraunces, Be Vietnam Pro and IBM Plex Mono. Built as a static site and deployed from GitHub.",
+      "footerColophon": "Set in Fraunces, Be Vietnam Pro, Patrick Hand and IBM Plex Mono. Built as a static site and deployed from GitHub.",
       "home": {
         "metaTitle": "Michael Pham · Biostatistician, CHEO Clinical Research Unit",
         "metaDescription": "Michael Pham (Phạm Nguyên Khôi) is a biostatistician and data scientist at CHEO's Clinical Research Unit in Ottawa, working on study design, analysis, and reproducible reporting in pediatric research.",
@@ -312,7 +312,8 @@
           "I write in Vietnamese, speak French badly but improvingly, and split my attention between Ottawa and the healthcare world of Vietnam, where my family's roots in medicine run deep."
         ],
         "skillsLabel": "What I actually do",
-        "skillsIntro": "The short version of the work, for anyone deciding whether to send me a study."
+        "skillsIntro": "The short version of the work, for anyone deciding whether to send me a study.",
+        "toneWords": 0
       },
       "work": {
         "metaTitle": "Work",
@@ -337,7 +338,8 @@
           }
         ],
         "closingPre": "For collaboration inquiries:",
-        "closingLink": "get in touch."
+        "closingLink": "get in touch.",
+        "toneWords": 1
       },
       "publications": {
         "metaTitle": "Publications",
@@ -346,7 +348,8 @@
         "title": "Publications",
         "intro": "Peer-reviewed work, newest first. My name appears in three forms across these papers, as Pham, N. K., Pham, M. K., and Pham, M., because journals recorded it differently. All three are me.",
         "doiLabel": "DOI",
-        "moreLabel": "Full list and citation counts on"
+        "moreLabel": "Full list and citation counts on",
+        "toneWords": 0
       },
       "contact": {
         "metaTitle": "Contact",
@@ -356,14 +359,22 @@
         "intro": "I am open to research collaboration, methodological consults, and conversations about healthcare quality work in Vietnam.",
         "emailLabel": "Email",
         "elsewhereLabel": "Elsewhere",
-        "muted": "Based in Ottawa, Canada. I reply in Vietnamese, English, or French, whichever you are more comfortable writing in."
+        "muted": "Based in Ottawa, Canada. I reply in Vietnamese, English, or French, whichever you are more comfortable writing in.",
+        "toneWords": 1
       },
       "notFound": {
         "metaTitle": "Page not found",
         "metaDescription": "There is no page at this address on Michael Pham's site. The home page is one link away.",
         "title": "Page not found",
         "body": "There is no page at this address.",
-        "homeLink": "Go to the home page"
+        "homeLink": "Go to the home page",
+        "toneWords": 1,
+        "tagline": "n = 0"
+      },
+      "notes": {
+        "hanoi": "Hà Nội",
+        "ottawa": "Ottawa",
+        "wayback": "the way back"
       }
     },
     "vi": {
@@ -388,7 +399,7 @@
       "jsonLdJobTitle": "Chuyên viên Thống kê sinh học và Khoa học dữ liệu",
       "ogImageAlt": "Michael Pham, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng CHEO, Ottawa",
       "footerNote": "Sống tại Ottawa, Canada. Gắn bó với ba ngôn ngữ: tiếng Việt, tiếng Anh và tiếng Pháp.",
-      "footerColophon": "Dùng phông chữ Fraunces, Be Vietnam Pro và IBM Plex Mono. Trang tĩnh, triển khai từ GitHub.",
+      "footerColophon": "Dùng phông chữ Fraunces, Be Vietnam Pro, Patrick Hand và IBM Plex Mono. Trang tĩnh, triển khai từ GitHub.",
       "home": {
         "metaTitle": "Michael Pham · Thống kê sinh học, Đơn vị Nghiên cứu Lâm sàng CHEO",
         "metaDescription": "Phạm Nguyên Khôi (Michael Pham) là chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng của CHEO, Ottawa, làm việc về thiết kế nghiên cứu, phân tích và báo cáo có thể tái lập trong nghiên cứu nhi khoa.",
@@ -449,7 +460,8 @@
           "Tôi viết bằng tiếng Việt, nói tiếng Pháp còn kém nhưng đang khá dần lên, và dành sự quan tâm cho cả Ottawa lẫn ngành y tế Việt Nam, nơi gia đình tôi có gốc rễ sâu trong nghề y."
         ],
         "skillsLabel": "Công việc cụ thể",
-        "skillsIntro": "Bản tóm tắt công việc, dành cho ai đang cân nhắc gửi cho tôi một nghiên cứu."
+        "skillsIntro": "Bản tóm tắt công việc, dành cho ai đang cân nhắc gửi cho tôi một nghiên cứu.",
+        "toneWords": 0
       },
       "work": {
         "metaTitle": "Dự án",
@@ -474,7 +486,8 @@
           }
         ],
         "closingPre": "Để trao đổi về hợp tác nghiên cứu:",
-        "closingLink": "liên hệ với tôi."
+        "closingLink": "liên hệ với tôi.",
+        "toneWords": 2
       },
       "publications": {
         "metaTitle": "Công bố",
@@ -483,7 +496,8 @@
         "title": "Công bố khoa học",
         "intro": "Các công trình đã bình duyệt, mới nhất trước. Tên tôi xuất hiện dưới ba dạng trong các bài này: Pham, N. K., Pham, M. K. và Pham, M., do mỗi tạp chí ghi một khác. Cả ba đều là tôi.",
         "doiLabel": "DOI",
-        "moreLabel": "Danh mục đầy đủ và số trích dẫn trên"
+        "moreLabel": "Danh mục đầy đủ và số trích dẫn trên",
+        "toneWords": 2
       },
       "contact": {
         "metaTitle": "Liên hệ",
@@ -493,12 +507,20 @@
         "intro": "Tôi sẵn sàng trao đổi về hợp tác nghiên cứu, tư vấn phương pháp, và những câu chuyện về công việc chất lượng y tế tại Việt Nam.",
         "emailLabel": "Email",
         "elsewhereLabel": "Các kênh khác",
-        "muted": "Hiện sống tại Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp, tùy ngôn ngữ nào bạn thấy thoải mái hơn khi viết."
+        "muted": "Hiện sống tại Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp, tùy ngôn ngữ nào bạn thấy thoải mái hơn khi viết.",
+        "toneWords": 0
       },
       "notFound": {
         "title": "Không tìm thấy trang",
         "body": "Không có trang nào ở địa chỉ này.",
-        "homeLink": "Về trang chủ"
+        "homeLink": "Về trang chủ",
+        "toneWords": 1,
+        "tagline": "n = 0"
+      },
+      "notes": {
+        "hanoi": "Hà Nội",
+        "ottawa": "Ottawa",
+        "wayback": "đường về"
       }
     }
   },
@@ -720,7 +742,8 @@
           ]
         }
       },
-      "sceneLabel": "The desk: nine objects, each one opens a panel"
+      "sceneLabel": "The desk: nine objects, each one opens a panel",
+      "toneWords": 1
     },
     "vi": {
       "overline": "Bàn làm việc",
@@ -890,7 +913,8 @@
           ]
         }
       },
-      "sceneLabel": "Bàn làm việc: chín món đồ, mỗi món mở một mục"
+      "sceneLabel": "Bàn làm việc: chín món đồ, mỗi món mở một mục",
+      "toneWords": 2
     }
   }
 }

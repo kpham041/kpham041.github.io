@@ -1,0 +1,44 @@
+<svg class="piece" viewBox="0 0 1600 240" preserveAspectRatio="xMidYMid slice" role="group" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="de-board"><rect x="760" y="126" width="90" height="24" rx="3"/></clipPath>
+<path id="de-leaf" d="M0 2C-4 -2 -10 -5 -17 -1C-17 4 -15 8 -12 9C-17 11 -23 14 -21 19C-18 20 -12 19 -8 17C-8 24 -4 30 0 36C4 30 8 24 8 17C12 19 18 21 21 19C23 14 17 11 12 9C15 8 17 4 17 -1C10 -5 4 -2 0 2Z"/>
+</defs>
+<path d="M-10 240L-10 199L50 202L110 198L170 202L230 200L290 202L350 199L410 198L470 202L530 202L590 199L650 200L710 198L770 202L830 198L890 202L950 198L1010 202L1070 199L1130 201L1190 202L1250 201L1310 200L1370 201L1430 202L1490 201L1550 200L1610 200L1610 240Z" style="fill:var(--paper-deep)"/>
+<path d="M-10 132L30 132L70 134L110 136L150 135L190 135L230 138L270 136L310 137L350 138L390 135L430 137L470 134L510 133L550 132L590 132L630 131L670 129L710 128L750 127L792 128 Q806 150 793 162L750 163L710 164L670 164L630 168L590 167L550 167L510 168L470 170L430 174L390 172L350 173L310 174L270 173L230 175L190 170L150 170L110 173L70 169L30 168L-10 169Z" style="fill:var(--p-road)"/>
+<path d="M-10 150L30 150L70 152L110 154L150 153L190 153L230 156L270 154L310 155L350 156L390 153L430 155L470 152L510 151L550 150L590 150L630 149L670 147L710 146L750 145" fill="none" stroke-width="3" stroke-dasharray="26 18" style="stroke:var(--p-cloud)"/>
+<g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)">
+<path d="M700 190l3-8M708 190l-2-9M716 191l4-7M862 193l4-10M870 192l-1-11M878 193l5-9M1000 196l3-9M1008 196l-2-10M1016 197l4-8M1130 192l3-8M1138 192l-2-9" stroke-width="2"/>
+<g>
+<path d="M1053 114L1067 113 1068 201 1052 201Z" style="fill:var(--p-wood)"/>
+<path d="M1012 72C1008 36 1032 20 1058 19C1086 18 1110 38 1108 72C1106 102 1086 118 1058 119C1032 120 1015 100 1012 72Z" style="fill:var(--p-ivy)"/>
+<path d="M1058 19C1086 18 1110 38 1108 72C1106 102 1086 118 1058 119Z" fill="#000" fill-opacity=".12" stroke="none"/>
+</g>
+<g>
+<rect x="772" y="148" width="8" height="26" rx="2" style="fill:var(--p-wood)"/>
+<rect x="830" y="148" width="8" height="26" rx="2" style="fill:var(--p-wood)"/>
+<g clip-path="url(#de-board)" stroke="none">
+<rect x="760" y="126" width="90" height="24" style="fill:var(--c-yellow)"/>
+<path d="M760 150L784 126 798 126 774 150ZM790 150L814 126 828 126 804 150ZM820 150L844 126 858 126 834 150Z" style="fill:var(--ink)"/>
+</g>
+<rect x="760" y="126" width="90" height="24" rx="3" fill="none"/>
+</g>
+<g>
+<path d="M918 70L931 70 930 201 917 201Z" style="fill:var(--p-wood)"/>
+<path d="M913 70L936 70" stroke-width="3"/>
+<path d="M648 98L663 80 933 81 932 116 663 115Z" style="fill:var(--p-cloud)"/>
+<path d="M911 128L1161 129 1177 147 1162 164 911 163Z" style="fill:var(--p-cloud)"/>
+<circle cx="924" cy="98" r="3" style="fill:var(--ink)"/>
+<circle cx="924" cy="146" r="3" style="fill:var(--ink)"/>
+</g>
+<g style="fill:var(--p-ivy)">
+<path d="M940 201C946 192 946 182 940 172C936 166 936 160 940 156" fill="none" stroke-width="2"/>
+<use href="#de-leaf" transform="translate(943 160) rotate(-100) scale(.85)"/>
+<use href="#de-leaf" transform="translate(947 178) rotate(-70)"/>
+<use href="#de-leaf" transform="translate(944 198) rotate(-35) scale(.85)"/>
+<use href="#de-leaf" transform="translate(912 200) rotate(120) scale(.9)"/>
+<use href="#de-leaf" transform="translate(926 204) rotate(30) scale(.7)"/>
+</g>
+</g>
+<a href="__HREF_en__"><text class="pen" x="793" y="106" text-anchor="middle">__LINK_en__</text></a>
+<a href="__HREF_vi__"><text class="pen" x="1040" y="154" text-anchor="middle">__LINK_vi__</text></a>
+</svg>
