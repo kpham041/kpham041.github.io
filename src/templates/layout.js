@@ -237,7 +237,6 @@ ${body}
           </nav>
         </div>
         <p class="footer__note">${esc(t.footerNote)}</p>
-        <p class="footer__note">${esc(t.footerColophon)}</p>
       </div>
     </div>
   </footer>
