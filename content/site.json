@@ -14,7 +14,7 @@
         "url": "https://scholar.google.ca/citations?user=5y-0wbkAAAAJ&hl=en",
         "note": {
           "en": "Citations and full publication list",
-          "vi": "Trích dẫn và danh mục công bố"
+          "vi": "Danh sách công bố đầy đủ và số lượt trích dẫn"
         }
       },
       "orcid": {
@@ -101,19 +101,19 @@
         ]
       },
       "vi": {
-        "meta": "Báo cáo có thể tái lập",
-        "title": "Báo cáo quản lý kháng sinh cho khoa cấp cứu nhi",
+        "meta": "Báo cáo tái lập được",
+        "title": "Báo cáo quản lý sử dụng kháng sinh tại khoa cấp cứu nhi",
         "body": [
-          "Báo cáo quản lý kháng sinh hằng quý của một khoa cấp cứu nhi vốn là tài liệu làm thủ công: mỗi kỳ phải dựng lại bằng tay, định dạng mỗi lần một khác, và gần như không thể tái lập chính xác.",
-          "Tôi dựng lại quy trình bằng R theo dạng mô-đun, chạy từ một tệp khởi động duy nhất, với các hàm hỗ trợ đã kiểm thử cho chuẩn bị dữ liệu, phân loại, chỉ số, bảng và hình. Báo cáo hiện bao gồm viêm tai giữa cấp, viêm họng do liên cầu nhóm A và viêm phổi, theo dõi kê đơn đúng hướng dẫn so với kháng sinh phổ rộng, kèm bảng và hình xu hướng đạt chuẩn xuất bản.",
-          "Chương trình quản lý kháng sinh đã giảm khoảng 20% số ngày kê kháng sinh không cần thiết, và mỗi kỳ báo cáo nay được tạo lại trong vài phút với định dạng giống hệt nhau."
+          "Trước đây, báo cáo hằng quý này được làm thủ công và rất mất thời gian. Kỳ nào cũng phải làm lại từ đầu, mỗi lần trình bày một kiểu, và không bao giờ ra được hai bản giống hệt nhau.",
+          "Tôi dựng lại toàn bộ thành một quy trình R gồm nhiều mô-đun, chạy từ một script duy nhất, kèm các hàm phụ trợ đã được kiểm thử để chuẩn bị dữ liệu, phân nhóm, tính chỉ số, lập bảng và vẽ biểu đồ. Báo cáo hiện bao quát ba bệnh là viêm tai giữa cấp, viêm họng do liên cầu nhóm A và viêm phổi, theo dõi tỷ lệ kê đơn đúng hướng dẫn so với tỷ lệ kê kháng sinh phổ rộng, kèm bảng và biểu đồ xu hướng đủ chuẩn đăng tạp chí.",
+          "Chương trình quản lý sử dụng kháng sinh đã giảm được khoảng 20% số ngày dùng kháng sinh không cần thiết, còn báo cáo thì giờ chỉ mất vài phút mỗi kỳ để chạy lại, định dạng lần nào cũng như nhau."
         ],
         "tags": [
           "R",
           "Quy trình kiểu targets",
           "gtsummary / flextable",
           "Báo cáo Quarto",
-          "Hàm đã kiểm thử"
+          "Kiểm thử đơn vị"
         ]
       }
     },
@@ -134,17 +134,17 @@
         ]
       },
       "vi": {
-        "meta": "Phân tích đã bình duyệt",
-        "title": "Kê đơn kháng sinh trong đợt thiếu amoxicillin toàn quốc",
+        "meta": "Phân tích đã qua phản biện",
+        "title": "Kê đơn kháng sinh trong đợt thiếu amoxicillin trên toàn Canada",
         "body": [
-          "Khi tình trạng thiếu amoxicillin trên toàn quốc buộc phải thay thuốc trong kê đơn nhi khoa, câu hỏi lâm sàng rất dễ đặt ra nhưng khó trả lời: bác sĩ thực sự đã chuyển sang thuốc gì, và xu hướng đó có nhất quán giữa các chẩn đoán không?",
-          "Tôi thực hiện toàn bộ phân tích thống kê bằng R: làm sạch và phân loại kê đơn theo chẩn đoán và nhóm kháng sinh, định lượng mức độ thay thế giữa amoxicillin, amoxicillin-clavulanate, cefuroxime, cephalexin và macrolide, đồng thời tạo bảng và hình có thể tái lập cho giai đoạn trước và trong đợt thiếu thuốc.",
-          "Phân tích này là cơ sở cho một bài báo đã bình duyệt trên *The American Journal of Emergency Medicine*."
+          "Khi Canada thiếu amoxicillin trên toàn quốc, các bác sĩ nhi khoa buộc phải kê thuốc khác thay thế. Câu hỏi lâm sàng nghe thì đơn giản, nhưng trả lời lại không dễ: thực tế họ đã chuyển sang kê thuốc gì, và lựa chọn ấy có giống nhau ở mọi chẩn đoán không?",
+          "Tôi đảm nhận toàn bộ phần phân tích thống kê bằng R: làm sạch dữ liệu kê đơn rồi phân loại theo chẩn đoán và nhóm kháng sinh, định lượng mức độ chuyển đổi giữa amoxicillin, amoxicillin-clavulanate, cefuroxime, cephalexin và nhóm macrolide, cuối cùng là lập các bảng và biểu đồ tái lập được để mô tả tình hình kê đơn trước và trong đợt thiếu thuốc.",
+          "Phân tích này là cơ sở cho một bài báo đã qua phản biện, đăng trên *The American Journal of Emergency Medicine*."
         ],
         "tags": [
           "R",
           "Phân tích dịch vụ y tế",
-          "Bảng và hình có thể tái lập"
+          "Bảng và biểu đồ tái lập được"
         ]
       }
     },
@@ -169,9 +169,9 @@
         "meta": "Việt Nam · trải nghiệm người bệnh",
         "title": "Đo lường trải nghiệm người bệnh tại các bệnh viện công Việt Nam",
         "body": [
-          "Một nghiên cứu về trải nghiệm người bệnh tại bảy bệnh viện công ở Việt Nam tạo ra đúng loại dữ liệu khó phân tích cho tử tế: khảo sát song ngữ, nhiều câu trả lời tự do, vừa có thang Likert vừa có các thước đo về niềm tin và mức độ sẵn sàng giới thiệu.",
-          "Tôi xây dựng toàn bộ quy trình phân tích: làm sạch và chuẩn hóa dữ liệu khảo sát, dựng điểm trải nghiệm PPE-15, rồi lần lượt xây các mô hình hồi quy logistic liên kết những biến về giao tiếp và chăm sóc với trải nghiệm tổng thể của người bệnh.",
-          "Kết quả được thiết kế lại thành một bài trình bày song ngữ dành cho đối tượng lâm sàng, với bảng nhân khẩu học và bảng mô hình được định dạng chuyên nghiệp."
+          "Một nghiên cứu về trải nghiệm người bệnh tại bảy bệnh viện công ở Việt Nam cho ra đúng loại dữ liệu khó phân tích cho tốt: phiếu khảo sát song ngữ, nhiều câu hỏi mở, vừa có thang đo Likert vừa có câu hỏi về niềm tin và việc có muốn giới thiệu bệnh viện cho người khác hay không.",
+          "Tôi xây dựng toàn bộ quy trình phân tích: làm sạch và chuẩn hóa dữ liệu khảo sát, tính điểm trải nghiệm PPE-15, rồi chạy lần lượt các mô hình hồi quy logistic, từ đơn giản đến phức tạp, để xem các yếu tố về giao tiếp và chăm sóc liên quan thế nào đến trải nghiệm chung của người bệnh.",
+          "Kết quả sau đó được thiết kế lại thành một bài thuyết trình song ngữ cho người làm lâm sàng, kèm bảng đặc điểm nhân khẩu học và bảng kết quả mô hình được trình bày chỉn chu."
         ],
         "tags": [
           "R",
@@ -208,15 +208,15 @@
     "vi": [
       {
         "k": "Thiết kế nghiên cứu",
-        "v": "Góp ý đề cương và kế hoạch phân tích, cỡ mẫu và lực thống kê, định nghĩa kết cục và đại lượng cần ước lượng, và cả những cuộc trao đổi khó nói về chuyện một nghiên cứu trả lời được và không trả lời được điều gì."
+        "v": "Góp ý đề cương và kế hoạch phân tích, tính cỡ mẫu và lực thống kê, xác định kết cục và đại lượng cần ước lượng (estimand), và cả những cuộc trao đổi khó xử về việc một nghiên cứu trả lời được gì, không trả lời được gì."
       },
       {
         "k": "Phân tích",
-        "v": "Mô hình hồi quy, tổng quan hệ thống và phân tích gộp, chuỗi thời gian gián đoạn, đo lường khảo sát và trải nghiệm người bệnh, phân tích dữ liệu hành chính trong dịch vụ y tế."
+        "v": "Mô hình hồi quy, tổng quan hệ thống và phân tích gộp, chuỗi thời gian gián đoạn, khảo sát và đo lường trải nghiệm người bệnh, và nghiên cứu dịch vụ y tế dựa trên dữ liệu hành chính."
       },
       {
         "k": "Tính tái lập",
-        "v": "Quy trình R dạng mô-đun với các hàm đã kiểm thử, tạo lại bằng một lệnh, và báo cáo có định dạng giống hệt nhau qua từng kỳ."
+        "v": "Quy trình R gồm nhiều mô-đun với các hàm phụ trợ đã được kiểm thử, chỉ một lệnh là chạy lại được toàn bộ, và báo cáo kỳ nào cũng ra đúng một khuôn."
       },
       {
         "k": "Công cụ",
@@ -224,7 +224,7 @@
       },
       {
         "k": "Truyền đạt",
-        "v": "Diễn giải kết quả mô hình thành điều mà một nhóm lâm sàng có thể bắt tay vào làm: bằng văn bản, bằng bảng biểu và hình, và trực tiếp trong phòng họp."
+        "v": "Diễn giải kết quả mô hình thành những điều nhóm lâm sàng có thể áp dụng: qua văn bản, qua bảng và biểu đồ, và cả khi trao đổi trực tiếp trong buổi họp."
       }
     ]
   },
@@ -394,30 +394,30 @@
       "skipToContent": "Chuyển đến nội dung chính",
       "openMenu": "Mở menu",
       "closeMenu": "Đóng menu",
-      "toggleTheme": "Chuyển giữa giao diện sáng và giao diện tối",
+      "toggleTheme": "Chuyển giữa chế độ sáng và tối",
       "jsonLdJobTitle": "Chuyên viên Thống kê sinh học và Khoa học dữ liệu",
-      "ogImageAlt": "Michael Pham, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng CHEO, Ottawa",
-      "footerNote": "Sống tại Ottawa, Canada. Gắn bó với ba ngôn ngữ: tiếng Việt, tiếng Anh và tiếng Pháp.",
+      "ogImageAlt": "Michael Pham, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng của CHEO ở Ottawa",
+      "footerNote": "Hiện sống ở Ottawa, Canada. Gắn bó với ba thứ tiếng: Việt, Anh và Pháp.",
       "home": {
         "metaTitle": "Michael Pham · Thống kê sinh học, Đơn vị Nghiên cứu Lâm sàng CHEO",
-        "metaDescription": "Phạm Nguyên Khôi (Michael Pham) là chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng của CHEO, Ottawa, làm việc về thiết kế nghiên cứu, phân tích và báo cáo có thể tái lập trong nghiên cứu nhi khoa.",
+        "metaDescription": "Phạm Nguyên Khôi (Michael Pham) là chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng của CHEO ở Ottawa, chuyên về thiết kế nghiên cứu, phân tích số liệu và báo cáo tái lập được trong nghiên cứu nhi khoa.",
         "role": "Chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng, CHEO, Ottawa.",
-        "blurb": "Phần lớn công việc của tôi quy về một câu hỏi: liệu ta có tin được điều mà một phép đo trong y tế đang nói không? Và khi không tin được thì nên làm gì?",
+        "blurb": "Phần lớn công việc của tôi đều quy về một câu hỏi: ta có tin được những gì các chỉ số y tế đang cho thấy không? Và nếu không tin được, ta nên làm gì?",
         "ctaPrimary": "Liên hệ",
         "ctaSecondary": "Dự án tiêu biểu",
         "highlightsLabel": "Tóm lược",
         "highlights": [
           {
             "k": "Hiện tại",
-            "v": "Thiết kế và phân tích các nghiên cứu lâm sàng tại CHEO, một bệnh viện nhi khoa trực thuộc đại học ở Ottawa, Canada."
+            "v": "Thiết kế và phân tích các nghiên cứu lâm sàng tại CHEO, một bệnh viện nhi kiêm cơ sở đào tạo và nghiên cứu ở Ottawa, Canada."
           },
           {
             "k": "Trọng tâm",
-            "v": "Đo lường chất lượng và an toàn trong chăm sóc tại bệnh viện: khi nào một chỉ số đáng tin, và khi nào nó âm thầm gây hiểu lầm."
+            "v": "Đo lường chất lượng bệnh viện và an toàn người bệnh: khi nào một chỉ số đáng tin, và khi nào nó âm thầm dẫn ta đến kết luận sai."
           },
           {
             "k": "Quan tâm",
-            "v": "Chất lượng y tế và lãnh đạo y tế: khoảng cách giữa việc đo lường tốt và việc thực sự thay đổi được chăm sóc. Đây là hướng tôi muốn công việc của mình đi tới."
+            "v": "Chất lượng y tế và lãnh đạo y tế: khoảng cách giữa đo lường cho đúng và thực sự cải thiện được chất lượng chăm sóc. Đó là hướng tôi muốn theo đuổi."
           },
           {
             "k": "Ngôn ngữ",
@@ -427,13 +427,13 @@
       },
       "about": {
         "metaTitle": "Giới thiệu",
-        "metaDescription": "Phạm Nguyên Khôi là chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng của CHEO, Ottawa. Anh lớn lên ở Hà Nội, học tại Đại học Ottawa, và làm việc giữa nghiên cứu nhi khoa Canada và chất lượng y tế Việt Nam.",
+        "metaDescription": "Phạm Nguyên Khôi là chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng của CHEO ở Ottawa. Anh lớn lên ở Hà Nội, học tại Đại học Ottawa, và làm việc ở cả hai mảng: nghiên cứu nhi khoa tại Canada và chất lượng y tế tại Việt Nam.",
         "overline": "Giới thiệu",
         "title": "Giới thiệu",
         "factsLabel": "Thông tin",
         "facts": [
           {
-            "k": "Vai trò",
+            "k": "Vị trí",
             "v": "Chuyên viên Thống kê sinh học & Khoa học dữ liệu, Đơn vị Nghiên cứu Lâm sàng, Viện Nghiên cứu CHEO"
           },
           {
@@ -449,63 +449,63 @@
             "v": "Ottawa, Canada"
           }
         ],
-        "storyLabel": "Phiên bản dài hơn",
+        "storyLabel": "Kể dài hơn một chút",
         "story": [
-          "Tôi lớn lên ở Hà Nội, trong một gia đình có truyền thống y khoa và học thuật, rồi sang Canada học đại học. Y học là chuyện bàn ăn từ rất lâu trước khi trở thành một lựa chọn nghề nghiệp, và có lẽ vì thế mà tôi đến với y tế từ phía những con số thay vì từ giường bệnh.",
-          "Tôi học toán và thống kê tại Đại học Ottawa, sau đó về làm tại Đơn vị Nghiên cứu Lâm sàng của CHEO, tức Bệnh viện Nhi khoa Đông Ontario, với vai trò chuyên viên thống kê sinh học và khoa học dữ liệu. Tôi làm việc cùng các nhóm lâm sàng về thiết kế nghiên cứu, phân tích và báo cáo có thể tái lập, từ chấn thương sọ não nhẹ đến quản lý kháng sinh.",
-          "Câu hỏi tôi luôn quay lại là: một bệnh viện có thể tin vào những con số mà chính nó dùng để đo an toàn và chất lượng chăm sóc hay không, và nên làm gì khi một con số hóa ra không đáng tin. Đo lường cho tốt và cải thiện được thật sự là hai bài toán khác nhau, và khoảng cách giữa chúng là điều tôi quan tâm nhất.",
-          "Mối quan tâm ấy có hướng đi rõ ràng: chất lượng y tế và lãnh đạo y tế, và về lâu dài là mang công việc đó trở lại các bệnh viện Việt Nam. Hiện tại, nó thể hiện qua những gì tôi đọc, những việc tôi nhận làm, và các buổi tập huấn tôi tham gia thiết kế.",
-          "Tôi viết bằng tiếng Việt, nói tiếng Pháp còn kém nhưng đang khá dần lên, và dành sự quan tâm cho cả Ottawa lẫn ngành y tế Việt Nam, nơi gia đình tôi có gốc rễ sâu trong nghề y."
+          "Tôi lớn lên ở Hà Nội, trong một gia đình có nhiều người làm bác sĩ và làm khoa học, rồi sang Canada học đại học. Y khoa là câu chuyện quen thuộc bên mâm cơm nhà tôi từ rất lâu, trước cả khi tôi phải nghĩ đến việc chọn nghề, và có lẽ vì thế mà tôi đến với y học từ phía những con số chứ không phải từ bên giường bệnh.",
+          "Tôi học toán và thống kê tại Đại học Ottawa, rồi vào làm chuyên viên thống kê sinh học và khoa học dữ liệu tại Đơn vị Nghiên cứu Lâm sàng của CHEO, tức Bệnh viện Nhi miền Đông Ontario. Tôi cùng các nhóm lâm sàng thiết kế nghiên cứu, phân tích số liệu và làm báo cáo tái lập được cho nhiều đề tài nhi khoa, từ chấn động não đến quản lý sử dụng kháng sinh.",
+          "Có một câu hỏi tôi cứ nghĩ đi nghĩ lại: bệnh viện có thể tin vào những con số mình dùng để đánh giá an toàn và chất lượng chăm sóc hay không, và nên làm gì khi một con số hóa ra không đáng tin. Đo lường cho tốt và thật sự cải thiện được chất lượng là hai bài toán khác nhau, và điều tôi quan tâm nhất chính là khoảng cách giữa hai việc ấy.",
+          "Mối quan tâm ấy dẫn tôi đến một hướng đi cụ thể: chất lượng y tế và lãnh đạo y tế, và về lâu dài là mang công việc này về với các bệnh viện ở Việt Nam. Còn bây giờ, điều đó thể hiện qua những gì tôi đọc, những việc tôi tình nguyện tham gia, và các buổi tập huấn tôi góp sức thiết kế.",
+          "Tôi viết bằng tiếng Việt, nói tiếng Pháp còn kém nhưng đang khá dần, và luôn chia đôi tâm trí: một nửa cho Ottawa, nửa kia cho ngành y Việt Nam, nơi gia đình tôi đã gắn bó từ lâu."
         ],
-        "skillsLabel": "Công việc cụ thể",
-        "skillsIntro": "Bản tóm tắt công việc, dành cho ai đang cân nhắc gửi cho tôi một nghiên cứu.",
+        "skillsLabel": "Những việc tôi thực sự làm",
+        "skillsIntro": "Tóm tắt ngắn gọn, cho ai đang cân nhắc có nên gửi nghiên cứu cho tôi hay không.",
         "toneWords": 0
       },
       "work": {
         "metaTitle": "Dự án",
-        "metaDescription": "Một số công việc thống kê và khoa học dữ liệu tiêu biểu của Phạm Nguyên Khôi: báo cáo quản lý kháng sinh, kê đơn trong đợt thiếu thuốc toàn quốc, và đo lường trải nghiệm người bệnh tại các bệnh viện công Việt Nam.",
+        "metaDescription": "Một số dự án thống kê và khoa học dữ liệu tiêu biểu của Phạm Nguyên Khôi: báo cáo quản lý sử dụng kháng sinh, kê đơn kháng sinh trong đợt thiếu thuốc trên toàn Canada, và đo lường trải nghiệm người bệnh tại các bệnh viện công Việt Nam.",
         "overline": "Dự án",
         "title": "Dự án tiêu biểu",
-        "intro": "Ba dự án gộp lại bao quát gần hết những gì tôi làm: xây một quy trình chịu được sự lặp lại, trả lời một câu hỏi lâm sàng dưới áp lực, và khiến dữ liệu khảo sát song ngữ lộn xộn nói lên điều gì đó trung thực.",
-        "speakingLabel": "Giảng dạy và diễn thuyết",
-        "speakingIntro": "Truyền đạt là một phần của công việc, không phải sở thích phụ.",
+        "intro": "Ba dự án dưới đây gói gọn gần hết những gì tôi làm: xây một quy trình chạy lại bao nhiêu lần cũng không hỏng, trả lời một câu hỏi lâm sàng trong lúc gấp rút, và rút ra điều gì đó trung thực từ một bộ dữ liệu khảo sát song ngữ lộn xộn.",
+        "speakingLabel": "Giảng dạy và thuyết trình",
+        "speakingIntro": "Truyền đạt là một phần của công việc, không phải thú vui bên lề.",
         "speaking": [
           {
             "k": "Điều phối",
-            "v": "Các buổi tập huấn và đào tạo cho đối tượng lâm sàng và lãnh đạo, trong đó có chương trình đào tạo lãnh đạo bệnh viện về chất lượng y tế tại Việt Nam."
+            "v": "Workshop và các buổi tập huấn cho người làm lâm sàng và cán bộ quản lý, trong đó có chương trình đào tạo lãnh đạo bệnh viện về chất lượng y tế tại Việt Nam."
           },
           {
             "k": "Toastmasters",
-            "v": "Luyện nói và cố vấn thường xuyên."
+            "v": "Luyện nói đều đặn và kèm cặp các thành viên khác."
           },
           {
             "k": "Ngoài giờ",
-            "v": "Một chút kinh nghiệm hài độc thoại, khiến mọi kiểu nói trước đám đông khác trở nên dễ hơn."
+            "v": "Có chút kinh nghiệm diễn hài độc thoại, nên giờ đứng nói ở đâu cũng thấy dễ hơn."
           }
         ],
-        "closingPre": "Để trao đổi về hợp tác nghiên cứu:",
-        "closingLink": "liên hệ với tôi.",
+        "closingPre": "Nếu bạn muốn trao đổi về hợp tác nghiên cứu,",
+        "closingLink": "cứ liên hệ với tôi.",
         "toneWords": 2
       },
       "publications": {
         "metaTitle": "Công bố",
-        "metaDescription": "Các công bố khoa học đã bình duyệt có sự tham gia của Phạm Nguyên Khôi, trên Journal of Neurotrauma, The American Journal of Emergency Medicine, The Journal of Pediatrics và International Journal of Laboratory Hematology.",
+        "metaDescription": "Các bài báo đã qua phản biện mà Phạm Nguyên Khôi là đồng tác giả, đăng trên Journal of Neurotrauma, The American Journal of Emergency Medicine, The Journal of Pediatrics và International Journal of Laboratory Hematology.",
         "overline": "Công bố",
         "title": "Công bố khoa học",
-        "intro": "Các công trình đã bình duyệt, mới nhất trước. Tên tôi xuất hiện dưới ba dạng trong các bài này: Pham, N. K., Pham, M. K. và Pham, M., do mỗi tạp chí ghi một khác. Cả ba đều là tôi.",
+        "intro": "Các bài báo đã qua phản biện, xếp từ mới đến cũ. Tên tôi được ghi theo ba cách khác nhau: Pham, N. K., Pham, M. K. và Pham, M., vì mỗi tạp chí ghi một kiểu. Cả ba đều là tôi.",
         "doiLabel": "DOI",
-        "moreLabel": "Danh mục đầy đủ và số trích dẫn trên",
+        "moreLabel": "Xem danh sách đầy đủ và số lượt trích dẫn trên",
         "toneWords": 2
       },
       "contact": {
         "metaTitle": "Liên hệ",
-        "metaDescription": "Liên hệ với Phạm Nguyên Khôi, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng CHEO, Ottawa. Sẵn sàng trao đổi về hợp tác nghiên cứu bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp.",
+        "metaDescription": "Liên hệ với Phạm Nguyên Khôi, chuyên viên thống kê sinh học tại Đơn vị Nghiên cứu Lâm sàng của CHEO ở Ottawa. Luôn sẵn lòng trao đổi về hợp tác nghiên cứu, bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp.",
         "overline": "Liên hệ",
         "title": "Liên hệ",
-        "intro": "Tôi sẵn sàng trao đổi về hợp tác nghiên cứu, tư vấn phương pháp, và những câu chuyện về công việc chất lượng y tế tại Việt Nam.",
+        "intro": "Tôi luôn sẵn lòng trao đổi về hợp tác nghiên cứu, tư vấn phương pháp, hay đơn giản là trò chuyện về việc nâng cao chất lượng y tế ở Việt Nam.",
         "emailLabel": "Email",
         "elsewhereLabel": "Các kênh khác",
-        "muted": "Hiện sống tại Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp, tùy ngôn ngữ nào bạn thấy thoải mái hơn khi viết.",
+        "muted": "Hiện sống ở Ottawa, Canada. Tôi trả lời bằng tiếng Việt, tiếng Anh hoặc tiếng Pháp, nên bạn cứ viết bằng thứ tiếng nào thấy thoải mái nhất.",
         "toneWords": 0
       },
       "notFound": {
@@ -745,9 +745,9 @@
     },
     "vi": {
       "overline": "Bàn làm việc",
-      "heading": "Ghé bàn làm việc",
-      "subcopy": "Mọi thứ trên bàn đều mở được. Cứ bấm thử, hoặc dùng danh sách bên dưới nếu bạn chỉ muốn đọc.",
-      "sceneAlt": "Minh họa một bàn làm việc: bảng ghim và cửa sổ trên tường; trên bàn có chồng sách, một con cú, một người đang làm việc, máy tính xách tay, micro, ảnh đóng khung và một phin cà phê. Mỗi vật đều mở ra một mục.",
+      "heading": "Mời bạn dạo một vòng",
+      "subcopy": "Món đồ nào trên bàn cũng mở ra được. Cứ bấm thử, hoặc xem danh sách bên dưới nếu bạn chỉ muốn đọc.",
+      "sceneAlt": "Hình minh họa một bàn làm việc: trên tường có bảng ghim và cửa sổ; trên bàn có chồng sách, một con cú, một người đang làm việc, máy tính xách tay, micro, khung ảnh và một phin cà phê. Món đồ nào cũng mở ra một mục.",
       "annotation": "nơi tôi lớn lên & nơi tôi đang sống",
       "indexLabel": "Mở một mục",
       "dialogLabel": "Mục trên bàn làm việc",
@@ -761,22 +761,22 @@
           "items": [
             {
               "label": "",
-              "text": "Tôi là chuyên viên thống kê sinh học và khoa học dữ liệu, sống tại Ottawa, làm việc tại Đơn vị Nghiên cứu Lâm sàng của CHEO, và luôn quan tâm đến chất lượng y tế cùng lãnh đạo y tế."
+              "text": "Tôi là chuyên viên thống kê sinh học và khoa học dữ liệu, hiện sống ở Ottawa và làm việc tại Đơn vị Nghiên cứu Lâm sàng của CHEO. Tôi vẫn luôn quan tâm đến chất lượng y tế và lãnh đạo y tế."
             },
             {
               "label": "",
-              "text": "Điều tôi quan tâm nhất là khoảng cách giữa việc đo lường y tế và việc thực sự cải thiện nó. Những con số tốt chỉ có ý nghĩa nếu chúng thay đổi được điều gì đó, và chính khoảng cách ấy là nơi phần lớn công việc của tôi diễn ra."
+              "text": "Điều tôi để tâm nhất là khoảng cách giữa đo lường và thực sự cải thiện chất lượng y tế. Số liệu dù tốt đến đâu, nếu không làm thay đổi được điều gì thì cũng chẳng có ý nghĩa, và phần lớn công việc của tôi nằm ở chính khoảng cách ấy."
             },
             {
               "label": "",
-              "text": "Khi không vùi đầu vào dữ liệu, bạn sẽ thấy tôi ở một buổi hòa nhạc của Dàn nhạc NAC, đang viết một bài hài độc thoại, hoặc đang thua một trận đấu thân thiện với ngữ pháp tiếng Pháp. Tôi lớn lên ở Hà Nội rồi sang Canada học đại học, và nhiều điều tôi làm đều quay về việc kết nối hai thế giới ấy."
+              "text": "Những lúc không vùi đầu vào dữ liệu, tôi thường đi nghe Dàn nhạc NAC biểu diễn, ngồi viết tiết mục hài độc thoại, hoặc lại thua ngữ pháp tiếng Pháp thêm một trận giao hữu. Tôi lớn lên ở Hà Nội rồi sang Canada học đại học, và nhiều việc tôi làm rốt cuộc đều quay về chuyện kết nối hai thế giới ấy."
             }
           ]
         },
         "about-work": {
           "kicker": "Máy tính xách tay",
           "title": "Công việc",
-          "intro": "Bản tóm tắt.",
+          "intro": "Nói ngắn gọn.",
           "items": [
             {
               "label": "Thạc sĩ",
@@ -788,26 +788,26 @@
             },
             {
               "label": "Quan tâm",
-              "text": "Chất lượng y tế và lãnh đạo y tế: hướng tôi muốn công việc đi tới, và cũng là điều tôi đọc và tham gia."
+              "text": "Chất lượng y tế và lãnh đạo y tế: hướng đi tôi muốn theo đuổi, cũng là chủ đề tôi hay đọc và tình nguyện góp sức."
             }
           ]
         },
         "work": {
           "kicker": "Bảng ghim",
           "title": "Dự án",
-          "intro": "Một vài điều tôi đã và đang xây dựng.",
+          "intro": "Một vài việc tôi đã và đang làm.",
           "items": [
             {
               "label": "Câu hỏi để ngỏ",
-              "text": "Bệnh viện có thể tin vào những con số dùng để đo lường an toàn thuốc không? Và nên làm gì khi một con số chưa đáng tin? Đây là câu hỏi tôi luôn quay lại."
+              "text": "Bệnh viện có thể tin vào những con số mình dùng để đánh giá an toàn trong sử dụng thuốc không? Và nên làm gì khi một con số không đáng tin? Đó là câu hỏi cứ trở đi trở lại trong đầu tôi."
             },
             {
-              "label": "Đơn vị CRU, CHEO",
-              "text": "Thiết kế thống kê, phân tích và báo cáo có thể tái lập cho nghiên cứu lâm sàng nhi khoa."
+              "label": "CHEO CRU",
+              "text": "Thiết kế thống kê, phân tích số liệu và báo cáo tái lập được cho các nghiên cứu lâm sàng nhi khoa."
             },
             {
               "label": "Tập huấn",
-              "text": "Tham gia thiết kế chương trình đào tạo lãnh đạo bệnh viện cho công việc chất lượng y tế tại Việt Nam."
+              "text": "Góp sức thiết kế chương trình đào tạo lãnh đạo bệnh viện về chất lượng y tế tại Việt Nam."
             },
             {
               "label": "Website",
@@ -818,7 +818,7 @@
         "languages": {
           "kicker": "Ba thứ tiếng",
           "title": "Ngôn ngữ",
-          "intro": "Ba ngôn ngữ tôi sống và làm việc cùng.",
+          "intro": "Ba thứ tiếng tôi dùng mỗi ngày, trong công việc lẫn cuộc sống.",
           "items": [
             {
               "label": ":flag-vi: Tiếng Việt",
@@ -830,7 +830,7 @@
             },
             {
               "label": ":flag-fr: Tiếng Pháp",
-              "text": "Đang học, mỗi lần một quy tắc ngữ pháp."
+              "text": "Đang học, từng quy tắc ngữ pháp một."
             }
           ]
         },
@@ -849,39 +849,39 @@
             },
             {
               "label": "Hướng về Việt Nam",
-              "text": "Hướng đi: công việc chất lượng y tế, trở về quê nhà."
+              "text": "Đích đến: làm về chất lượng y tế, ngay tại quê nhà."
             }
           ]
         },
         "speaking": {
           "kicker": "Micro",
-          "title": "Diễn thuyết",
-          "intro": "Giao tiếp và giảng dạy là một phần công việc của tôi.",
+          "title": "Thuyết trình",
+          "intro": "Truyền đạt và giảng dạy cũng là một phần công việc.",
           "items": [
             {
               "label": "Điều phối",
-              "text": "Các buổi tập huấn và đào tạo cho đối tượng lâm sàng và lãnh đạo."
+              "text": "Workshop và các buổi tập huấn cho người làm lâm sàng và cán bộ quản lý."
             },
             {
               "label": "Toastmasters",
-              "text": "Luyện nói và cố vấn thường xuyên."
+              "text": "Luyện nói đều đặn và kèm cặp các thành viên khác."
             },
             {
               "label": "Ngoài giờ",
-              "text": "Một chút kinh nghiệm hài độc thoại, khiến mọi buổi nói khác trở nên dễ hơn."
+              "text": "Có chút kinh nghiệm diễn hài độc thoại, nên giờ đứng nói ở đâu cũng thấy dễ hơn."
             }
           ]
         },
         "writing": {
           "kicker": "Phin cà phê",
-          "title": "Viết (tiếng Việt)",
-          "intro": "Các bài viết tiếng Việt: mỗi bài một câu hỏi rất người, triết lý nhưng dễ đọc.",
+          "title": "Góc viết",
+          "intro": "Những bài viết bằng tiếng Việt, mỗi bài xoay quanh một câu hỏi về con người, có chiều sâu nhưng viết giản dị.",
           "items": []
         },
         "currently": {
           "kicker": "Chồng sách",
-          "title": "Hiện tại",
-          "intro": "Một trang nhỏ luôn được cập nhật.",
+          "title": "Dạo này",
+          "intro": "Một góc nhỏ, thay đổi theo thời gian.",
           "items": [
             {
               "label": "Đang đọc",
@@ -896,23 +896,23 @@
           "updatedLabel": "Cập nhật"
         },
         "vietnam": {
-          "kicker": "Ảnh đóng khung",
+          "kicker": "Khung ảnh",
           "title": "Việt Nam",
           "intro": "",
           "items": [
             {
               "label": "",
-              "text": "Tầm nhìn dài hạn: chất lượng y tế và đào tạo lãnh đạo trong các bệnh viện Việt Nam."
+              "text": "Về lâu dài: chất lượng y tế và đào tạo lãnh đạo cho các bệnh viện Việt Nam."
             },
             {
               "label": "",
-              "text": "Đưa việc đo lường đáng tin đến gần hơn với những người sử dụng nó."
+              "text": "Đưa những số liệu đáng tin đến tận tay người cần dùng."
             }
           ]
         }
       },
-      "sceneLabel": "Bàn làm việc: chín món đồ, mỗi món mở một mục",
-      "toneWords": 2
+      "sceneLabel": "Bàn làm việc: chín món đồ, món nào cũng mở ra một mục",
+      "toneWords": 3
     }
   }
 }
